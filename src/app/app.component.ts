@@ -1,44 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from './user.service';
+import { Component, OnInit } from "@angular/core";
+
+import { UserService } from "./users/user.service";
+import { User } from "./users/user";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
+    
       <h1>
-        <button (click)="get()"></button>
+        <button (click)="getUsers()"></button>
       </h1>
-      </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
+      <div *ngFor="let user of users">
+     
+      {{ user.lastname }} 
+      {{ user.firstname }}
+      {{ user.email }} 
+      {{ user.pseudo }} 
+      {{ user.phone }}
+
+    </div>
+    
+
     <router-outlet></router-outlet>
   `,
-  styles: []
+  styles: [],
 })
-
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+  users: User[] = [];;
   
-  constructor(private userService: UserService){
 
-  }
+  constructor(private userService: UserService) {}
+
+
   ngOnInit(): void {
-      
+   this.getUsers()
   }
 
-  get(){
-    this.userService.get().subscribe((response:any)=>{
-      console.log(response)
-    })
+  getUsers(): void {
+    this.userService.getUsers().subscribe((users) => {
+      console.log(users);
+      this.users = users;
+      
+    });
   }
 }
