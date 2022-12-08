@@ -1,2 +1,2 @@
-<label for="name">{{ nameField }}: </label>
-<input id="name" type="text" [formControl]="inputControl">
+<label [for]="nameMarkup">{{ nameLabel }}: </label>
+<input [name]="nameMarkup" [type]="type" [formControl]="inputControl" [placeholder]="placeHolder ? placeHolder : ''">

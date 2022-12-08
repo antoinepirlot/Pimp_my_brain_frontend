@@ -1,10 +1,17 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-
-    <label for="first-name">First Name: </label>
-    <input id="first-name" type="text" formControlName="firstName">
-  
-    <label for="last-name">Last Name: </label>
-    <input id="last-name" type="text" formControlName="lastName">
-  
-    <button type="submit" >Submit</button>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <app-input 
+        nameLabel="Adresse mail" 
+        [inputControl]="loginForm.controls['email']" 
+        placeHolder="Entrez votre adresse mail"
+        type="email"
+        nameMarkup="email">
+    </app-input>
+    <app-input 
+        nameLabel="Mot de passe" 
+        [inputControl]="loginForm.controls['password']" 
+        placeHolder="Entrez votre mot de passe"
+        type="password"
+        nameMarkup="password">
+    </app-input>
+    <button type="submit">Submit</button>
   </form>

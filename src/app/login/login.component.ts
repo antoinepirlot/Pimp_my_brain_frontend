@@ -10,9 +10,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit{
 
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
   });
 
   constructor(private router:Router, private authentificationService: AuthentificationService){}
@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.log(this.profileForm.value);
+    console.log(this.loginForm.value);
   }
 }
