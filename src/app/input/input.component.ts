@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './input.component.html',
   styles: []
 })
+
 export class InputComponent {
   @Input() inputControl!: FormControl;
   @Input() nameLabel!: string;
