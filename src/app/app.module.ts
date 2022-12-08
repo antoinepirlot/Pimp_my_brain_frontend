@@ -9,18 +9,22 @@ import { LoginComponent } from './login/login.component';
 
 import { registerLocaleData } from '@angular/common';
 import * as be from '@angular/common/locales/be';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    InputComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // import HttpClientModule after BrowserModule.
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-BE'}
