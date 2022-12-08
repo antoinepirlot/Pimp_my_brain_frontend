@@ -7,6 +7,6 @@ import { FormControl } from '@angular/forms';
   styles: []
 })
 export class InputComponent {
-  input = new FormControl('');
+  @Input() inputControl!: FormControl;
   @Input() nameField!: string;
 }
