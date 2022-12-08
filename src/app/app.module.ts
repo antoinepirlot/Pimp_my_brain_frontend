@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     InputComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegisterComponent
     
   ],
   imports: [
@@ -34,11 +36,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-BE'}
   ],
-  bootstrap: [AppComponent,
-    LoginComponent,
-    InputComponent,
-    HomeComponent,
-    NavbarComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { 
   constructor(){
