@@ -11,12 +11,16 @@ import { registerLocaleData } from '@angular/common';
 import * as be from '@angular/common/locales/be';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InputComponent
+    InputComponent,
+    HomeComponent,
+    NavbarComponent
     
   ],
   imports: [
