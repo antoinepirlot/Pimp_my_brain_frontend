@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!connected">
   <div class="container-fluid">
   <img id="homeLogo" src="../../assets/image/homeNavbar.png" alt="homeLogo" href="#" routerLink="/">
   <button
@@ -27,6 +28,49 @@
     <li class="nav-item">
     <a class="nav-link" href="#" routerLink="/register">S'inscrire</a>
     </li>			
+    </ul>		  
+  </div>
+</div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="connected">
+  <div class="container-fluid">
+  <img id="homeLogo" src="../../assets/image/homeNavbar.png" alt="homeLogo" href="#" routerLink="/">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">          
+    </ul>
+  </div>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a id="postez" class="nav-link" href="#" routerLink="/postAnnonce">POSTER UNE ANNONCE</a>
+      </li> 
+      <li class="nav-item">
+        <img id="iconeNotification" src="../../assets/image/Notification.png" alt="iconeNotification" href="#" routerLink="/notif">
+      </li>		
+      <li class="nav-item">
+        <img id="iconeProfil" src="../../assets/image/iconeProfil.png" alt="iconeProfil" href="#" routerLink="/profil">
+      </li>
+      <li class="nav-item">
+        <a id="postez" class="nav-link" href="#" routerLink="/rendezvous">MES RENDEZ-VOUS</a>
+      </li> 
+      <li class="nav-item">
+        <img id="iconeDeconnecter" src="../../assets/image/Logout.png" alt="iconeProfil" href="#" routerLink="/logout">
+    </li>    
     </ul>		  
   </div>
 </div>

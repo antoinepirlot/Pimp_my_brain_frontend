@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: [ './navbar.component.css']
 })
 export class NavbarComponent {
-connected: boolean=false
+connected: boolean=true
 }
