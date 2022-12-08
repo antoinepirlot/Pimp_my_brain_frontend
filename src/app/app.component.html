@@ -1,1 +1,12 @@
+<h1>
+    <button (click)="getUsers()"></button>
+  </h1>
+  <div *ngFor="let user of users">
+ 
+  {{ user.lastname }} 
+  {{ user.firstname }}
+  {{ user.email }} 
+  {{ user.pseudo }} 
+  {{ user.phone }}
+</div>
 <router-outlet></router-outlet>
