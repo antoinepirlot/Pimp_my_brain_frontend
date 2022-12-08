@@ -12,7 +12,7 @@
       
     </div>
 
-    <form class="box">
+    <form class="box" #login="ngForm" (ngSubmit)="addUser(login.value)" >
       <div class="row" id="doubleTab">
         <div class="col box1" id="tabRegister">
           <br>
@@ -20,21 +20,10 @@
 
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" id="nom" placeholder="Nom" required>
+              <input type="text" class="form-control" name="lastname" placeholder="Nom" required ngModel>
             </div>
             <div class="col">
-              <input type="text" class="form-control" id="prenom" placeholder="Prénom" required>
-            </div>
-          </div>
-
-          <br>
-
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" required>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" id="email" placeholder="Email" required>
+              <input type="text" class="form-control" name="firstname" placeholder="Prénom" required ngModel>
             </div>
           </div>
 
@@ -42,14 +31,25 @@
 
           <div class="row">
             <div class="col">
-              <input type="number" class="form-control" id="numtel" placeholder="Numero de téléphone" required>
+              <input type="text" class="form-control" name="pseudo" placeholder="Pseudo" required ngModel>
             </div>
             <div class="col">
-              <select id="sexe" class="form-control">
+              <input type="text" class="form-control" name="email" placeholder="Email" required ngModel>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <input type="number" class="form-control" name="phone" placeholder="Numero de téléphone" required ngModel>
+            </div>
+            <div class="col">
+              <select name="sexe" class="form-control" ngModel>
                 <option selected>SEXE</option>
-                <option value="homme">Homme</option>
-            <option value="Femme" selected>Femme</option>
-            <option value="autre">Autre</option>
+                <option value="male">Homme</option>
+            <option value="female" selected>Femme</option>
+            <option value="other">Autre</option>
               </select>
             </div>
           </div>
@@ -58,10 +58,10 @@
 
           <div class="row">
             <div class="col">
-              <input type="password" class="form-control" id="motDePasse" placeholder="Mot de passe" required>
+              <input type="password" class="form-control" name="password" placeholder="Mot de passe" required ngModel>
             </div>
             <div class="col">
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmez votre mot de passe" required>
+              <input type="password" class="form-control" name="confirmPassword" placeholder="Confirmez votre mot de passe" required>
             </div>
           </div>
 
