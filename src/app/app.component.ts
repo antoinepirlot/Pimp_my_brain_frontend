@@ -5,25 +5,7 @@ import { User } from "./users/user";
 
 @Component({
   selector: "app-root",
-  template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    
-      <h1>
-        <button (click)="getUsers()"></button>
-      </h1>
-      <div *ngFor="let user of users">
-     
-      {{ user.lastname }} 
-      {{ user.firstname }}
-      {{ user.email }} 
-      {{ user.pseudo }} 
-      {{ user.phone }}
-
-    </div>
-    
-
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
   styles: [],
 })
 export class AppComponent implements OnInit {
