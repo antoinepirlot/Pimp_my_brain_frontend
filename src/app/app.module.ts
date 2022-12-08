@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 
 import { registerLocaleData } from '@angular/common';
 import * as be from '@angular/common/locales/be';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -34,6 +34,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     ReactiveFormsModule

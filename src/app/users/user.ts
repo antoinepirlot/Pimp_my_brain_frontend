@@ -1,12 +1,16 @@
 export interface User {
-    
-    id: number
+     
+    id?: number;
     lastname: string
     firstname: string
     email:string
     pseudo: string
     sexe:string
-    phone: string
+    phone: number
     password: string
+
+   
+    
+    
     
 }
