@@ -9,10 +9,6 @@
     "test": "jest",
     "postinstall": "ng build --aot -prod"
   },
-  "engines": {
-    "node": "^18.12.1",
-    "npm": "^8.19.2"
-  },
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "^15.0.2",
