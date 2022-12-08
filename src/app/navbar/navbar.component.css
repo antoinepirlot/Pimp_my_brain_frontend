@@ -1,0 +1,27 @@
+#homeLogo {
+  width: 4em;
+  cursor: pointer;
+}
+
+.navbar {
+  background: linear-gradient(to right, rgb(115, 174, 251), rgb(90, 231, 146));
+  position: relative;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.navbar li {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.navbar li a {
+  color: black !important;
+}
+
+.navbar #navText {
+  font-weight: bolder;
+  font-size: x-large;
+}

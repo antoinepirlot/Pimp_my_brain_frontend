@@ -1,6 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -33,7 +34,11 @@ import { NavbarComponent } from './navbar/navbar.component';
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-BE'}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,
+    LoginComponent,
+    InputComponent,
+    HomeComponent,
+    NavbarComponent]
 })
 export class AppModule { 
   constructor(){
