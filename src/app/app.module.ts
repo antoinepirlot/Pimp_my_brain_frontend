@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NotificationComponent } from './notification/notification.component';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    NotificationComponent
+    NotificationComponent,
+    AppointmentComponent
     
   ],
   imports: [
