@@ -9,6 +9,7 @@ import { User } from "./users/user";
   styles: [],
 })
 export class AppComponent implements OnInit {
+  
   users: User[] = [];;
   
 
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.getUsers()
+   //this.getUsers()
   }
 
   getUsers(): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +10,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit{
 
+  notification = "";
+
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(private router:Router, private authentificationService: AuthentificationService){}
@@ -25,6 +27,11 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
+    if(this.loginForm.status==="INVALID"){
+      this.notification="Veuillez entrer tous les champs";
+      return;
+    }
+
     console.log(this.loginForm.value);
   }
 }
