@@ -24,22 +24,18 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  onLoginButton(){
-    this.router.navigateByUrl('/');
-  }
-
   onSubmit() {
+    let email = this.loginForm.value.email!;
+    let password = this.loginForm.value.password!;
     if(this.loginForm.status==="INVALID"){
       this.notification="Veuillez entrer tous les champs";
       return;
     }
-    let regexEmail= new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
-    if(!regexEmail.test(this.loginForm.value.email!)){
-      this.notification="Veuillez entrer un mail valide"
-      return;
-    }
-
-    console.log(this.loginForm.value);
+    this.authentificationService.login({email:email, password:password}).subscribe(newuser=>{
+      console.log(newuser);
+    })
+    //this.router.navigateByUrl('/');
+    //console.log(this.loginForm.value);
   }
 }
