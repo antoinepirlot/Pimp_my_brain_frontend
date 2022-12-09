@@ -3,12 +3,7 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-select-in-form',
-  template: `
-    <label [for]="nameLabel" >{{ nameLabel }}: </label>
-    <select [name]="nameLabel" [formControl]="optionChosen">
-      <option *ngFor="let option of options"  [value]="option">{{option}}</option>
-    </select>
-  `,
+  templateUrl: './select-in-form.component.html',
   styles: [
   ]
 })
