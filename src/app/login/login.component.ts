@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit{
       return;
     }
 
-    this.authentificationService.login({email:email, password:password}).subscribe(newuser=>{
-      console.log(newuser);
+    this.authentificationService.login({email:email, password:password}).subscribe({
+      next(token) {
+        console.log('Token: ', token);
+      },
+      error(error) {
+        
+      }
     })
     //this.router.navigateByUrl('/');
     //console.log(this.loginForm.value);

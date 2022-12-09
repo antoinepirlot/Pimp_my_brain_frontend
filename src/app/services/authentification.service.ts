@@ -19,8 +19,7 @@ export class AuthentificationService{
 
     login(user: User): Observable<string>{
         return this.http.post<string>(`${this.ROOT_URL}/authentications/login`, user, this.httpOptions).pipe(
-          tap((token: string) => console.log('token :', token)),
-          catchError(this.handleError<string>('login')))
+            catchError(this.handleError<string>('addUser')))
        }
 
      /**
