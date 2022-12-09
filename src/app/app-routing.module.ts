@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { CreateCourseComponent } from './create_course/create_course.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'notification', component: NotificationComponent },
-  { path: 'rendezvous', component: AppointmentComponent }
+  { path: 'rendezvous', component: AppointmentComponent },
+  { path: 'creerCours', component: CreateCourseComponent}
 ];
 
 @NgModule({
