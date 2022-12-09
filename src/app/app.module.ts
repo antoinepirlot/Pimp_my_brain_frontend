@@ -17,7 +17,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AppointmentComponent } from './appointment/appointment.component';
-import { CreateCourseComponent } from './create_course/create_course.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import { SelectInFormComponent } from './select-in-form/select-in-form.component';
+import { InputNumberComponent } from './input-number/input-number.component';
+import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { CreateCourseComponent } from './create_course/create_course.component';
     RegisterComponent,
     NotificationComponent,
     AppointmentComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    SelectInFormComponent,
+    InputNumberComponent,
+    TextareaInFormComponent
     
   ],
   imports: [
