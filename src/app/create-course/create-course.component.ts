@@ -10,7 +10,7 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CreateCourseComponent implements OnInit {
   notification = ""
-  allOptionsCategory:Category[] = []//["PHP", "Python", "SQL"] // TODO : ask categories to the backend
+  allOptionsCategory!:Category[];//["PHP", "Python", "SQL"] // TODO : ask categories to the backend
   allOptions:string[] = []
   createCourseForm = new FormGroup({
     country: new FormControl('', Validators.required),
@@ -28,6 +28,7 @@ export class CreateCourseComponent implements OnInit {
     this.categoriesService.getAllCategories().subscribe({
       next : (data) => {
         this.allOptionsCategory = data
+        this.allOptionsCategory.forEach(c => this.allOptions.push(c.name))
       },
       error : (error) => {
         if(error.status === 404){
@@ -39,9 +40,8 @@ export class CreateCourseComponent implements OnInit {
       }
     });
       //cat => this.allOptionsCategory = cat);
-    console.log(this.allOptionsCategory)
-    console.log("stefan")
-    this.allOptionsCategory.forEach(c => this.allOptions.push(c.name))
+ 
+    
   }
 
 
