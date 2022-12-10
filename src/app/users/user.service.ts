@@ -36,4 +36,12 @@ export class UserService {
       catchError(handleError<User>('addUser')))
    }
 
+   getUsersByEmail(email:string): Observable<User>{
+    return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`)
+   }
+
+   getUsersByPseudo(pseudo:string): Observable<User>{
+    return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`)
+   }
+
   }

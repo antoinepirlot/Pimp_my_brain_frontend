@@ -1,123 +1,131 @@
-<div class="row" id="homePage">
-  <div class="col"></div>
-
-  <div class="col text-center">
+<div class="row login-block">
+  <div class="col">
     <br />
+    <h1>Inscrivez-vous</h1>
     <br />
-    <div id="titre">
-      <br />
-
-      <h2>Inscrivez-vous</h2>
-    </div>
-
-    <form class="box" #login="ngForm" (ngSubmit)="onSubmit(login)">
-      <div class="row" id="doubleTab">
-        <div class="col box1" id="tabRegister">
-          <br />
-          <h4>Info personelle</h4>
-
-          <div class="row">
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                name="lastname"
-                placeholder="Nom"
-                required
-                ngModel
-              />
-            </div>
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                name="firstname"
-                placeholder="Prénom"
-                required
-                ngModel
-              />
-            </div>
+    <form class="box" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Nom      "
+              [inputControl]="registerForm.controls['lastname']"
+              placeHolder="Nom"
+              type="text"
+              nameMarkup="lastname"
+            >
+            </app-input>
           </div>
 
-          <br />
+          <div class="col">
+            <app-input
+              nameLabel="Prénom  "
+              [inputControl]="registerForm.controls['firstname']"
+              placeHolder="Prénom"
+              type="text"
+              nameMarkup="firstname"
+            >
+            </app-input>
+          </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                name="pseudo"
-                placeholder="Pseudo"
-                required
-                ngModel
-              />
-            </div>
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                name="email"
-                placeholder="Email"
-                required
-                ngModel
-              />
-            </div>
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Pseudo "
+              [inputControl]="registerForm.controls['pseudo']"
+              placeHolder="Pseudo"
+              type="text"
+              nameMarkup="pseudo"
+            >
+            </app-input>
           </div>
 
-          <br />
+          <div class="col">
+            <app-input
+              nameLabel="Email "
+              [inputControl]="registerForm.controls['email']"
+              placeHolder="Email"
+              type="email"
+              nameMarkup="email"
+            >
+            </app-input>
+          </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <input
-                type="number"
-                class="form-control"
-                name="phone"
-                placeholder="Numero de téléphone"
-                required
-                ngModel
-              />
-            </div>
-            <div class="col">
-              <select name="sexe" class="form-control" ngModel>
-                <option value="male" selected>Homme</option>
-                <option value="female">Femme</option>
-                <option value="other">Autre</option>
-              </select>
-            </div>
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Numero de téléphone "
+              [inputControl]="registerForm.controls['phone']"
+              placeHolder="Numero de téléphone"
+              type="number"
+              nameMarkup="phone"
+            >
+            </app-input>
           </div>
 
-          <br />
+          <div class="col">
+            <br />
+            <app-select-in-form
+              nameLabel="Sexe "
+              [options]="allOptions"
+              [optionChosen]="registerForm.controls['sexe']"
+            >
+            </app-select-in-form>
+          </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <input
-                type="password"
-                class="form-control"
-                name="password"
-                placeholder="Mot de passe"
-                required
-                ngModel
-              />
-            </div>
-            <div class="col">
-              <input
-                type="password"
-                class="form-control"
-                name="confirmPassword"
-                placeholder="Confirmez votre mot de passe"
-                required
-                ngModel
-              />
-            </div>
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Mot de passe"
+              [inputControl]="registerForm.controls['password']"
+              placeHolder="Mot de passe"
+              type="password"
+              nameMarkup="password"
+            >
+            </app-input>
           </div>
 
-          <br />
+          <div class="col">
+            <app-input
+              nameLabel="Confirmer votre mot de passe"
+              [inputControl]="registerForm.controls['Cpassword']"
+              placeHolder="Mot de passe"
+              type="password"
+              nameMarkup="Cpassword"
+            >
+            </app-input>
+          </div>
         </div>
       </div>
-      <span style="color: red;">{{notification}}</span>
-      <input id="btnInscrire" type="submit" value="S'inscire" />
+
+      <br />
+      <div *ngIf="bool; else contenu_pas_bon">
+        <span style="color: green">{{ notification }}</span>
+      </div>
+      <ng-template #contenu_pas_bon>
+        <span style="color: red">{{ notification }}</span></ng-template>
+      
+      <br />
+
+      <div>
+        <button type="submit">S ' inscrire</button>
+      </div>
     </form>
     <br />
   </div>
-  <div class="col"></div>
 </div>
