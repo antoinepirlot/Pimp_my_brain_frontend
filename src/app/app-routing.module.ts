@@ -8,17 +8,19 @@ import { NotificationComponent } from './notification/notification.component';
 import { RegisterComponent } from './register/register.component';
 import {MyCoursesComponent} from "./pages/teachers/my-courses/my-courses.component";
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
   { path: 'rendezvous', component: AppointmentComponent },
   { path: 'creerCours', component: CreateCourseComponent},
-  { path: 'my_courses', component: MyCoursesComponent }
+  { path: 'my_courses', component: MyCoursesComponent },
+  { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({
