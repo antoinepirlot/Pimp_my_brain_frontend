@@ -1,15 +1,19 @@
-import {Component} from '@angular/core';
-import api_requests from "../../../utils/api_requests";
+import {Component, OnInit} from '@angular/core';
+import {CourseService} from "../../../models/course/course.service";
+
 @Component({
   selector: 'app-my-courses',
-  templateUrl: './my_courses.component.html',
-  styleUrls: ['./my_courses.component.css']
+  templateUrl: './my-courses.component.html',
+  styleUrls: ['./my-courses.component.css']
 })
 
-export class MyCoursesComponent {
+export class MyCoursesComponent implements OnInit {
+  courses:any;
 
-  async getAllCourses() {
-    const courses = await api_requests.getAllTeacherCourses();
-    return courses;
+  constructor(private courseService: CourseService) {
+  }
+
+  ngOnInit() {
+    this.courseService.getAllTeacherCourses(1).subscribe(response => this.courses = response);
   }
 }
