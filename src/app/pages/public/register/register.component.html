@@ -1,0 +1,131 @@
+<div class="row login-block">
+  <div class="col">
+    <br />
+    <h1>Inscrivez-vous</h1>
+    <br />
+    <form class="box" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Nom      "
+              [inputControl]="registerForm.controls['lastname']"
+              placeHolder="Nom"
+              type="text"
+              nameMarkup="lastname"
+            >
+            </app-input>
+          </div>
+
+          <div class="col">
+            <app-input
+              nameLabel="Prénom  "
+              [inputControl]="registerForm.controls['firstname']"
+              placeHolder="Prénom"
+              type="text"
+              nameMarkup="firstname"
+            >
+            </app-input>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Pseudo "
+              [inputControl]="registerForm.controls['pseudo']"
+              placeHolder="Pseudo"
+              type="text"
+              nameMarkup="pseudo"
+            >
+            </app-input>
+          </div>
+
+          <div class="col">
+            <app-input
+              nameLabel="Email "
+              [inputControl]="registerForm.controls['email']"
+              placeHolder="Email"
+              type="email"
+              nameMarkup="email"
+            >
+            </app-input>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Numero de téléphone "
+              [inputControl]="registerForm.controls['phone']"
+              placeHolder="Numero de téléphone"
+              type="number"
+              nameMarkup="phone"
+            >
+            </app-input>
+          </div>
+
+          <div class="col">
+            <br />
+            <app-select-in-form
+              nameLabel="Sexe "
+              [options]="allOptions"
+              [optionChosen]="registerForm.controls['sexe']"
+            >
+            </app-select-in-form>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col">
+            <app-input
+              nameLabel="Mot de passe"
+              [inputControl]="registerForm.controls['password']"
+              placeHolder="Mot de passe"
+              type="password"
+              nameMarkup="password"
+            >
+            </app-input>
+          </div>
+
+          <div class="col">
+            <app-input
+              nameLabel="Confirmer votre mot de passe"
+              [inputControl]="registerForm.controls['Cpassword']"
+              placeHolder="Mot de passe"
+              type="password"
+              nameMarkup="Cpassword"
+            >
+            </app-input>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div *ngIf="bool; else contenu_pas_bon">
+        <span style="color: green">{{ notification }}</span>
+      </div>
+      <ng-template #contenu_pas_bon>
+        <span style="color: red">{{ notification }}</span></ng-template>
+      
+      <br />
+
+      <div>
+        <button type="submit">S ' inscrire</button>
+      </div>
+    </form>
+    <br />
+  </div>
+</div>

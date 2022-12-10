@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppointmentComponent } from './appointment/appointment.component';
-import { CreateCourseComponent } from './create-course/create-course.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { NotificationComponent } from './notification/notification.component';
-import { RegisterComponent } from './register/register.component';
-import {MyCoursesComponent} from "./pages/teachers/my-courses/my-courses.component";
+import { AppointmentComponent } from './pages/users/appointment/appointment.component';
+import { CreateCourseComponent } from './pages/users/create-course/create-course.component';
+import { HomeComponent } from './pages/public/home/home.component';
+import { LoginComponent } from './pages/public/login/login.component';
+import { NotificationComponent } from './pages/users/notification/notification.component';
+import { RegisterComponent } from './pages/public/register/register.component';
+import {MyCoursesComponent} from "./pages/users/my-courses/my-courses.component";
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
+import { LogoutComponent } from './pages/users/logout/logout.component';
 
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
   { path: 'rendezvous', component: AppointmentComponent },
   { path: 'creerCours', component: CreateCourseComponent},
-  { path: 'my_courses', component: MyCoursesComponent }
+  { path: 'my_courses', component: MyCoursesComponent },
+  { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({
