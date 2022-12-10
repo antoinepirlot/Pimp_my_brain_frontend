@@ -1,0 +1,42 @@
+button {
+  text-align: center;
+}
+
+.bubbles {
+  text-align: right;
+}
+
+.easy_bubbles {
+  background-color: greenyellow;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.intermediate_bubbles {
+  background-color: orange;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.hard_bubbles {
+  background-color: red;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.empty_bubbles {
+  background-color: white;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  display: inline-block;
+}
