@@ -7,12 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { NotificationComponent } from './notification/notification.component';
 import { RegisterComponent } from './register/register.component';
 import {MyCoursesComponent} from "./pages/teachers/my-courses/my-courses.component";
+import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
 
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent },
   { path: 'notification', component: NotificationComponent },
   { path: 'rendezvous', component: AppointmentComponent },

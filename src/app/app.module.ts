@@ -22,6 +22,8 @@ import { SelectInFormComponent } from './select-in-form/select-in-form.component
 import { InputNumberComponent } from './input-number/input-number.component';
 import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
 import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
+import { CourseCardComponent } from './components/course-card/course-card.component';
+import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.compo
     SelectInFormComponent,
     InputNumberComponent,
     TextareaInFormComponent,
-    MyCoursesComponent
+    MyCoursesComponent,
+    CourseCardComponent
     
   ],
   imports: [
@@ -50,7 +53,7 @@ import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.compo
     ReactiveFormsModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-BE'}
+    {provide: LOCALE_ID, useValue: 'fr-BE'}, CanActivateViaNotAuthenticationGuard
   ],
   bootstrap: [AppComponent]
 })
