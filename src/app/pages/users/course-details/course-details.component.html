@@ -1,4 +1,4 @@
-<div id="course_details_page">
+<div id="course_details_page" *ngIf=course>
   <h1>Cours de {{course.id_category}}</h1> <!--TODO category-->
   <div id="course_description">
     <h3>A propos du cours</h3>
@@ -19,4 +19,7 @@
       <p class="similar_course_price">Tarif: {{similarCourse.price_per_hour}}/h</p>
     </div>
   </div>
+</div>
+<div *ngIf=!course>
+  <h1>Chargement en cours...</h1>
 </div>
