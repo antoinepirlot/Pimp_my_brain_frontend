@@ -32,15 +32,21 @@ export class LoginComponent implements OnInit{
       return;
     }
 
-    this.authentificationService.login({email:email, password:password}).subscribe({
-      next(token) {
-        console.log('Token: ', token);
-      },
-      error(error) {
-        
+    this.authentificationService.login({email:email, password:password}).subscribe(
+      {
+        next : (data) => {
+          localStorage.setItem("token", data);
+          this.router.navigateByUrl('/');
+        },
+        error : (error) => {
+          if(error.status === 404){
+            this.notification = "L'email ou le mot de passe est incorrect";
+          }
+          else{
+            console.warn("Server error");
+          }
+        }
       }
-    })
-    //this.router.navigateByUrl('/');
-    //console.log(this.loginForm.value);
+    )
   }
 }

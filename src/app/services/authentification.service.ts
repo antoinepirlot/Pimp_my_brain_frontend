@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 import { User } from "../models/user";
+import { throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -19,27 +20,14 @@ export class AuthentificationService{
 
     login(user: User): Observable<string>{
         return this.http.post<string>(`${this.ROOT_URL}/authentications/login`, user, this.httpOptions).pipe(
-            catchError(this.handleError<string>('addUser')))
+            catchError(this.handleError))
        }
 
-     /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-      private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
     
-          // TODO: send the error to remote logging infrastructure
-          console.error(error); // log to console instead
-    
-          // TODO: better job of transforming error for user consumption
-          console.log(`${operation} failed: ${error.message}`);
-    
-          // Let the app keep running by returning an empty result.
-          return of(result as T);
-        };
-      }
+    private handleError(error : HttpErrorResponse) {
+    return throwError(() => {
+        if(error) throw error;
+        else new Error('Server Error')}
+        ); 
+    }
 }

@@ -1,4 +1,4 @@
-import {environement} from "../.../../../environement/environement"
+import {environement} from '../../environement/environement'
 
 async function getAllTeacherCourses() {
   const request = {
