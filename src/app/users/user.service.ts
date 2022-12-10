@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 
 import { User } from './user';
 import { Observable, of } from 'rxjs';
@@ -10,7 +10,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UserService {
 
-  private ROOT_URL = 'http://127.0.0.1:5000'
+  private ROOT_URL = 'http://localhost:5000'
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http:HttpClient) {
       
@@ -20,6 +24,12 @@ export class UserService {
     return this.http.get<User[]>(`${this.ROOT_URL}/users`).pipe(
       tap(_ => console.log('fetched users')),
       catchError(this.handleError<User[]>('blabla', [])))
+   }
+
+   addUser(user: User): Observable<User>{
+    return this.http.post<User>(`${this.ROOT_URL}/users`, user, this.httpOptions).pipe(
+      tap((newUser: User) => console.log('added user', newUser)),
+      catchError(this.handleError<User>('addUser')))
    }
 
      /**

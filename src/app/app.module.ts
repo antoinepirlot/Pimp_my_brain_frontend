@@ -10,13 +10,14 @@ import { LoginComponent } from './login/login.component';
 
 import { registerLocaleData } from '@angular/common';
 import * as be from '@angular/common/locales/be';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 
 
 @NgModule({
@@ -28,12 +29,14 @@ import { AppointmentComponent } from './appointment/appointment.component';
     NavbarComponent,
     RegisterComponent,
     NotificationComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    MyCoursesComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     ReactiveFormsModule
