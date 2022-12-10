@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { CourseService } from 'src/app/services/course.service';
+import { Course } from 'src/app/models/course';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-create-course',
@@ -20,9 +23,20 @@ export class CreateCourseComponent implements OnInit {
     description: new FormControl('', Validators.required)
   });
 
-  constructor(private categoriesService :CategoriesService){
+  newCourse: Course = {
+    id_category: 1,
+    id_teacher: 1, //TODO : add user connected id
+    course_description: "",
+    price_per_hour: 0,
+    city: "",
+    country: "",
+    id_level: 1 
+  };
+
+  constructor(private router: Router, private categoriesService : CategoriesService, private coursesService : CourseService){
 
   }
+
 
   ngOnInit(){
     this.categoriesService.getAllCategories().subscribe({
@@ -50,7 +64,20 @@ export class CreateCourseComponent implements OnInit {
       this.notification = "Vous devez entrer un nombre dans le champ prix"
       return;
     }
-    //TODO : call the backend to add course
-    //TODO : go to the homepage
+    this.newCourse.country = this.createCourseForm.value.country!;
+    this.newCourse.city = this.createCourseForm.value.city!;
+    this.newCourse.id_category = 1; //TODO : find the good category
+    this.newCourse.course_description = this.createCourseForm.value.description!;
+    this.newCourse.price_per_hour = parseInt(this.createCourseForm.value.price!);
+    this.newCourse.id_level = 1;//TODO : add level in form
+    console.log(this.newCourse)
+
+    // add the course
+    this.coursesService.createOneCourse(this.newCourse).subscribe();
+    
+    // go to the homepage
+    this.router.navigateByUrl("/").then(() => {
+      window.location.reload();
+    });
   }
 }
