@@ -6,7 +6,7 @@ export interface User {
     email:string
     pseudo: string
     sexe:string
-    phone: number
+    phone: string
     password: string
 
    

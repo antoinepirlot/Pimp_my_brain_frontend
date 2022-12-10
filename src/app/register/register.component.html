@@ -1,78 +1,123 @@
 <div class="row" id="homePage">
-
   <div class="col"></div>
 
   <div class="col text-center">
-    <br>
-    <br>
+    <br />
+    <br />
     <div id="titre">
-      <br>
- 
-      <h2> Inscrivez-vous </h2>
-      
+      <br />
+
+      <h2>Inscrivez-vous</h2>
     </div>
 
-    <form class="box" #login="ngForm" (ngSubmit)="addUser(login.value)" >
+    <form class="box" #login="ngForm" (ngSubmit)="onSubmit(login)">
       <div class="row" id="doubleTab">
         <div class="col box1" id="tabRegister">
-          <br>
+          <br />
           <h4>Info personelle</h4>
 
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" name="lastname" placeholder="Nom" required ngModel>
+              <input
+                type="text"
+                class="form-control"
+                name="lastname"
+                placeholder="Nom"
+                required
+                ngModel
+              />
             </div>
             <div class="col">
-              <input type="text" class="form-control" name="firstname" placeholder="Prénom" required ngModel>
+              <input
+                type="text"
+                class="form-control"
+                name="firstname"
+                placeholder="Prénom"
+                required
+                ngModel
+              />
             </div>
           </div>
 
-          <br>
+          <br />
 
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" name="pseudo" placeholder="Pseudo" required ngModel>
+              <input
+                type="text"
+                class="form-control"
+                name="pseudo"
+                placeholder="Pseudo"
+                required
+                ngModel
+              />
             </div>
             <div class="col">
-              <input type="text" class="form-control" name="email" placeholder="Email" required ngModel>
+              <input
+                type="text"
+                class="form-control"
+                name="email"
+                placeholder="Email"
+                required
+                ngModel
+              />
             </div>
           </div>
 
-          <br>
+          <br />
 
           <div class="row">
             <div class="col">
-              <input type="number" class="form-control" name="phone" placeholder="Numero de téléphone" required ngModel>
+              <input
+                type="number"
+                class="form-control"
+                name="phone"
+                placeholder="Numero de téléphone"
+                required
+                ngModel
+              />
             </div>
             <div class="col">
               <select name="sexe" class="form-control" ngModel>
-                <option selected>SEXE</option>
-                <option value="male">Homme</option>
-            <option value="female" selected>Femme</option>
-            <option value="other">Autre</option>
+                <option value="male" selected>Homme</option>
+                <option value="female">Femme</option>
+                <option value="other">Autre</option>
               </select>
             </div>
           </div>
 
-          <br>
+          <br />
 
           <div class="row">
             <div class="col">
-              <input type="password" class="form-control" name="password" placeholder="Mot de passe" required ngModel>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Mot de passe"
+                required
+                ngModel
+              />
             </div>
             <div class="col">
-              <input type="password" class="form-control" name="confirmPassword" placeholder="Confirmez votre mot de passe" required>
+              <input
+                type="password"
+                class="form-control"
+                name="confirmPassword"
+                placeholder="Confirmez votre mot de passe"
+                required
+                ngModel
+              />
             </div>
           </div>
 
-          <br>
+          <br />
         </div>
       </div>
-
-      <input id="btnInscrire" type="submit" value="S'inscire">
-
+      <span style="color: red;">{{notification}}</span>
+      <input id="btnInscrire" type="submit" value="S'inscire" />
     </form>
-    <br>
+    <br />
   </div>
   <div class="col"></div>
 </div>

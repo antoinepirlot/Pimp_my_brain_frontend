@@ -1,22 +1,49 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 import { UserService } from "../users/user.service";
 import { User } from "../users/user";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent {
-  
+  notification = "";
 
-  constructor(private userService: UserService){}
+  user: User = {
+    lastname: "",
+    firstname: "",
+    email: "",
+    pseudo: "",
+    sexe: "",
+    phone: "",
+    password: "",
+  };
 
-  addUser(login: User): void{
+  constructor(private userService: UserService) {}
 
-    console.log(login);
-    this.userService.addUser(login).subscribe(newuser=>{
+  onSubmit(login: any) {
+    this.notification = "";
+
+    if (login.value.password != login.value.confirmPassword) {
+      this.notification = "Verifiez votre mot de passe";
+      return;
+    }
+
+    console.log(login.value);
+
+    this.user.email = login.value.email;
+
+    console.log(this.user);
+
+    this.addUser(this.user)
+  }
+
+  addUser(user: User): void {
+    console.log(user);
+
+    this.userService.addUser(user).subscribe((newuser) => {
       console.log(newuser);
-    })
+    });
   }
 }
