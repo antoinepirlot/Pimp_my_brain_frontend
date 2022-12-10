@@ -24,40 +24,42 @@ import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.com
 import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard';
-import { SubmitButtonComponent } from './submit-button/submit-button.component'; 
+import { LogoutComponent } from './logout/logout.component';
+import { SubmitButtonComponent } from "./submit-button/submit-button.component";
+
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    InputComponent,
-    HomeComponent,
-    NavbarComponent,
-    RegisterComponent,
-    NotificationComponent,
-    AppointmentComponent,
-    CreateCourseComponent,
-    SelectInFormComponent,
-    InputNumberComponent,
-    TextareaInFormComponent,
-    MyCoursesComponent,
-    CourseCardComponent,
-    SubmitButtonComponent
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    // import HttpClientModule after BrowserModule.
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'fr-BE'}, CanActivateViaNotAuthenticationGuard
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        InputComponent,
+        HomeComponent,
+        NavbarComponent,
+        RegisterComponent,
+        NotificationComponent,
+        AppointmentComponent,
+        CreateCourseComponent,
+        SelectInFormComponent,
+        InputNumberComponent,
+        TextareaInFormComponent,
+        MyCoursesComponent,
+        CourseCardComponent,
+        LogoutComponent,
+        SubmitButtonComponent
+    ],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        // import HttpClientModule after BrowserModule.
+        HttpClientModule,
+        ReactiveFormsModule
+    ]
 })
 export class AppModule { 
   constructor(){
