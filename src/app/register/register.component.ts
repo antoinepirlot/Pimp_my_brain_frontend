@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { UserService } from "../users/user.service";
-import { User } from "../users/user";
+import { User } from "../models/user";
 
 @Component({
   selector: "app-register",
@@ -16,7 +16,7 @@ export class RegisterComponent {
     email: "",
     pseudo: "",
     sexe: "",
-    phone: "",
+    phone: 0,
     password: "",
   };
 

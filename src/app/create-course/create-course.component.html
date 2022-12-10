@@ -1,0 +1,46 @@
+<h1>Créer une annonce pour un cours</h1>
+<form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+    <app-input 
+        nameLabel="Pays" 
+        [inputControl]="createCourseForm.controls['country']" 
+        placeHolder="Entrez un pays"
+        type="text"
+        nameMarkup="country">
+    </app-input>
+    <app-input 
+        nameLabel="Ville" 
+        [inputControl]="createCourseForm.controls['city']" 
+        placeHolder="Entrez un ville"
+        type="text"
+        nameMarkup="city">
+    </app-input>
+    <app-select-in-form
+        nameLabel="Catégorie" 
+        [options] = "allOptions"
+        [optionChosen] = "createCourseForm.controls['optionChosen']" >
+    </app-select-in-form>
+    <app-input-number
+        [inputControl] = "createCourseForm.controls['price']" 
+        nameLabel= "Prix"
+        nameMarkup="price"
+        unitOFMeasure="€ / h"
+        min="5"
+        max="500"
+        step="0.5"
+        placeholder="0.00">
+    </app-input-number>
+    <app-textarea-in-form
+        [inputControl] = "createCourseForm.controls['description']"
+        nameLabel= "Description"
+        nameMarkup="description"
+        cols=33
+        placeholder="eee"
+    >
+    </app-textarea-in-form>
+    
+
+    <span style="color: red;">{{notification}}</span>
+    <div>
+        <button type="submit">Créer un cours</button>
+    </div>
+</form>

@@ -17,6 +17,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import { SelectInFormComponent } from './select-in-form/select-in-form.component';
+import { InputNumberComponent } from './input-number/input-number.component';
+import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
 import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 
 
@@ -30,6 +34,10 @@ import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.compo
     RegisterComponent,
     NotificationComponent,
     AppointmentComponent,
+    CreateCourseComponent,
+    SelectInFormComponent,
+    InputNumberComponent,
+    TextareaInFormComponent,
     MyCoursesComponent
     
   ],
