@@ -23,6 +23,7 @@ import { InputNumberComponent } from './input-number/input-number.component';
 import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
 import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     ReactiveFormsModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-BE'}
+    {provide: LOCALE_ID, useValue: 'fr-BE'}, CanActivateViaNotAuthenticationGuard
   ],
   bootstrap: [AppComponent]
 })
