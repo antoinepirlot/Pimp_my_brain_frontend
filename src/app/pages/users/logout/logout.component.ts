@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AppComponent } from "../app.component";
-import { HomeComponent } from "../home/home.component";
-import { NavbarComponent } from "../navbar/navbar.component";
+import { AppComponent } from "../../../app.component";
+import { HomeComponent } from "../../public/home/home.component";
+import { NavbarComponent } from "../../../components/navbar/navbar.component";
 
 @Component({
   selector: "app-logout",
