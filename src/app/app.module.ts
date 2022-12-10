@@ -25,39 +25,41 @@ import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.compo
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard';
 import { LogoutComponent } from './logout/logout.component';
+import { SubmitButtonComponent } from "./submit-button/submit-button.component";
+
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    InputComponent,
-    HomeComponent,
-    NavbarComponent,
-    RegisterComponent,
-    NotificationComponent,
-    AppointmentComponent,
-    CreateCourseComponent,
-    SelectInFormComponent,
-    InputNumberComponent,
-    TextareaInFormComponent,
-    MyCoursesComponent,
-    CourseCardComponent,
-    LogoutComponent
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    // import HttpClientModule after BrowserModule.
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'fr-BE'}, CanActivateViaNotAuthenticationGuard
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        InputComponent,
+        HomeComponent,
+        NavbarComponent,
+        RegisterComponent,
+        NotificationComponent,
+        AppointmentComponent,
+        CreateCourseComponent,
+        SelectInFormComponent,
+        InputNumberComponent,
+        TextareaInFormComponent,
+        MyCoursesComponent,
+        CourseCardComponent,
+        LogoutComponent,
+        SubmitButtonComponent
+    ],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        // import HttpClientModule after BrowserModule.
+        HttpClientModule,
+        ReactiveFormsModule
+    ]
 })
 export class AppModule { 
   constructor(){
