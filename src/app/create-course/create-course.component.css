@@ -1,4 +1,4 @@
-.login-block {
+.design-form-block {
     width: 500px;
     padding: 20px;
     position: absolute;
@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
 }
 
-.login-block h1 {
+.design-form-block h1 {
     text-align: center;
     color: #000;
     font-size: 18px;
@@ -16,6 +16,6 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.login-block button {
+.design-form-block button {
     margin-bottom: 20px;
 }

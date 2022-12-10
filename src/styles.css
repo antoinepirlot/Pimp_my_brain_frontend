@@ -27,7 +27,7 @@
 
 
 /* CSS FOR LOGIN PAGE https://jsfiddle.net/erikasaves/8p1weyud/2/ */
-.login-block input,.login-block textarea,.login-block select {
+.design-form-block input,.design-form-block textarea,.design-form-block select {
     width: 100%;
     height: 42px;
     box-sizing: border-box;
@@ -40,11 +40,11 @@
 }
 
 
-.login-block input:active, .login-block input:focus {
+.design-form-block input:active, .design-form-block input:focus {
     border: 1px solid #aa00ff;
 }
 
-.login-block button {
+.design-form-block button {
     width: 100%;
     height: 40px;
     background: #aa00ff;
@@ -60,7 +60,7 @@
     margin-bottom: 20px;
 }
 
-.login-block button:hover {
+.design-form-block button:hover {
     background: #d17cfc;
 }
 
