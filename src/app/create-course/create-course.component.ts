@@ -10,7 +10,7 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CreateCourseComponent implements OnInit {
   notification = ""
-  allOptionsCategory!:Category[];//["PHP", "Python", "SQL"] // TODO : ask categories to the backend
+  allOptionsCategory!:Category[];
   allOptions:string[] = []
   createCourseForm = new FormGroup({
     country: new FormControl('', Validators.required),
@@ -29,19 +29,9 @@ export class CreateCourseComponent implements OnInit {
       next : (data) => {
         this.allOptionsCategory = data
         this.allOptionsCategory.forEach(c => this.allOptions.push(c.name))
-      },
-      error : (error) => {
-        if(error.status === 404){
-          this.notification = "L'email ou le mot de passe est incorrect";
-        }
-        else{
-          console.warn("Server error");
-        }
+        this.createCourseForm.get("optionChosen")?.setValue(this.allOptions[0])
       }
-    });
-      //cat => this.allOptionsCategory = cat);
- 
-    
+    });    
   }
 
 
