@@ -1,8 +1,8 @@
-import {environement} from "../../../environement/environement";
+import {environement} from "../../environement/environement";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Course} from "./course";
+import {Course} from "../models/course";
 import {catchError} from "rxjs/operators";
-import {handleError} from "../../utils/handle_error";
+import {handleError} from "../utils/handle_error";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 
