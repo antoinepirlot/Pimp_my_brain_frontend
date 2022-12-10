@@ -21,6 +21,7 @@ import { CreateCourseComponent } from './create-course/create-course.component';
 import { SelectInFormComponent } from './select-in-form/select-in-form.component';
 import { InputNumberComponent } from './input-number/input-number.component';
 import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
+import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.com
     CreateCourseComponent,
     SelectInFormComponent,
     InputNumberComponent,
-    TextareaInFormComponent
+    TextareaInFormComponent,
+    MyCoursesComponent
     
   ],
   imports: [
