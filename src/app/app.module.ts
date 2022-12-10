@@ -23,7 +23,8 @@ import { InputNumberComponent } from './input-number/input-number.component';
 import { TextareaInFormComponent } from './textarea-in-form/textarea-in-form.component';
 import { MyCoursesComponent } from './pages/teachers/my-courses/my-courses.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
-import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
+import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard';
+import { SubmitButtonComponent } from './submit-button/submit-button.component'; 
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNot
     InputNumberComponent,
     TextareaInFormComponent,
     MyCoursesComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    SubmitButtonComponent
     
   ],
   imports: [
