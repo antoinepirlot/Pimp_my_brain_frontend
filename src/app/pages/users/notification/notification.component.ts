@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from "../../../models/user";
 
@@ -10,17 +11,29 @@ import { User } from "../../../models/user";
 })
 export class NotificationComponent implements OnInit {
 
-  user_id: number= 0;
+  id_user: number= 0;
+  notifs : Notification[]= [];
 
-  constructor(private userService : UserService){}
+  constructor(private userService : UserService, private notifService: NotificationService){}
   ngOnInit(): void {
    this.getUsersByToken()
   }
 
   getUsersByToken(){
    this.userService.getUserByToken(localStorage.getItem('token')!).subscribe(data=>{
-    this.user_id = data.id!
+    this.id_user = data.id!
+    console.log(this.id_user);
+    this.getNotificationsByUser()
    })
+  }
+
+  getNotificationsByUser(){
+    this.notifService.getNotificationsByUser(this.id_user).subscribe(data =>{
+      
+      this.notifs=data
+      console.log(this.notifs);
+      
+    })
   }
 
 }
