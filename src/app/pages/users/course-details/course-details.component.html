@@ -13,7 +13,7 @@
   <div id="similar_courses" *ngFor="let similarCourse of similarCourses">
     <div class="similar_course">
       <div>
-        Niveau: <app-level-bubbles [level]=similarCourse.level></app-level-bubbles>
+        <!--Niveau: <app-level-bubbles [level]=similarCourse.level></app-level-bubbles>--><!--TODO fix compile issue-->
       </div>
       <p class="similar_course_description">Description: {{similarCourse.course_description}}</p>
       <p class="similar_course_price">Tarif: {{similarCourse.price_per_hour}}/h</p>
