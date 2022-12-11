@@ -1,0 +1,14 @@
+<div class="input-icon input-icon-right">
+    <label [for]="nameMarkup">{{ nameLabel }}:</label>
+    <input
+    type="number"
+    [name]="nameMarkup"
+    [id]="nameMarkup"
+    [formControl]="inputControl"
+    [min]="min ? min : ''"
+    [max]="max ? max : ''"
+    [step]="step ? step : ''"
+    [placeholder]="placeholder ? placeholder : ''"
+    />
+    {{ unitOFMeasure }}
+</div>

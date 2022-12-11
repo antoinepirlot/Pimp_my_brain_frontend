@@ -1,11 +1,13 @@
+import {Level} from "./level";
+
 export interface Course {
-  idCourse?: number;
-  idCategory?: number;
-  idTeacher?: number;
-  courseDescription?: string;
-  pricePerHour?: number;
+  id_course?: number;
+  id_category?: number;
+  id_teacher?: number;
+  course_description?: string;
+  price_per_hour?: number;
   city?: string;
   country?: string;
-  idLevel?: number;
+  level?: Level;
 
 }
