@@ -5,18 +5,26 @@
   <h2>Liste de toute vos notifications</h2>
 </div>
 
-<div *ngIf="notifs">
+<div *ngIf="notifs.length != 0">
+  <p>test</p>
   <div *ngFor="let notif of notifs">
     <div class="notification-list notification-list--unread">
       <div class="notification-list_content">
-
         <div class="notification-list_detail">
-          <p>{{notif.notification_text}}</p>
+          <p>{{ notif.notification_text }}</p>
         </div>
       </div>
-      <div class="notification-list_feature-img"><p>{{getDate(notif.notification_date)}}</p></div>
+      <div class="notification-list_feature-img">
+        <p>{{ getDate(notif.notification_date) }}</p>
+      </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="notifs.length == 0">
+  
+    <h2 style="text-align: center;">Vos notifications sont vides</h2>
+  
 </div>
 
 <br />
