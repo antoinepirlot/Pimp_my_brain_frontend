@@ -36,9 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data) => {
           localStorage.setItem("token", data);
-          this.router.navigateByUrl("/").then(() => {
-            window.location.reload();
-          });
+          this.router.navigateByUrl("/").then();
         },
         error: (error) => {
           if (error.status === 404) {
