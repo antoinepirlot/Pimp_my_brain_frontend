@@ -9,6 +9,7 @@ import { RegisterComponent } from './pages/public/register/register.component';
 import {MyCoursesComponent} from "./pages/users/my-courses/my-courses.component";
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard'; 
 import { LogoutComponent } from './pages/users/logout/logout.component';
+import {CourseDetailsComponent} from "./pages/users/course-details/course-details.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'rendezvous', component: AppointmentComponent },
   { path: 'creerCours', component: CreateCourseComponent},
   { path: 'my_courses', component: MyCoursesComponent },
-  { path: 'logout', component: LogoutComponent }
+  { path: 'logout', component: LogoutComponent },
+  { path: "course_details", component: CourseDetailsComponent } //TODO update to match with id_course asked
 ];
 
 @NgModule({

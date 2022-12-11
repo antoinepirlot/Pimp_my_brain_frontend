@@ -1,3 +1,5 @@
+import {Level} from "./level";
+
 export interface Course {
   id_course?: number;
   id_category?: number;
@@ -6,6 +8,6 @@ export interface Course {
   price_per_hour?: number;
   city?: string;
   country?: string;
-  id_level?: number;
+  level?: Level;
 
 }

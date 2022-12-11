@@ -1,0 +1,20 @@
+<div class="bubbles">
+  <div *ngIf="level.name === 'Easy'">
+    <!--Easy level-->
+    <span class="easy_bubbles"></span>
+    <span class="empty_bubbles"></span>
+    <span class="empty_bubbles"></span>
+  </div>
+  <div *ngIf="level.name === 'Intermediate'">
+    <!--Intermediate level-->
+    <span class="empty_bubbles"></span>
+    <span class="intermediate_bubbles"></span>
+    <span class="empty_bubbles"></span>
+  </div>
+  <div *ngIf="level.name === 'Hard'">
+    <!--Hard level-->
+    <span class="empty_bubbles"></span>
+    <span class="empty_bubbles"></span>
+    <span class="hard_bubbles"></span>
+  </div>
+</div>

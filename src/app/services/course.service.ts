@@ -27,4 +27,11 @@ export class CourseService {
         catchError(handleError<Course[]>('getAllTeacherCourses'))
     );
   }
+
+  getOneCourse(idCourse: number) {
+    const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
+    return this.http.get<Course>(url, this.httpOptions).pipe(
+        catchError(handleError<Course>("getOneCourse"))
+    );
+  }
 }

@@ -1,27 +1,52 @@
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="course_card">
-  <!--TODO<p>{{course.title}}</p>-->
-  <p *ngIf=course.id_teacher>{{course.id_teacher}}</p>
-  <!--TODO show teacher's information by getting user info while getting all courses use one sql request for that-->
-  <div class="bubbles">
-    <div *ngIf="course.id_level === 1">
-      <!--Easy level-->
-      <span class="easy_bubbles"></span>
-      <span class="empty_bubbles"></span>
-      <span class="empty_bubbles"></span>
-    </div>
-    <div *ngIf="course.id_level === 2">
-      <!--Intermediate level-->
-      <span class="empty_bubbles"></span>
-      <span class="intermediate_bubbles"></span>
-      <span class="empty_bubbles"></span>
-    </div>
-    <div *ngIf="course.id_level === 3">
-      <!--Hard level-->
-      <span class="empty_bubbles"></span>
-      <span class="empty_bubbles"></span>
-      <span class="hard_bubbles"></span>
+  <div class="product-details">
+    <h1 *ngIf=course.id_teacher>{{course.id_teacher}}</h1> <!--TODO teacher name-->
+    <span class="hint-star star">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+    </span>
+    <p style="color:red">{{course.id_category}}</p> <!--TODO category name-->
+<!--    <app-level-bubbles [level]=course.level></app-level-bubbles>--><!--TODO regler problème de compilation, maybe renvoyer un objet level à partir du backend-->
+    <p>{{course.course_description}}</p>
+    <p><i>{{course.city}}, {{course.country}}</i></p>
+    <div class="control">
+      <button class="btn">
+        <span class="price">18€/h</span>
+        <span class="buy">Voir plus</span>
+      </button>
     </div>
   </div>
-  <p>{{course.course_description}}</p>
-  <button>Voir plus</button>
 </div>
+<!--<div class="course_card">-->
+<!--  &lt;!&ndash;TODO<p>{{course.title}}</p>&ndash;&gt;-->
+<!--  <p *ngIf=course.id_teacher>{{course.id_teacher}}</p>-->
+<!--  &lt;!&ndash;TODO show teacher's information by getting user info while getting all courses use one sql request for that&ndash;&gt;-->
+<!--  <div class="bubbles">-->
+<!--    <div *ngIf="course.id_level === 1">-->
+<!--      &lt;!&ndash;Easy level&ndash;&gt;-->
+<!--      <span class="easy_bubbles"></span>-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--    </div>-->
+<!--    <div *ngIf="course.id_level === 2">-->
+<!--      &lt;!&ndash;Intermediate level&ndash;&gt;-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--      <span class="intermediate_bubbles"></span>-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--    </div>-->
+<!--    <div *ngIf="course.id_level === 3">-->
+<!--      &lt;!&ndash;Hard level&ndash;&gt;-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--      <span class="empty_bubbles"></span>-->
+<!--      <span class="hard_bubbles"></span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <p>{{course.course_description}}</p>-->
+<!--  <button>Voir plus</button>-->
+<!--</div>-->
