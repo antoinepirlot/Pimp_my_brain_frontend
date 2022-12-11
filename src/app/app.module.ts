@@ -29,6 +29,7 @@ import { SubmitButtonComponent } from "./components/submit-button/submit-button.
 import { CourseDetailsComponent } from './pages/users/course-details/course-details.component';
 import { LevelBubblesComponent } from './components/level-bubbles/level-bubbles.component';
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
+import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { FavoriteComponent } from './pages/users/favorites/favorite.component';
         CourseDetailsComponent,
         LevelBubblesComponent,
         FavoriteComponent,
+        CustomCurrencyPipe
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
