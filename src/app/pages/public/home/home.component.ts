@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CourseService} from "../../../services/course.service";
+import {Course} from "../../../models/course";
 
 
 @Component({
@@ -6,6 +8,25 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
+  courses!:Course[];
+
+  constructor(private courseService: CourseService) {
+  }
+
+  ngOnInit() : void {
+    this.courseService.getAllCourses().subscribe({
+      next: (data) => {
+        this.courses = data;
+      },
+      error: (error) => {
+        if (error.status === 404) {
+          console.log("Il n'y a pas de offres");
+        } else {
+          console.warn("Server error");
+        }
+      },
+    });
+  }
 }
