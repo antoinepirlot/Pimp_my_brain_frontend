@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
-import { Observable, of} from 'rxjs';
-import { catchError, tap} from 'rxjs/operators';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { catchError} from 'rxjs/operators';
 import { User } from "../models/user";
-import { throwError } from "rxjs";
+import { handleError } from "../utils/handle_errors";
 
 @Injectable({
     providedIn: 'root'
@@ -20,14 +20,8 @@ export class AuthentificationService{
 
     login(user: User): Observable<string>{
         return this.http.post<string>(`${this.ROOT_URL}/authentications/login`, user, this.httpOptions).pipe(
-            catchError(this.handleError))
-       }
+            catchError(handleError));
+    }
 
     
-    private handleError(error : HttpErrorResponse) {
-    return throwError(() => {
-        if(error) throw error;
-        else new Error('Server Error')}
-        ); 
-    }
 }

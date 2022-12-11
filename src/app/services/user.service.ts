@@ -4,7 +4,7 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { handleError } from '../utils/handle_error';
+import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
 
 
@@ -27,13 +27,13 @@ export class UserService {
    getUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${environement.ROOT_URL}/users`).pipe(
       tap(_ => console.log('fetched users')),
-      catchError(handleError<User[]>('blabla', [])))
+      catchError(handleError))
    }
 
    addUser(user: User): Observable<User>{
     return this.http.post<User>(`${environement.ROOT_URL}/users`, user, this.httpOptions).pipe(
       tap((newUser: User) => console.log('added user', newUser)),
-      catchError(handleError<User>('addUser')))
+      catchError(handleError))
    }
 
    getUsersByEmail(email:string): Observable<User>{
@@ -47,7 +47,7 @@ export class UserService {
    getUserByToken(token:string): Observable<User>{
     return this.http.get<User>(`${environement.ROOT_URL}/authentications/token/${token}`).pipe(
       tap(_ => console.log('get info with token')),
-      catchError(handleError<User>('blabla', )))
+      catchError(handleError))
    }
 
   }
