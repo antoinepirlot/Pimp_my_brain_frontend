@@ -15,6 +15,6 @@ export class MyCoursesComponent implements OnInit {
   }
 
   ngOnInit() : void {
-    this.courseService.getAllTeacherCourses(1).subscribe(response => this.courses = response);
+    this.courseService.getAllTeacherCourses(800).subscribe(response => this.courses = response);
   }
 }
