@@ -27,7 +27,7 @@
 
 
 /* CSS FOR LOGIN PAGE https://jsfiddle.net/erikasaves/8p1weyud/2/ */
-.design-form-block input,.design-form-block textarea,.design-form-block select {
+.design-form-block input,.design-form-block textarea,.design-form-block select, .design-form-block li {
     width: 100%;
     height: 42px;
     box-sizing: border-box;
@@ -40,7 +40,7 @@
 }
 
 
-.design-form-block input:active, .design-form-block input:focus {
+.design-form-block input:active, .design-form-block input:focus, .design-form-block li {
     border: 1px solid #aa00ff;
 }
 
