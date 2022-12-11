@@ -3,7 +3,7 @@
 /* Float three columns side by side */
 .column {
     float: left;
-    width: 33.3%;
+    width: 25%;
     padding: 10px 10px;
 }
   
