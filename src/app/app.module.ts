@@ -26,6 +26,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNotAuthentication.guard';
 import { LogoutComponent } from './pages/users/logout/logout.component';
 import { SubmitButtonComponent } from "./components/submit-button/submit-button.component";
+import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
 
 
 
@@ -46,7 +47,8 @@ import { SubmitButtonComponent } from "./components/submit-button/submit-button.
         MyCoursesComponent,
         CourseCardComponent,
         LogoutComponent,
-        SubmitButtonComponent
+        SubmitButtonComponent,
+        RatingsPageComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
