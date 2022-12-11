@@ -1,10 +1,11 @@
 import {environement} from "../../environement/environement";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import {Course} from "../models/course";
 import {catchError, tap} from "rxjs/operators";
 import {handleError} from "../utils/handle_error";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
+import { throwError } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -22,7 +23,7 @@ export class CourseService {
   }
   createOneCourse(course: Course): Observable<Course>{
     return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, this.httpOptions).pipe(
-      catchError(handleError<Course>('createOneCourse')))
+      catchError(this.handleError))
    }
 
   getAllTeacherCourses(idTeacher: number): Observable<Course[]> {
@@ -31,6 +32,13 @@ export class CourseService {
         catchError(handleError<Course[]>('getAllTeacherCourses'))
     );
   }
+
+  private handleError(error : HttpErrorResponse) {
+    return throwError(() => {
+        if(error) throw error;
+        else new Error('Server Error')}
+        ); 
+    }
 
 
 }

@@ -3,19 +3,19 @@
   <p *ngIf=course.id_teacher>{{course.id_teacher}}</p>
   <!--TODO show teacher's information by getting user info while getting all courses use one sql request for that-->
   <div class="bubbles">
-    <div *ngIf="course.id_level === 1">
+    <div *ngIf="course.level === 'Débutant'">
       <!--Easy level-->
       <span class="easy_bubbles"></span>
       <span class="empty_bubbles"></span>
       <span class="empty_bubbles"></span>
     </div>
-    <div *ngIf="course.id_level === 2">
+    <div *ngIf="course.level === 'Intermédiaire'">
       <!--Intermediate level-->
       <span class="empty_bubbles"></span>
       <span class="intermediate_bubbles"></span>
       <span class="empty_bubbles"></span>
     </div>
-    <div *ngIf="course.id_level === 3">
+    <div *ngIf="course.level === 'Confirmé'">
       <!--Hard level-->
       <span class="empty_bubbles"></span>
       <span class="empty_bubbles"></span>

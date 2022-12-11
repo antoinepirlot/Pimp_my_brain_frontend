@@ -6,6 +6,5 @@ export interface Course {
   price_per_hour?: number;
   city?: string;
   country?: string;
-  id_level?: number;
-
+  level?: string;
 }
