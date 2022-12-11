@@ -19,6 +19,8 @@ export class LogoutComponent implements OnInit {
     this.router.navigateByUrl('').then(() => {
       window.location.reload();
     });
+
+    
     
   }
 }

@@ -23,7 +23,7 @@ export class CourseService {
   }
   createOneCourse(course: Course): Observable<Course>{
     return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, this.httpOptions).pipe(
-      catchError(this.handleError))
+      catchError(handleError<Course>('createOneCourse')))
    }
 
   getAllTeacherCourses(idTeacher: number): Observable<Course[]> {
@@ -33,12 +33,10 @@ export class CourseService {
     );
   }
 
-  private handleError(error : HttpErrorResponse) {
-    return throwError(() => {
-        if(error) throw error;
-        else new Error('Server Error')}
-        ); 
-    }
-
-
+  getOneCourse(idCourse: number) {
+    const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
+    return this.http.get<Course>(url, this.httpOptions).pipe(
+        catchError(handleError<Course>("getOneCourse"))
+    );
+  }
 }
