@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthentificationService } from "../../../services/authentification.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import {NavbarService} from "../../../services/navbar.service";
 
 @Component({
   selector: "app-login",
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authentificationService: AuthentificationService
+    private authentificationService: AuthentificationService,
+    private navbarService: NavbarService
   ) {}
 
   ngOnInit(): void {}
@@ -36,7 +38,9 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data) => {
           localStorage.setItem("token", data);
-          this.router.navigateByUrl("/").then();
+          this.router.navigateByUrl("/").then(() => {
+            this.navbarService.sendUpdate();
+          });
         },
         error: (error) => {
           if (error.status === 404) {

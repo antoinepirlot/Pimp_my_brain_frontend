@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { UserService } from "../../../services/user.service";
 import { User } from "../../../models/user";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
