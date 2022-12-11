@@ -11,11 +11,12 @@ import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNot
 import { LogoutComponent } from './pages/users/logout/logout.component';
 import { CourseDetailsComponent } from "./pages/users/course-details/course-details.component";
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
+import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },

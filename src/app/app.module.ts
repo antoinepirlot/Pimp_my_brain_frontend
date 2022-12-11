@@ -30,6 +30,7 @@ import { CourseDetailsComponent } from './pages/users/course-details/course-deta
 import { LevelBubblesComponent } from './components/level-bubbles/level-bubbles.component';
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
+import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
         CustomCurrencyPipe
     ],
     providers: [
-        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
+        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
     ],
     bootstrap: [AppComponent],
     imports: [
