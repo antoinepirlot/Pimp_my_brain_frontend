@@ -1,0 +1,14 @@
+.rate {
+    height: 46px;
+    padding: 0 ;
+}
+.rate > label {
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}

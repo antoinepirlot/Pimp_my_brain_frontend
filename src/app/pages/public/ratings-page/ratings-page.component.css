@@ -1,0 +1,21 @@
+.design-form-block {
+    width: 500px;
+    height: 80%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.purple-box {
+    border: 2px solid #aa00ff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+

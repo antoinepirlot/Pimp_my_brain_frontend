@@ -29,6 +29,10 @@ import { SubmitButtonComponent } from "./components/submit-button/submit-button.
 import { CourseDetailsComponent } from './pages/users/course-details/course-details.component';
 import { LevelBubblesComponent } from './components/level-bubbles/level-bubbles.component';
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
+import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { StarsRatingDisplayComponent } from './components/stars-rating-display/stars-rating-display.component';
+import { RatingComponent } from './components/rating/rating.component';
+
 
 
 @NgModule({
@@ -52,6 +56,9 @@ import { FavoriteComponent } from './pages/users/favorites/favorite.component';
         CourseDetailsComponent,
         LevelBubblesComponent,
         FavoriteComponent,
+        RatingsPageComponent,
+        StarsRatingDisplayComponent,
+        RatingComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
