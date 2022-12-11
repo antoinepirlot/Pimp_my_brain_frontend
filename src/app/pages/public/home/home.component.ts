@@ -10,15 +10,26 @@ import {Course} from "../../../models/course";
 })
 export class HomeComponent implements OnInit {
 
-  courses!:Course[];
+  courses!:Course[][];
 
   constructor(private courseService: CourseService) {
   }
 
   ngOnInit() : void {
+    this.courses = new Array<Array<Course>>();
     this.courseService.getAllCourses().subscribe({
       next: (data) => {
-        this.courses = data;
+        if(data.length===0) return;
+
+        //Separate the courses in lists of 3 courses
+        for(let i = 0; i< data.length ; i=i+3){
+          let dataSeparatedInBloc:Course[]  = new Array<Course>();  
+          let end = i+3;
+          for(let j = i; j< data.length && j<end ; j++){
+            dataSeparatedInBloc.push(data[j]);
+          }
+          this.courses.push(dataSeparatedInBloc);
+        }
       },
       error: (error) => {
         if (error.status === 404) {

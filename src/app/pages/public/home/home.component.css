@@ -1,0 +1,26 @@
+
+
+/* Float three columns side by side */
+.column {
+    float: left;
+    width: 33.3%;
+    padding: 10px 10px;
+}
+  
+
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+    .column {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
