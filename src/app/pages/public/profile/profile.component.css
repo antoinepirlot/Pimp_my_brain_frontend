@@ -16,3 +16,21 @@
 .design-form-block button {
     margin-bottom: 20px;
 }
+
+hr{
+    border: 1px solid #aa00ff;
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+h1{
+    margin-top: 20px;
+}
+
+#stars{
+    float: left
+}
+
+#descriptionRating{
+    float: left;
+}
