@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() : void {
     this.courses = new Array<Array<Course>>();
-    this.courseService.getAllCourses().subscribe({
+    this.courseService.getCourses().subscribe({
       next: (data) => {
         if(data.length===0) return;
 

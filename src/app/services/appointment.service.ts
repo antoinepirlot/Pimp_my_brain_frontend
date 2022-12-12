@@ -4,7 +4,7 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { handleError } from '../utils/handle_error';
+import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
 import { Appointment } from '../models/appointment';
 
@@ -24,6 +24,6 @@ export class AppointmentService {
    getAppointmentsByUser(id_student: number): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(`${environement.ROOT_URL}/appointments/${id_student}`).pipe(
       tap(_ => console.log('fetched appointments')),
-      catchError(handleError<Appointment[]>('getAppointmentsByUser', [])))
+      catchError(handleError))
    }
 }

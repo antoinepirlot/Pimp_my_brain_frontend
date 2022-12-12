@@ -48,7 +48,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   getcourses() {
-    this.courseService.getCourser().subscribe((data) => {
+    this.courseService.getCourses().subscribe((data) => {
       this.courses = data;
       console.log("2",this.courses);
       

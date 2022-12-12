@@ -27,22 +27,15 @@ export class CourseService {
    }
 
 
-  getCourser(): Observable<Course[]>{
+  getCourses(): Observable<Course[]>{
     const url: string = `${this.ROOT_URL}/courses`;
     return this.http.get<Course[]>(url, this.httpOptions).pipe(
-        catchError(handleError<Course[]>('getAllTeacherCourses'))
+        catchError(handleError)
     );
    }
 
   getAllTeacherCourses(idTeacher: number): Observable<Course[]> {
     const url: string = `${this.ROOT_URL}/courses/teacher/${idTeacher}`;
-    return this.http.get<Course[]>(url, this.httpOptions).pipe(
-        catchError(handleError)
-    );
-  }
-
-  getAllCourses(): Observable<Course[]> {
-    const url: string = `${this.ROOT_URL}/courses/`;
     return this.http.get<Course[]>(url, this.httpOptions).pipe(
         catchError(handleError)
     );
