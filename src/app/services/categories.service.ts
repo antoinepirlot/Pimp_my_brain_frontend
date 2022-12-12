@@ -1,7 +1,7 @@
 import {environement} from "../../environement/environement";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
-import { handleError } from "../utils/handle_error";
+import { handleError } from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import { Category } from "../models/category";
@@ -20,7 +20,7 @@ export class CategoriesService {
   getAllCategories(): Observable<Category[]> {
     const url: string = `${this.ROOT_URL}/categories/`;
     return this.http.get<Category[]>(url).pipe(
-        catchError(handleError<Category[]>('getAllCategories'))
+        catchError(handleError)
     );
   }
 }
