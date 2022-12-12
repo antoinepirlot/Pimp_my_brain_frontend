@@ -37,7 +37,7 @@ import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
 import { ProfileComponent } from './pages/public/profile/profile.component';
 import { InputStarsComponent } from './components/input-stars/input-stars.component';
-import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
+import { FavoriteIconComponent } from './components/favorite-icon/favorite-icon.component';
 
 
 @NgModule({
@@ -67,7 +67,7 @@ import { FavoriteButtonComponent } from './components/favorite-button/favorite-b
         CustomCurrencyPipe,
         ProfileComponent,
         InputStarsComponent,
-        FavoriteButtonComponent
+        FavoriteIconComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
