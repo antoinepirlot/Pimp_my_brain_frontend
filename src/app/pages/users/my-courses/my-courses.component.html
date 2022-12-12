@@ -1,4 +1,10 @@
 <div>
+  <h1>Voici les annonces de cours que vous avez posté</h1>
+  <div *ngIf="!courses">
+    <h3>
+      Vous n'avez pas de cours :(<br>
+      Proposez de partager vos connaissances en cliquant <a routerLink="/creerCours">ici</a>! :D</h3>
+  </div>
   <div *ngFor="let course of courses">
     <app-course-card [course]=course></app-course-card>
   </div>

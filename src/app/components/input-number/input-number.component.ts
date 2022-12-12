@@ -10,6 +10,7 @@ export class InputNumberComponent {
   @Input() inputControl!: FormControl;
   @Input() nameLabel!: string;
   @Input() nameMarkup!: string;
+  @Input() divNameMarkup?: string;
   @Input() unitOFMeasure?: string
   @Input() min?: string
   @Input() max?: string
