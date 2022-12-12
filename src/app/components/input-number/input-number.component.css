@@ -1,16 +1,18 @@
 .input-icon {
-    position: relative;
-  }
-  
-  .input-icon > input {
-    padding-left: 25px;
-      padding-right: 0;
-  }
-  
-  
-  .input-icon-right > input {
-    padding-left: 0;
-    padding-right: 25px;
-    text-align: right;
-  }
-  
+  position: relative;
+}
+
+.input-icon > input {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+.input-icon-right > input {
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: right;
+}
+#price {
+  width: 20%;
+  margin-left: 10px;
+}

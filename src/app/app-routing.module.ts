@@ -12,11 +12,13 @@ import { LogoutComponent } from './pages/users/logout/logout.component';
 import { CourseDetailsComponent } from "./pages/users/course-details/course-details.component";
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { ChatComponent } from './pages/users/chat/chat.component';
+import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
+import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
 
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
   { path: "chat", component: ChatComponent },
+  { path: 'ratings', component: RatingsPageComponent }
 ];
 
 @NgModule({

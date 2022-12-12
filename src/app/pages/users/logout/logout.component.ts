@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AppComponent } from "../../../app.component";
-import { HomeComponent } from "../../public/home/home.component";
-import { NavbarComponent } from "../../../components/navbar/navbar.component";
+import {NavbarService} from "../../../services/navbar.service";
 
 @Component({
   selector: "app-logout",
@@ -10,17 +8,14 @@ import { NavbarComponent } from "../../../components/navbar/navbar.component";
   styles: [],
 })
 export class LogoutComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private navbarService: NavbarService) {}
 
 
   ngOnInit(): void {
     console.log("deco");
     localStorage.clear();
     this.router.navigateByUrl('').then(() => {
-      window.location.reload();
+      this.navbarService.sendUpdate();
     });
-
-    
-    
   }
 }

@@ -6,5 +6,5 @@ export interface User {
   pseudo?: string;
   sexe?: string;
   phone?: string;
-  password: string;
+  password?: string;
 }

@@ -30,6 +30,12 @@ import { CourseDetailsComponent } from './pages/users/course-details/course-deta
 import { LevelBubblesComponent } from './components/level-bubbles/level-bubbles.component';
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { ChatComponent } from './pages/users/chat/chat.component';
+import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { StarsRatingDisplayComponent } from './components/stars-rating-display/stars-rating-display.component';
+import { RatingComponent } from './components/rating/rating.component';
+
+import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
+import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environement } from 'src/environement/environement';
@@ -58,9 +64,13 @@ const config: SocketIoConfig = { url: environement.ROOT_URL, options: {} };
         LevelBubblesComponent,
         FavoriteComponent,
         ChatComponent,
+        RatingsPageComponent,
+        StarsRatingDisplayComponent,
+        RatingComponent,
+        CustomCurrencyPipe
     ],
     providers: [
-        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
+        { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
     ],
     bootstrap: [AppComponent],
     imports: [

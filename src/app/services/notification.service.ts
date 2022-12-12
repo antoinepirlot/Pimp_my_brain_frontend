@@ -4,7 +4,7 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Notification } from "../models/notification";
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { handleError } from '../utils/handle_error';
+import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
 
 @Injectable({
@@ -22,6 +22,6 @@ export class NotificationService {
    getNotificationsByUser(id_user: number): Observable<Notification[]>{
     return this.http.get<Notification[]>(`${environement.ROOT_URL}/notifications/${id_user}`).pipe(
       tap(_ => console.log('fetched notifications')),
-      catchError(handleError<Notification[]>('blabla', [])))
+      catchError(handleError))
    }
 }

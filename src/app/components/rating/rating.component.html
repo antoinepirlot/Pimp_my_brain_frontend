@@ -1,0 +1,7 @@
+<h3>Avis de {{ rating.rater!.pseudo! }}</h3>
+<!-- TODO : link to the profile-->
+<app-stars-rating-display
+  [goldenStars]="rating.rating_number"
+  [greyStars]="5 - rating.rating_number"
+></app-stars-rating-display>
+<p>{{ rating.rating_text }}</p>
