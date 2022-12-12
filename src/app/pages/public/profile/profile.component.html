@@ -1,0 +1,21 @@
+<h1>Profil de {{ userProfile.firstname }}</h1>
+<h3>Nom : {{ userProfile.lastname }}</h3>
+<h3>Prénom : {{ userProfile.firstname }}</h3>
+<h3>Pseudo : {{ userProfile.pseudo }}</h3>
+<p> <!-- TODO : put real rating -->
+  Notes : {{ 4 }}/5 * 
+  <a [routerLink]="['/ratings', userProfile!.id_user]">Voir les avis</a>
+</p>
+<h3>Compétences :</h3>
+<hr/>
+<form [formGroup]="ratingForm" (ngSubmit)="onSubmit()" class="design-form-block">
+    <label>Ajouter une note à {{userProfile.firstname}} : </label>
+    <app-textarea-in-form
+    [inputControl] = "ratingForm.controls['descriptionRating']"
+    nameLabel = "Description de la note"
+    nameMarkup = "description"
+    ></app-textarea-in-form>
+    <div>
+        <app-submit-button value="Se connecter"></app-submit-button>
+    </div>
+</form>

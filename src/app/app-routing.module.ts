@@ -13,6 +13,7 @@ import { CourseDetailsComponent } from "./pages/users/course-details/course-deta
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { ProfileComponent } from './pages/public/profile/profile.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
-  { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
+  { path: 'profile/:id_user', component: ProfileComponent },
 ];
 
 @NgModule({
