@@ -29,6 +29,7 @@ export class NotificationComponent implements OnInit {
         console.log(this.id_user);
         this.getNotificationsByUser();
       });
+      
   }
 
   getNotificationsByUser() {

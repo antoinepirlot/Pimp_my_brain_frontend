@@ -1,7 +1,27 @@
-<br>
-<br>
+<br />
+<br />
 <div id="titre">
-  <br>
-  <h2> Liste de toute vos rendez-vous </h2>
+  <br />
+  <h2>Vos rendez-vous</h2>
 </div>
-<br>
+
+<div *ngIf="appointments.length != 0">
+  <div *ngFor="let app of appointments">
+    <div class="notification-list notification-list--unread">
+      <div class="notification-list_content">
+        <div class="notification-list_detail">
+          <p>Niveau: <small>{{ courseToShow(app.id_course).level }}</small></p>
+          <p class="text-muted">{{ courseToShow(app.id_course).course_description }}</p>
+        </div>
+      </div>
+      <div class="notification-list_feature-img">
+        <p>Status: {{ app.appointment_state }}</p>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="appointments.length == 0">
+  <h2 style="text-align: center">Vous n'avez aucun rendez-vous</h2>
+</div>
+
+<br />
