@@ -1,7 +1,6 @@
 
   <div class="design-form-block">
-    <h1>Les avis de Professeur</h1>
-    <!-- TODO : add name teacher-->
+    <h1>Les avis sur {{teacher!["firstname"]}}</h1>
     <div *ngFor="let rating of allRatings" class="purple-box">
     <app-rating
         [rating]="rating"

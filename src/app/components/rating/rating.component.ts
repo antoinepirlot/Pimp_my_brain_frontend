@@ -9,4 +9,8 @@ import { Rating } from 'src/app/models/rating';
 })
 export class RatingComponent {
   @Input() rating!:Rating;
+
+  constructor(){
+    console.log(this.rating)
+  }
 }
