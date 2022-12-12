@@ -26,10 +26,12 @@ const routes: Routes = [
   { path: 'creerCours', component: CreateCourseComponent},
   { path: 'my_courses', component: MyCoursesComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
+  { path: "course_details/:id_course", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
   { path: 'ratings', component: RatingsPageComponent },
   { path: 'rendezvous/details', component: AppointmentDeatilsComponent },
+  { path: 'ratings/:id_teacher', component: RatingsPageComponent },
+  { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
 ];
 
 @NgModule({

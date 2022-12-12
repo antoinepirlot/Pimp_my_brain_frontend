@@ -4,13 +4,14 @@ import { Observable} from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { User } from "../models/user";
 import { handleError } from "../utils/handle_errors";
+import {environement} from "../../environement/environement";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthentificationService{
 
-    private ROOT_URL = 'http://localhost:5000'
+  private ROOT_URL = environement.ROOT_URL;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

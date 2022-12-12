@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Course} from "../../models/course";
 
 @Component({
@@ -8,4 +8,9 @@ import {Course} from "../../models/course";
 })
 export class CourseCardComponent {
   @Input() course!:Course;
+  @Output() seeMoreEvent = new EventEmitter<number>();
+
+  onSeeMore(idCourse: number) {
+    this.seeMoreEvent.emit(idCourse);
+  }
 }

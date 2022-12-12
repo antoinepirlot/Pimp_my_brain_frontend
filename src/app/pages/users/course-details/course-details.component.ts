@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-details',
@@ -10,11 +11,13 @@ import {Course} from "../../../models/course";
 export class CourseDetailsComponent implements OnInit {
   course!: Course;
   similarCourses!: Course[]
+  id_course!: number;
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.courseService.getOneCourse(1).subscribe(response => this.course = response);
+    this.id_course = +this.route.snapshot.params['id_course'];
+    this.courseService.getOneCourse(this.id_course).subscribe(response => this.course = response);
   }
 }
