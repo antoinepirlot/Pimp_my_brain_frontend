@@ -66,10 +66,8 @@ export class AppointmentComponent implements OnInit {
   }
 
   onClick(id_course: number){
-    console.log(id_course.toString());
-    if(localStorage.getItem('id_course') != null) localStorage.removeItem('id_course')
-    localStorage.setItem('id_course', id_course.toString())
-    this.router.navigateByUrl('/rendezvous/details')
+    
+    this.router.navigateByUrl('/rendezvous/'+id_course)
     
   }
 }

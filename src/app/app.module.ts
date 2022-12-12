@@ -35,7 +35,7 @@ import { RatingComponent } from './components/rating/rating.component';
 
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
-import { AppointmentDeatilsComponent } from './pages/users/appointment-deatils/appointment-deatils.component';
+import { AppointmentDeatilsComponent } from './pages/users/appointment-deatils/appointment-details.component';
 
 
 @NgModule({

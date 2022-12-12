@@ -71,13 +71,6 @@ a {
     border-left: 6px solid #0355d0;
   }
   
-  .notification-list--unread-red {
-    border-left: 6px solid red;
-  }
-  
-  .notification-list--unread-green {
-    border-left: 6px solid green;
-  }
   
   .notification-list .notification-list_content {
     display: -webkit-box;
@@ -97,14 +90,11 @@ a {
     line-height: 1.2;
   }
   
-  .notification-list .notification-list_feature-img img {
-    height: 48px;
-    width: 48px;
-    border-radius: 5px;
-    margin-left: 20px;
-  }
+  
 
   .button-rendez-vous button{
+    margin: auto;
+  width: 50%;
     text-align: center;
     height: 40px;
     width: 100px;
@@ -122,4 +112,9 @@ a {
     font-size: 14px;
     outline: none;
     cursor: pointer;
+  }
+
+  .notification-list_feature-img{
+    margin-left: auto;
+    margin-right: 0;
   }
