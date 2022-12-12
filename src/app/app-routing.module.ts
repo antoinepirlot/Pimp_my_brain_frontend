@@ -14,6 +14,7 @@ import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { ChatComponent } from './pages/users/chat/chat.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { RoomComponent } from './pages/users/room/room.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
   { path: "chat", component: ChatComponent },
-  { path: 'ratings', component: RatingsPageComponent }
+  { path: 'ratings', component: RatingsPageComponent },
+  { path: 'room/:id', component: RoomComponent }
 ];
 
 @NgModule({

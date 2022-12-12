@@ -19,10 +19,13 @@ export class ChatService {
   };
 
   constructor(private socket: Socket) {}
-
   
-  login(user: User) {
-    this.socket.emit('sign_in', user.pseudo)
+  login(id_user1: number, id_user2: number) {
+    this.socket.emit('sign_in', id_user1, id_user2)
   }
 
+  getRoomId() {
+    return this.socket.fromEvent('room_id').pipe(map((data: any) => data));
+  }
+  
 }

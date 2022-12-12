@@ -1,15 +1,13 @@
-<div class="login-block">
+<div class="chat-block">
     <h1>Chat</h1>
-    <form (ngSubmit)="onSubmit()">
-        <!--
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
         <app-input 
-            nameLabel="id interlocuteur" 
+            nameLabel="id" 
             [inputControl]="chatForm.controls['id']" 
             placeHolder="Entrez l'id de la personne avec qui vous voulez parler"
             type="number"
             nameMarkup="number">
         </app-input>
-        -->
         <div>
             <app-submit-button value="Chatter"></app-submit-button>
         </div>

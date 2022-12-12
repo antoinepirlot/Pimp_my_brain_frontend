@@ -44,6 +44,10 @@ export class UserService {
     return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`)
    }
 
+   getUsersById(id:number): Observable<User>{
+    return this.http.get<User>(`${environement.ROOT_URL}/users/${id}`)
+   }
+
    getUserByToken(token:string): Observable<User>{
     return this.http.get<User>(`${environement.ROOT_URL}/authentications/token/${token}`).pipe(
       tap(_ => console.log('get info with token')),
