@@ -22,11 +22,14 @@ export class NotificationComponent implements OnInit {
   }
 
   getUsersByToken() {
+    console.log(localStorage.getItem("token"));
+    
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.id_user = data.id_user!;
-        console.log(this.id_user);
+        console.log(data);
+        this.id_user = data.id;
+        console.log(this.id_user, data.id_user);
         this.getNotificationsByUser();
       });
       
