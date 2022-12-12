@@ -42,7 +42,7 @@ export class RoomService {
     this.socket.emit('left', username, id_room)
   }
 
-  getStatus() {
+  getStatus(): Observable<Message> {
     this.socket.fromEvent('status').pipe(map((data: any) => data)).subscribe( {
       next: (data) => {
         console.log(data)
@@ -51,7 +51,7 @@ export class RoomService {
     return this.socket.fromEvent('status').pipe(map((data: any) => data))
   }
 
-  getStatusLeft() {
+  getStatusLeft(): Observable<Message> {
     this.socket.fromEvent('statusLeft').pipe(map((data: any) => data)).subscribe( {
       next: (data) => {
         console.log(data)
@@ -60,7 +60,7 @@ export class RoomService {
     return this.socket.fromEvent('status').pipe(map((data: any) => data))
   }
 
-  getMessage() {
+  getMessage(): Observable<Message> {
     this.socket.fromEvent('message').pipe(map((data: any) => data)).subscribe( {
       next: (data) => {
         console.log(data)

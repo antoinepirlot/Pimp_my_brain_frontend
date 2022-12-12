@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { ChatService } from "../../../services/chat.service";
 import { UserService } from "src/app/services/user.service";
 import { RoomService } from "src/app/services/room.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { User } from "src/app/models/user";
+import { Message } from "src/app/models/message";
 
 @Component({
   selector: "app-room",
@@ -13,11 +14,14 @@ import { User } from "src/app/models/user";
 })
 export class RoomComponent implements OnInit {
   notification: string = ""
+  m: string = ""
   user_pseudo: string = ""
   user_pseudo_interloc: string = ""
   user_id: number = 0;
   user_id_interloc: number = 0;
   id_room: string = "";
+
+  htmlContent = '';
 
   roomForm = new FormGroup({
     message: new FormControl("", Validators.required)
@@ -29,7 +33,8 @@ export class RoomComponent implements OnInit {
     private userService: UserService,
     private chatService: ChatService,
     private as: ChatService,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -45,14 +50,26 @@ export class RoomComponent implements OnInit {
 
   receiveStatus() {
     this.roomService.getStatus()
+      .subscribe((data) => {
+        this.m = data.msg!
+        this.htmlContent += `<p>${this.m}</p>`
+      })
   }
 
   receiveStatusLeft() {
     this.roomService.getStatusLeft()
+      .subscribe((data) => {
+        this.m = data.msg!
+        this.htmlContent += `<p>${this.m}</p>`
+      })
   }
 
   receiveMessage() {
     this.roomService.getMessage()
+    .subscribe((data) => {
+      this.m = data.msg!
+      this.htmlContent += `<p>${this.m}</p>`
+    })
   }
   
   getUsersByToken() {

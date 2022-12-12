@@ -1,6 +1,6 @@
-<h1>NIKE ZEBI</h1>
-<p>Room: {{ id_room }}</p>
+<h1>Chat Room</h1>
 <p>Votre interlocuteur : {{ user_pseudo_interloc }}</p>
+<div class="message" [innerHTML]="htmlContent"></div>
 <div class="chat-block">
     <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
         <app-input 
