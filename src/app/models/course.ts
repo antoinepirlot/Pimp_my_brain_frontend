@@ -7,5 +7,4 @@ export interface Course {
   city: string;
   country: string;
   level: string;
-
 }

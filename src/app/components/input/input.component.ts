@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styles: []
+  styleUrls: ['./input.component.css']
 })
 
 export class InputComponent {

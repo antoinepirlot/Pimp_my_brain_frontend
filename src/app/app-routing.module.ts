@@ -12,6 +12,7 @@ import { LogoutComponent } from './pages/users/logout/logout.component';
 import { CourseDetailsComponent } from "./pages/users/course-details/course-details.component";
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
+import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'my_courses', component: MyCoursesComponent },
   { path: 'logout', component: LogoutComponent },
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
-  { path: "favorites", component: FavoriteComponent }
+  { path: "favorites", component: FavoriteComponent },
+  { path: 'ratings', component: RatingsPageComponent }
 ];
 
 @NgModule({

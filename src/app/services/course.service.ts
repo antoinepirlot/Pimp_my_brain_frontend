@@ -1,7 +1,7 @@
 import {environement} from "../../environement/environement";
-import {HttpClient, HttpHeaders, HttpErrorResponse} from "@angular/common/http";
+import { HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import {Course} from "../models/course";
-import {catchError} from "rxjs/operators";
+import {catchError, tap} from "rxjs/operators";
 import {handleError} from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
@@ -21,6 +21,10 @@ export class CourseService {
   constructor(private http: HttpClient) {
 
   }
+  createOneCourse(course: Course): Observable<Course>{
+    return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, this.httpOptions).pipe(
+      catchError(handleError))
+   }
 
   getAllTeacherCourses(idTeacher: number): Observable<Course[]> {
     const url: string = `${this.ROOT_URL}/courses/teacher/${idTeacher}`;
