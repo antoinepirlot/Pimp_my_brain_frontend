@@ -13,11 +13,12 @@ import { CourseDetailsComponent } from "./pages/users/course-details/course-deta
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { AppointmentDeatilsComponent } from './pages/users/appointment-deatils/appointment-deatils.component';
 
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
-  { path: 'ratings', component: RatingsPageComponent }
+  { path: 'ratings', component: RatingsPageComponent },
+  { path: 'rendezvous/details', component: AppointmentDeatilsComponent },
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { UserService } from "src/app/services/user.service";
 import { CourseService } from "../../../services/course.service";
 import { Appointment } from "../../../models/appointment";
 import { Course } from "src/app/models/course";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -20,7 +21,7 @@ export class AppointmentComponent implements OnInit {
   constructor(
     private appointmentsService: AppointmentService,
     private userService: UserService,
-    private courseService: CourseService
+    private courseService: CourseService,private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +66,10 @@ export class AppointmentComponent implements OnInit {
   }
 
   onClick(id_course: number){
-    console.log(id_course);
+    console.log(id_course.toString());
+    if(localStorage.getItem('id_course') != null) localStorage.removeItem('id_course')
+    localStorage.setItem('id_course', id_course.toString())
+    this.router.navigateByUrl('/rendezvous/details')
     
   }
 }
