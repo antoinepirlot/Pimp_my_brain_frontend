@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpErrorResponse  } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { handleError } from '../utils/handle_error';
+import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
 import { Favorite } from '../models/favorite';
 import { Socket } from 'ngx-socket-io';
