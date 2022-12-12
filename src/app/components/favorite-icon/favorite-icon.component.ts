@@ -7,8 +7,4 @@ import {Component, Input} from '@angular/core';
 })
 export class FavoriteIconComponent {
   @Input() liked!: boolean
-
-  changeLike() {
-
-  }
 }
