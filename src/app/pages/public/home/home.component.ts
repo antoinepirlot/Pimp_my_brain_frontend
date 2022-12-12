@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,11 @@ export class HomeComponent implements OnInit {
 
   courses!:Course[][];
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService, private router: Router,) {
+  }
+
+  onCardClick(idCourse: string) {
+    this.router.navigateByUrl("/"+idCourse);
   }
 
   ngOnInit() : void {
