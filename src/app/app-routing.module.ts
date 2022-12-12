@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: "course_details", component: CourseDetailsComponent }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
-  { path: 'profile/:id_teacher', component: HomeComponent },
+  { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
 ];
 
 @NgModule({
