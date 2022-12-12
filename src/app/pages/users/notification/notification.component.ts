@@ -25,7 +25,7 @@ export class NotificationComponent implements OnInit {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.id_user = data.id!;
+        this.id_user = data.id_user!;
         console.log(this.id_user);
         this.getNotificationsByUser();
       });
