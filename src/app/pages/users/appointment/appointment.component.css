@@ -103,3 +103,11 @@ a {
     border-radius: 5px;
     margin-left: 20px;
   }
+
+  .button-rendez-vous button{
+    display: flex;
+    position: relative;
+    height: 48px;
+    width: 48px;
+    margin-top: 20%;
+  }

@@ -63,4 +63,9 @@ export class AppointmentComponent implements OnInit {
     }
     return this.course;
   }
+
+  onClick(id_course: number){
+    console.log(id_course);
+    
+  }
 }
