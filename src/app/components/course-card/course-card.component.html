@@ -3,7 +3,7 @@
 
 <div class="course_card">
   <div class="product-details">
-    <h1 *ngIf=course.id_teacher>{{course.id_teacher}}</h1> <!--TODO teacher name-->
+    <h1 *ngIf="course.teacher">{{course.teacher.pseudo}}</h1> <!--TODO teacher name-->
     <span class="hint-star star">
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
     <p><i>{{course.city}}, {{course.country}}</i></p>
     <div class="control">
       <button class="btn" (click)="onSeeMore(course.id_course || 0)">
-        <span class="price">{{18 | customCurrency:'EUR'}}/h</span>
+        <span class="price" *ngIf="course.price_per_hour">{{course.price_per_hour | customCurrency:'EUR'}}/h</span>
         <span class="buy">Voir plus</span>
       </button>
     </div>
