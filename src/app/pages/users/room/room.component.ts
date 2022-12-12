@@ -19,6 +19,10 @@ export class RoomComponent implements OnInit {
   user_id_interloc: number = 0;
   id_room: string = "";
 
+  roomForm = new FormGroup({
+    message: new FormControl("", Validators.required)
+  });
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,19 +39,27 @@ export class RoomComponent implements OnInit {
     this.getUsersByToken();
     this.roomService.joinRoom(this.user_pseudo, this.id_room)
     this.receiveStatus()
+    this.receiveStatusLeft()
+    this.receiveMessage()
   }
 
   receiveStatus() {
     this.roomService.getStatus()
+  }
+
+  receiveStatusLeft() {
+    this.roomService.getStatusLeft()
+  }
+
+  receiveMessage() {
+    this.roomService.getMessage()
   }
   
   getUsersByToken() {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.user_id = data.id_user!;
-        console.log(this.user_id);
-        console.log("ici c l'id room ", this.id_room)
+        this.user_id = data.id!;
         this.getRoomInformation(this.id_room) 
       });  
   }
@@ -63,4 +75,13 @@ export class RoomComponent implements OnInit {
     })
   }
 
+  onSubmit(): void {
+    let message = this.roomForm.value.message!
+    this.roomService.sendMessage(message, this.id_room, this.user_pseudo)
+  }
+
+  leaveOnSubmit(): void {
+    this.roomService.leaveRoom(this.id_room, this.user_pseudo)
+    //this.router.navigateByUrl("/")
+  }
 }

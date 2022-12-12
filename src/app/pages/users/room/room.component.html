@@ -1,3 +1,22 @@
 <h1>NIKE ZEBI</h1>
 <p>Room: {{ id_room }}</p>
 <p>Votre interlocuteur : {{ user_pseudo_interloc }}</p>
+<div class="chat-block">
+    <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+        <app-input 
+            nameLabel="message" 
+            [inputControl]="roomForm.controls['message']" 
+            placeHolder="Entrez votre message"
+            type="text"
+            nameMarkup="text">
+        </app-input>
+        <div>
+            <app-submit-button value="Envoyer"></app-submit-button>
+        </div>
+    </form>
+    <form (ngSubmit)="leaveOnSubmit()">
+        <div>
+            <app-submit-button value="Quitter la conv"></app-submit-button>
+        </div>
+    </form>
+</div>

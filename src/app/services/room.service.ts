@@ -30,12 +30,16 @@ export class RoomService {
       catchError(handleError));
   }
 
-  sendMessage(message: Message) {
-    this.socket.emit('message', message);
+  sendMessage(message: string, id_room: string, username: string) {
+    this.socket.emit('message', message, id_room, username);
   }
 
   joinRoom(username: string, id_room: string) {
     this.socket.emit('join', username, id_room)
+  }
+
+  leaveRoom(username: string, id_room: string) {
+    this.socket.emit('left', username, id_room)
   }
 
   getStatus() {
@@ -47,7 +51,21 @@ export class RoomService {
     return this.socket.fromEvent('status').pipe(map((data: any) => data))
   }
 
+  getStatusLeft() {
+    this.socket.fromEvent('statusLeft').pipe(map((data: any) => data)).subscribe( {
+      next: (data) => {
+        console.log(data)
+      }
+    })
+    return this.socket.fromEvent('status').pipe(map((data: any) => data))
+  }
+
   getMessage() {
+    this.socket.fromEvent('message').pipe(map((data: any) => data)).subscribe( {
+      next: (data) => {
+        console.log(data)
+      }
+    })
     return this.socket.fromEvent('message').pipe(map((data: any) => data))
   }
 
