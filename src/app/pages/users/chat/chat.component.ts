@@ -33,7 +33,8 @@ export class ChatComponent implements OnInit {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.user_id = data.id!;
+        console.log(data)
+        this.user_id = data.id_user!;
         console.log(this.user_id);
         //this.getUsersById()
       });   

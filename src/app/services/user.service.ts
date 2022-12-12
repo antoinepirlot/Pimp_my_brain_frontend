@@ -36,6 +36,13 @@ export class UserService {
       catchError(handleError))
    }
 
+   getUserById(id: number): Observable<User> {
+    const url: string = `${environement.ROOT_URL}/users/`+id;
+    return this.http.get<User>(url).pipe(
+        catchError(handleError)
+    );
+  }
+
    getUsersByEmail(email:string): Observable<User>{
     return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`)
    }

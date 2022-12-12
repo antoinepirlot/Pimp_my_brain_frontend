@@ -45,7 +45,7 @@ export class RoomComponent implements OnInit {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.user_id = data.id!;
+        this.user_id = data.id_user!;
         console.log(this.user_id);
         console.log("ici c l'id room ", this.id_room)
         this.getRoomInformation(this.id_room) 
