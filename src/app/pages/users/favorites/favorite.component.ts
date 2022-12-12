@@ -17,6 +17,7 @@ export class FavoriteComponent implements OnInit {
     private userService: UserService,
     private favoriteService: FavoriteService
   ) {}
+  
   ngOnInit(): void {
     this.getUsersByToken();
   }
@@ -32,7 +33,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   getFavoritesByUser() {
-    this.favoriteService.getFavoritessByUser(this.id_user).subscribe((data) => {
+    this.favoriteService.getFavoritesByUser(this.id_user).subscribe((data) => {
       console.log(data);
       this.favorites = data;
     });

@@ -29,7 +29,12 @@ import { SubmitButtonComponent } from "./components/submit-button/submit-button.
 import { CourseDetailsComponent } from './pages/users/course-details/course-details.component';
 import { LevelBubblesComponent } from './components/level-bubbles/level-bubbles.component';
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
+import { ChatComponent } from './pages/users/chat/chat.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environement } from 'src/environement/environement';
+
+const config: SocketIoConfig = { url: environement.ROOT_URL, options: {} };
 
 @NgModule({
     declarations: [
@@ -52,6 +57,7 @@ import { FavoriteComponent } from './pages/users/favorites/favorite.component';
         CourseDetailsComponent,
         LevelBubblesComponent,
         FavoriteComponent,
+        ChatComponent,
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard
@@ -63,7 +69,8 @@ import { FavoriteComponent } from './pages/users/favorites/favorite.component';
         FormsModule,
         // import HttpClientModule after BrowserModule.
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SocketIoModule.forRoot(config)
     ]
 })
 export class AppModule { 
