@@ -3,7 +3,7 @@
 
 <div class="course_card">
   <div class="product-details">
-    <h1 *ngIf="course.teacher">{{course.teacher.pseudo}}</h1> <!--TODO teacher name-->
+    <h1 *ngIf="course.teacher">{{course.teacher.pseudo}}</h1>
     <span class="hint-star star">
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -11,8 +11,8 @@
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star-o" aria-hidden="true"></i>
     </span>
-    <p style="color:red">{{course.id_category}}</p> <!--TODO category name-->
-    <app-level-bubbles [level]="course.level"></app-level-bubbles> <!--TODO regler problème de compilation, maybe renvoyer un objet level à partir du backend-->
+    <p style="color:red" *ngIf="course.category">{{course.category.name}}</p>
+    <app-level-bubbles [level]="course.level"></app-level-bubbles>
     <p >{{course.course_description}}</p>
     <p><i>{{course.city}}, {{course.country}}</i></p>
     <div class="control">
