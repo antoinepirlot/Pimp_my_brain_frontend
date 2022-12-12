@@ -1,7 +1,7 @@
 import {environement} from "../../environement/environement";
 import { HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import {Course} from "../models/course";
-import {catchError, tap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {handleError} from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
