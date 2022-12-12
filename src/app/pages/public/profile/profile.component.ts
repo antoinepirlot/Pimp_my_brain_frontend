@@ -10,25 +10,46 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['profile.component.css']
 })
 export class ProfileComponent {
-  idUser!:number;
-  userProfile!:User;
+  idUser!: number;
+  userProfile!: User;
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
+    numberRating: new FormControl(1, Validators.required)
   });
-  constructor(private route: ActivatedRoute, private usersService : UserService){
-    
+  notificationAddRating: string = "";
+  constructor(private route: ActivatedRoute, private usersService: UserService) {
+
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.idUser = +this.route.snapshot.params['id_user'];
     this.usersService.getUserById(this.idUser).subscribe({
-      next : (data) => {
+      next: (data) => {
         this.userProfile = data
         console.log(this.userProfile)
       }
     })
   }
 
-  onSubmit() {}
+  addRating() {
+    console.log("add rating")
+    console.log(this.ratingForm!.get("numberRating")!.value!)
+    console.log(this.ratingForm.get("descriptionRating")?.value)
+    if (this.ratingForm!.get("numberRating")!.value! <= 0 ||
+      this.ratingForm!.get("numberRating")!.value! > 5) {
+      this.notificationAddRating = "Le nombre d'étoiles entré est incorrecte";
+      return;
+    }
+    if (this.ratingForm!.get("descriptionRating")!.value!.trim().length == 0) {
+      this.notificationAddRating = "Vous devez remplir la description de la note";
+      return;
+    }
+
+
+    //TODO : add rating
+
+    this.notificationAddRating = ""
+
+  }
 
 }

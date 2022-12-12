@@ -12,22 +12,29 @@
   <!-- TODO : add competences-->
 </div>
 <hr />
-<h2>Ajouter une note à {{userProfile.firstname}}</h2>
+<h3>Ajouter une note à {{userProfile.firstname}}</h3>
 <form
   [formGroup]="ratingForm"
-  (ngSubmit)="onSubmit()"
+  (ngSubmit)="addRating()"
   class="design-form-block"
 >
   <div>
-    <app-input-stars id="stars"></app-input-stars>
+    <app-input-stars 
+    id="stars"
+    [inputControl]="ratingForm.controls['numberRating']"
+    ></app-input-stars>
   </div>
   <app-textarea-in-form
     id="descriptionRating"
     [inputControl]="ratingForm.controls['descriptionRating']"
     nameLabel="Description de la note"
     nameMarkup="description"
+    cols="100"
   ></app-textarea-in-form>
+  
   <div>
+    
     <app-submit-button value="Ajouter une note"></app-submit-button>
   </div>
+  <p>{{notificationAddRating}}</p>
 </form>
