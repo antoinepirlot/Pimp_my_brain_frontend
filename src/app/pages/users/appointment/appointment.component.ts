@@ -4,7 +4,6 @@ import { UserService } from "src/app/services/user.service";
 import { CourseService } from "../../../services/course.service";
 import { Appointment } from "../../../models/appointment";
 import { Course } from "src/app/models/course";
-import { Level } from "src/app/models/level";
 
 @Component({
   selector: "app-home",
@@ -15,8 +14,8 @@ export class AppointmentComponent implements OnInit {
   id_user: number = 0;
   appointments: Appointment[] = [];
   courses: Course[] = [];
-  level!: Level
-  course: Course = {course_description:"",level:this.level};
+ 
+  course: Course = {course_description:"",level: ""};
 
   constructor(
     private appointmentsService: AppointmentService,
