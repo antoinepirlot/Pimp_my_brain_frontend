@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: "favorites", component: FavoriteComponent },
   { path: "chat", component: ChatComponent },
   { path: 'ratings', component: RatingsPageComponent },
-  { path: 'room/:id', component: RoomComponent }
+  { path: 'room/:id/:username1/:username2', component: RoomComponent }
 ];
 
 @NgModule({

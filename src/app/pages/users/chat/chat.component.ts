@@ -45,8 +45,7 @@ export class ChatComponent implements OnInit {
     this.as.login(this.user_id, id_interloc)
     this.as.getRoomId().subscribe( {
       next: (data) => {
-        //console.log(data)
-        this.router.navigateByUrl(`/room/${data}`);
+        this.router.navigateByUrl(`/room/${data.room_id}/${data.username1}/${data.username2}`);
       }
     })
   }
