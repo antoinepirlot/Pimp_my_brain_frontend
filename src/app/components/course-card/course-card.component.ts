@@ -8,4 +8,10 @@ import {Course} from "../../models/course";
 })
 export class CourseCardComponent {
   @Input() course!:Course;
+  @Output() seeMoreEvent = new EventEmitter<number>();
+
+  onSeeMore(idCourse: number) {
+    //console.log(idCourse)
+    this.seeMoreEvent.emit(idCourse);
+  }
 }

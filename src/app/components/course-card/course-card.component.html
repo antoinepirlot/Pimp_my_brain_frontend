@@ -16,7 +16,7 @@
     <p >{{course.course_description}}</p>
     <p><i>{{course.city}}, {{course.country}}</i></p>
     <div class="control">
-      <button class="btn">
+      <button class="btn" (click)="onSeeMore(course.id_course || 0)">
         <span class="price">{{18 | customCurrency:'EUR'}}/h</span>
         <span class="buy">Voir plus</span>
       </button>

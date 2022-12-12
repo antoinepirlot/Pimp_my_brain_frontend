@@ -1,7 +1,7 @@
 <div>
     <div *ngFor="let actualList of courses">
             <div *ngFor="let course of actualList" class="column">
-                <app-course-card [course]=course></app-course-card>
+                <app-course-card [course]="course" (seeMoreEvent)="onCardClick($event)"></app-course-card>
             </div>
     </div>
 </div>

@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   constructor(private courseService: CourseService, private router: Router,) {
   }
 
-  onCardClick(idCourse: string) {
-    this.router.navigateByUrl("/"+idCourse);
+  onCardClick(idCourse: number) {
+    console.log(idCourse)
+    //this.router.navigateByUrl("/"+idCourse);
   }
 
   ngOnInit() : void {
