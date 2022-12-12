@@ -11,7 +11,6 @@ export class CourseCardComponent {
   @Output() seeMoreEvent = new EventEmitter<number>();
 
   onSeeMore(idCourse: number) {
-    //console.log(idCourse)
     this.seeMoreEvent.emit(idCourse);
   }
 }
