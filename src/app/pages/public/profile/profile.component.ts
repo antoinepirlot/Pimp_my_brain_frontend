@@ -34,6 +34,7 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.idUserProfile = +this.route.snapshot.params['id_user'];
+    
     this.newRating.id_rated = this.idUserProfile;
     // get user connected
     this.userService.getUserByToken(localStorage.getItem("token")!)

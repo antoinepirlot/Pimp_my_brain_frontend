@@ -23,17 +23,17 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
-  { path: 'notification', component: NotificationComponent },
-  { path: 'rendezvous', component: AppointmentComponent },
-  { path: 'creerCours', component: CreateCourseComponent},
-  { path: 'my_courses', component: MyCoursesComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: "course_details/:id_course", component: CourseDetailsComponent }, //TODO update to match with id_course asked
-  { path: "favorites", component: FavoriteComponent },
-  { path: 'ratings', component: RatingsPageComponent },
-  { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent },
-  { path: 'ratings/:id_teacher', component: RatingsPageComponent },
-  { path: 'profile/:id_user', component: ProfileComponent },
+  { path: 'notification', component: NotificationComponent, canActivate: [CanActivateViaAuthenticationGuard]},
+  { path: 'rendezvous', component: AppointmentComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'creerCours', component: CreateCourseComponent, canActivate: [CanActivateViaAuthenticationGuard]},
+  { path: 'my_courses', component: MyCoursesComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'logout', component: LogoutComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: "course_details/:id_course", component: CourseDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update to match with id_course asked
+  { path: "favorites", component: FavoriteComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'ratings', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
   { path: '**', redirectTo: '' } // must be the last one route
 ];
 

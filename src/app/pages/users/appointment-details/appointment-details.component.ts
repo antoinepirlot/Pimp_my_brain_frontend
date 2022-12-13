@@ -28,7 +28,7 @@ export class AppointmentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_course = +this.route.snapshot.params["id_course"];
-    console.log(3);
+    console.log(this.id_course);
 
     this.courseService.getOneCourse(this.id_course).subscribe((response) => {
       this.course = response;
