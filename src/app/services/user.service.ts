@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
+import {getToken} from "../utils/utils";
 
 
 
@@ -18,6 +19,13 @@ export class UserService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  httpOptionsWithAuth = {
+    headers: new HttpHeaders({
+      "Authorization": getToken(),
+      'Content-Type': 'application/json'
+    })
   };
 
   constructor(private http: HttpClient) {
@@ -57,8 +65,8 @@ export class UserService {
     return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`)
   }
 
-   getUserByToken(token:string): Observable<User>{
-    return this.http.get<User>(`${environement.ROOT_URL}/authentications/token/${token}`).pipe(
+   getUserByToken(): Observable<User>{
+    return this.http.get<User>(`${environement.ROOT_URL}/authentications/`, this.httpOptionsWithAuth).pipe(
       tap(_ => console.log('get info with token')),
       catchError(handleError))
   }

@@ -25,7 +25,7 @@ export class FavoriteComponent implements OnInit {
 
   getUsersByToken() {
     this.userService
-      .getUserByToken(localStorage.getItem("token")!)
+      .getUserByToken()
       .subscribe((data) => {
         this.id_user = data.id_user!;
         console.log(this.id_user);
