@@ -5,11 +5,8 @@
   <div class="product-details">
     <h1 *ngIf="course.teacher">{{course.teacher.pseudo}}</h1>
     <span class="hint-star star">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star-o" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true" *ngFor="let star of [].constructor(numberFilledStars)"></i>
+          <i class="fa fa-star-o" aria-hidden="true" *ngFor="let star of [].constructor(numberEmtpyStars)"></i>
     </span>
     <p style="color:red" *ngIf="course.category">{{course.category.name}}</p>
     <app-level-bubbles [level]="course.level"></app-level-bubbles>
