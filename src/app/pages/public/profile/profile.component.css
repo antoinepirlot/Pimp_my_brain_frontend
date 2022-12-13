@@ -35,3 +35,17 @@ h1{
 #notification{
     color: red
 }
+
+.rate {
+    height: 30px;
+    padding: 0 ;
+}
+label {
+    width:1em;
+    white-space:nowrap;
+    font-size:20px;
+    color: #fcc700
+}
+label:before {
+    content: '★ ';
+}
