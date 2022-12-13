@@ -13,7 +13,7 @@
     <p >{{course.course_description}}</p>
     <p><i>{{course.city}}, {{course.country}}</i></p>
     <div class="control">
-      <button [ngClass]="{ 'btn': isConnected }" (click)="onSeeMore(course.id_course || 0)">
+      <button [ngClass]="{ 'btn': isConnected, 'btnNotConnected': !isConnected }" (click)="onSeeMore(course.id_course || 0)">
         <span class="price" *ngIf="course.price_per_hour">{{course.price_per_hour | customCurrency:'EUR'}}/h</span>
         <span class="buy">Voir plus</span>
       </button>
