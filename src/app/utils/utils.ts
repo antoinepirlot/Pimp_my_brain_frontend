@@ -1,3 +1,3 @@
 export function isConnected() {
-  return localStorage.getItem("token") !== null;
+  return localStorage.getItem("token") !== null || sessionStorage.getItem("token") !== null;
 }
