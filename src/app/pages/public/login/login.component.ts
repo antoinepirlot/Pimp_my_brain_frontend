@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       .login({ email: email, password: password })
       .subscribe({
         next: (data) => {
-          localStorage.setItem("token", data);
+          localStorage.setItem("token", JSON.stringify(data));
           this.router.navigateByUrl("/").then(() => {
             this.navbarService.sendUpdate();
           });

@@ -5,6 +5,7 @@ import { Rating } from 'src/app/models/rating';
 import { User } from 'src/app/models/user';
 import { RatingsService } from 'src/app/services/ratings.service';
 import { UserService } from 'src/app/services/user.service';
+import {FavoriteService} from "../../../services/favorite.service";
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,7 @@ export class ProfileComponent {
   idUserProfile!: number;
   userProfile!: User;
   idUserConnected?:number;
+  isLiked!: boolean;
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
     numberRating: new FormControl(1, Validators.required)
@@ -28,8 +30,7 @@ export class ProfileComponent {
     id_rated: this.idUserProfile
   };
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService) {
-
+  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService) {
   }
 
   ngOnInit() {
@@ -48,6 +49,14 @@ export class ProfileComponent {
         this.userProfile = data
       }
     })
+    this.favoriteService.getUserProfileLike(this.idUserProfile).subscribe({
+      next: _ => {
+        this.isLiked = true;
+      },
+      error: _ => {
+        this.isLiked = false
+    }
+    });
   }
 
   addRating() {
@@ -85,4 +94,28 @@ export class ProfileComponent {
       }
     });
   }
+  changeLike() {
+    if (this.isLiked) {
+      // DELETE
+      this.favoriteService.removeLike(this.idUserProfile).subscribe({
+        next: _ => {
+          this.isLiked = false
+        },
+        error: e => {
+          console.log(e)
+        }
+      });
+    } else {
+      //ADD
+      this.favoriteService.addLike(this.idUserProfile).subscribe({
+        next: _ => {
+          this.isLiked = true
+        },
+        error: e => {
+          console.log(e)
+        }
+      });
+    }
+  }
+
 }

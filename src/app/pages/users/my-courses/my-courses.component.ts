@@ -15,6 +15,7 @@ export class MyCoursesComponent implements OnInit {
   }
 
   ngOnInit() : void {
+    //TODO use good id
     this.courseService.getAllTeacherCourses(800).subscribe(response => this.courses = response);
   }
 }

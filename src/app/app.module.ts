@@ -39,6 +39,7 @@ import { AppointmentDetailsComponent } from './pages/users/appointment-details/a
 
 import { ProfileComponent } from './pages/public/profile/profile.component';
 import { InputStarsComponent } from './components/input-stars/input-stars.component';
+import { FavoriteIconComponent } from './components/favorite-icon/favorite-icon.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { InputStarsComponent } from './components/input-stars/input-stars.compon
         CustomCurrencyPipe,
         AppointmentDetailsComponent,
         ProfileComponent,
-        InputStarsComponent
+        InputStarsComponent,
+        FavoriteIconComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
