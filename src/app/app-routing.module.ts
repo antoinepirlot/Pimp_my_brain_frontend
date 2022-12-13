@@ -17,7 +17,7 @@ import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.c
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: "favorites", component: FavoriteComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
   { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
+  { path: '**', redirectTo: '' } // must be the last one route
 ];
 
 @NgModule({
