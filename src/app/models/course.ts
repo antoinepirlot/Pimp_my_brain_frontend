@@ -12,4 +12,6 @@ export interface Course {
   city?: string;
   country?: string;
   level: string;
+  sum_stars?:number,
+  total_tuples_stars?:number
 }
