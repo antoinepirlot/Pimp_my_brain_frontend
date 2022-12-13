@@ -7,6 +7,13 @@
             nameMarkup="categories_homepage"
             divNameMarkup="design-form-block" >
         </app-select-in-form>
+        <app-select-in-form
+            nameLabel="Ville" 
+            [options] = "allOptions"
+            [optionChosen] = "searchForm.controls['optionChosen2']"
+            nameMarkup="categories_homepage"
+            divNameMarkup="design-form-block" >
+        </app-select-in-form>
         <app-search-bar></app-search-bar>
     </form>
     <div *ngFor="let actualList of courses">

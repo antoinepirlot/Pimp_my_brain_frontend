@@ -13,9 +13,10 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class HomeComponent implements OnInit {
 
   courses!:Course[][];
-  allOptions:string[] = []
+  allOptions:string[] = ["Catégorie"]
   searchForm = new FormGroup({
     optionChosen: new FormControl(this.allOptions[0]),
+    optionChosen2: new FormControl(this.allOptions[0]),
     search: new FormControl("")
   });
   
