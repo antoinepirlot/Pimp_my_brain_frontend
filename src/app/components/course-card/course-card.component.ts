@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Course} from "../../models/course";
+import { isConnected } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-course-card',
@@ -11,8 +12,10 @@ export class CourseCardComponent implements OnInit{
   @Output() seeMoreEvent = new EventEmitter<number>();
   numberFilledStars!:number;
   numberEmtpyStars!:number;
+  isConnected!:Boolean;
 
   ngOnInit(): void {
+    this.isConnected=isConnected();
     //if there are stars for the teacher
     if(this.course.sum_stars!==0){
       this.numberFilledStars=Math.round(this.course.sum_stars!/this.course.total_tuples_stars!);
@@ -26,6 +29,7 @@ export class CourseCardComponent implements OnInit{
   }
 
   onSeeMore(idCourse: number) {
-    this.seeMoreEvent.emit(idCourse);
+    if(this.isConnected)
+      this.seeMoreEvent.emit(idCourse);
   }
 }
