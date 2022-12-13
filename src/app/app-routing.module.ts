@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
   { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
+  { path: '**', redirectTo: '' } // must be the last one route
 ];
 
 @NgModule({
