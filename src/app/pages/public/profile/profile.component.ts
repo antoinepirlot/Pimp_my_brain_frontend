@@ -93,7 +93,29 @@ export class ProfileComponent {
       }
     });
   }
-  getFavoriteOfConnectedUserForATeacher() {
+  changeLike() {
+    if (this.isLiked) {
+      // DELETE
+      this.favoriteService.removeLike(this.idUserProfile).subscribe({
+        next: _ => {
+          this.isLiked = false
+        },
+        error: e => {
+          console.log(e)
+        }
+      });
+    }
+    // } else {
+    //   //ADD
+    //   this.favoriteService.removeLike(this.idUserProfile).subscribe({
+    //     next: _ => {
+    //       this.isLiked = true
+    //     },
+    //     error: e => {
+    //       console.log(e)
+    //     }
+    //   });
+    // }
   }
 
 }

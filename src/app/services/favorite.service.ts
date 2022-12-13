@@ -36,7 +36,12 @@ export class FavoriteService {
    * Get the favorite of the connected user (it's requested with the token)
    */
   getUserProfileLike(id_teacher: number): Observable<Favorite> {
-    return this.http.get<Favorite>(`${this.url}/${id_teacher}`, this.httpOptions)
+    return this.http.get<Favorite>(`${this.url}/one/${id_teacher}`, this.httpOptions)
+      .pipe(catchError(handleError));
+  }
+
+  removeLike(id_teacher: number): Observable<Favorite> {
+    return this.http.delete<Favorite>(`${this.url}/${id_teacher}`, this.httpOptions)
       .pipe(catchError(handleError));
   }
 }
