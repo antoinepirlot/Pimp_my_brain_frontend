@@ -32,6 +32,7 @@ export class ProfileComponent {
   };
 
   constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService) {
+  }
 
   ngOnInit() {
     this.idUserProfile = +this.route.snapshot.params['id_user'];
