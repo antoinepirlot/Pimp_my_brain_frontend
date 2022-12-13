@@ -36,7 +36,6 @@ import { RatingComponent } from './components/rating/rating.component';
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 import { ProfileComponent } from './pages/public/profile/profile.component';
 import { InputStarsComponent } from './components/input-stars/input-stars.component';
@@ -68,7 +67,6 @@ import { InputStarsComponent } from './components/input-stars/input-stars.compon
         RatingComponent,
         CustomCurrencyPipe,
         AppointmentDetailsComponent,
-        SearchBarComponent,
         ProfileComponent,
         InputStarsComponent
     ],

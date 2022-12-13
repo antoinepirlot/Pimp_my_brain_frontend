@@ -6,16 +6,7 @@
     width: 25%;
     padding: 5px 5px;
 }
-  
 
-
-/* Responsive columns */
-/*@media screen and (max-width: 1300px) and (min-width: 901px) {
-    .column {
-      width: 25%;
-      margin-bottom: 20px;
-    }
-}*/
 
 /* Responsive columns */
 @media screen and (max-width: 1300px) and (min-width: 951px) {
@@ -51,10 +42,11 @@
 
 
 .container {
-  width: 50%;
-  margin-left: 0 auto;
-  margin-bottom: 0 auto;
-  margin-right: 0 auto;
+  width: 100%;
   margin-top: 3%;
   text-align: center;
+}
+
+.elementSearchBar {
+  display: inline-block;
 }
