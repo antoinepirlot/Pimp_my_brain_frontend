@@ -53,8 +53,8 @@
             <option value="accepted">accepté</option>
             <option value="canceled">supprimé</option>
         </select>
-        <button *ngIf="selectedStatus == 'canceled'" (onclick)="test()">Mettre a jour le rendez-vous a l'etat supprimé</button>
-        <button *ngIf="selectedStatus == 'accepted'" (onclick)="test()">Mettre a jour le rendez-vous a l'etat accepté</button>
+        <button *ngIf="selectedStatus == 'canceled'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat supprimé</button>
+        <button *ngIf="selectedStatus == 'accepted'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat accepté</button>
         </td>
       </tr>
     </table>

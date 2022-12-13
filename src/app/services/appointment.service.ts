@@ -32,4 +32,9 @@ export class AppointmentService {
       tap(_ => console.log('fetched appointment by course by user')),
       catchError(handleError))
    }
+
+   update_appointment(id_course:number,id_student: number, state:string): Observable<Appointment>{
+    return this.http.put<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}/state/${state}`, this.httpOptions).pipe(
+      catchError(handleError))
+   }
 }

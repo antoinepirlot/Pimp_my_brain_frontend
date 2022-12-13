@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CourseService } from "../../../services/course.service";
 import { Course } from "../../../models/course";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AppointmentComponent } from "../appointment/appointment.component";
 import { AppointmentService } from "src/app/services/appointment.service";
 import { Appointment } from "src/app/models/appointment";
@@ -23,7 +23,7 @@ export class AppointmentDetailsComponent implements OnInit {
     private courseService: CourseService,
     private route: ActivatedRoute,
     private appointments: AppointmentService,
-    private userService: UserService
+    private userService: UserService,private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +63,12 @@ export class AppointmentDetailsComponent implements OnInit {
     console.log(this.selectedStatus);
   }
 
-  test() {
-    console.log("azf");
+  update(state:string) {
+    this.appointments.update_appointment(this.id_course, this.id_student, state).subscribe(()=>{
+      console.log("update with state", state);
+      this.ngOnInit()
+      
+    })
+  
   }
 }
