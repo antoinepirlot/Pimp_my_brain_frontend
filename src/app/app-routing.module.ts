@@ -19,7 +19,7 @@ import { RoomComponent } from './pages/users/room/room.component';
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'room/:id/:id_interloc/:username1', component: RoomComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
   { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
+  { path: '**', redirectTo: '' } // must be the last one route
 ];
 
 @NgModule({
