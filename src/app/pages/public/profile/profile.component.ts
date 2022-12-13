@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import {FavoriteService} from "../../../services/favorite.service";
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +13,12 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent {
   idUser!:number;
   userProfile!:User;
+
+  isLiked!: boolean;
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
   });
-  constructor(private route: ActivatedRoute, private usersService : UserService){
-    
+  constructor(private route: ActivatedRoute, private usersService : UserService, private favoriteService: FavoriteService){
   }
 
   ngOnInit(){
@@ -27,8 +29,19 @@ export class ProfileComponent {
         console.log(this.userProfile)
       }
     })
+    this.favoriteService.getUserProfileLike(this.idUser).subscribe({
+      next: data => {
+        this.isLiked = true;
+      },
+      error: err => {
+        this.isLiked = false
+    }
+    });
   }
 
   onSubmit() {}
+
+  getFavoriteOfConnectedUserForATeacher() {
+  }
 
 }
