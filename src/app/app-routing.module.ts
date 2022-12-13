@@ -17,7 +17,7 @@ import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.c
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
   { path: 'notification', component: NotificationComponent },
