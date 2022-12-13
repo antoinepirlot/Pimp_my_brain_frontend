@@ -12,7 +12,7 @@
   <!-- TODO : add competences-->
 </div>
 <hr />
-<h3>Ajouter une note à {{userProfile.firstname}}</h3>
+<h3>Ajouter un avis à {{userProfile.firstname}}</h3>
 <form
   [formGroup]="ratingForm"
   (ngSubmit)="addRating()"
@@ -33,8 +33,7 @@
   ></app-textarea-in-form>
   
   <div>
-    
-    <app-submit-button value="Ajouter une note"></app-submit-button>
+    <app-submit-button value="Ajouter un avis"></app-submit-button>
   </div>
-  <p>{{notificationAddRating}}</p>
+  <p id="notification">{{notificationAddRating}}</p>
 </form>
