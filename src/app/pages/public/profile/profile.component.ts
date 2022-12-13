@@ -38,7 +38,7 @@ export class ProfileComponent {
     
     this.newRating.id_rated = this.idUserProfile;
     // get user connected
-    this.userService.getUserByToken(localStorage.getItem("token")!)
+    this.userService.getUserByToken()
       .subscribe((data) => {
         this.idUserConnected = data.id_user
         this.newRating.id_rater = data.id_user;

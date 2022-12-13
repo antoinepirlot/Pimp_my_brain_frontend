@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   getUsersByToken() {
     this.userService
-      .getUserByToken(getToken()!)
+      .getUserByToken()
       .subscribe((data) => {
         this.id_user = data.id_user!;
         console.log(this.id_user);
