@@ -105,7 +105,7 @@ export class RoomComponent implements OnInit {
 
   leaveOnSubmit(): void {
     //console.log(this.id_room, this.user_pseudo)
-    this.roomService.leaveRoom(this.id_room, this.user_pseudo)
+    this.roomService.leaveRoom(this.user_pseudo, this.id_room)
     this.router.navigateByUrl("/")
   }
   

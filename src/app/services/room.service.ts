@@ -39,7 +39,9 @@ export class RoomService {
   }
 
   leaveRoom(username: string, id_room: string) {
-    this.socket.emit('left', username, id_room)
+    this.socket.emit('left', username, id_room, () => {
+      this.socket.disconnect()
+    })
   }
 
   getStatus(): Observable<Message> {
