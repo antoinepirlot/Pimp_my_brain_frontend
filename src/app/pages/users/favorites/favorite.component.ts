@@ -11,6 +11,7 @@ import { Favorite } from "../../../models/favorite";
 export class FavoriteComponent implements OnInit {
   id_user: number = 0;
   favorites: Favorite[] = [];
+  favorites_pseudo: Favorite[] = []
   dateFormat: string = "";
 
   constructor(
@@ -22,6 +23,8 @@ export class FavoriteComponent implements OnInit {
   }
 
   // get le pseudo de chaque profs et les afficher
+
+  
 
   getUsersByToken() {
     this.userService
@@ -38,6 +41,11 @@ export class FavoriteComponent implements OnInit {
       console.log(data);
       this.favorites = data;
     });
+  }
+
+  getNameOfFavTeachers(t: Favorite[]) {
+    let tName: Favorite[] = []
+      
   }
 
 }

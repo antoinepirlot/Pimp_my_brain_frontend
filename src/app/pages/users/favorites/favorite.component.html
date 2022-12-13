@@ -2,15 +2,15 @@
 <br />
 <div id="titre">
   <br />
-  <h2>Liste vos professeurs favoris</h2>
+  <h2>Liste de vos professeurs favoris</h2>
 </div>
 
 <div *ngIf="favorites">
   <div *ngFor="let favorite of favorites">
-    <div class="favorite-list">
-      <div class="favorite-list_content">
+    <div class="notification-list">
+      <div class="notification-list_content">
         <div class="notification-list_detail">
-          <p>{{favorite.id_teacher}}</p>
+          <p>{{favorite.teacher_username}}</p>
         </div>
       </div>
     </div>
