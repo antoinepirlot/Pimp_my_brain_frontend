@@ -1,4 +1,4 @@
-<h1 *ngIf="userProfile != undefined">Profil de {{ userProfile.firstname }}</h1>
+<h1 *ngIf="userProfile != undefined">Profil de {{ userProfile.pseudo }}</h1>
 <div class="design-form-block">
   <p *ngIf="userProfile != undefined">Nom : {{ userProfile.lastname }}</p>
   <p *ngIf="userProfile != undefined">Prénom : {{ userProfile.firstname }}</p>
@@ -12,7 +12,7 @@
   <!-- TODO : add competences-->
 </div>
 <hr />
-<h3 *ngIf="userProfile != undefined" >Ajouter un avis à {{userProfile.firstname}}</h3>
+<h3 *ngIf="userProfile != undefined" >Ajouter un avis à {{userProfile.pseudo}}</h3>
 <form
   [formGroup]="ratingForm"
   (ngSubmit)="addRating()"

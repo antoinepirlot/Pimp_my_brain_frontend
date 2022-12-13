@@ -6,4 +6,7 @@
         [rating]="rating"
     ></app-rating>
     </div>
+    <div *ngIf="allRatings.length === 0">
+      <p>Pas d'avis pour le moment</p>
+    </div>
 </div>
