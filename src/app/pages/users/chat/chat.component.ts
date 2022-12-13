@@ -13,6 +13,8 @@ import { User } from "src/app/models/user";
 export class ChatComponent implements OnInit {
   notification: string = ""
   user_id: number = 0;
+  my_username: string = ""
+  username_interloc: string = "";
 
   chatForm = new FormGroup({
     id: new FormControl(0, Validators.required)
@@ -35,18 +37,35 @@ export class ChatComponent implements OnInit {
       .subscribe((data) => {
         console.log(data)
         this.user_id = data.id!;
+        //this.my_username = data.pseudo!
         console.log(this.user_id);
-        //this.getUsersById()
+        this.getUserById(this.user_id)
       });   
+  }
+
+  getUserById(id: number) {
+    let username = ""
+    this.userService
+      .getUserById(id)
+      .subscribe((data) => {
+        console.log(data.pseudo)
+        this.my_username = data.pseudo!
+        username = data.pseudo!
+      })
+    return username
   }
 
   onSubmit(): void {
     console.log(this.user_id)
+    console.log(this.my_username)
     let id_interloc = this.chatForm.value.id!;
+    //let ps_interloc = ""
     this.as.login(this.user_id, id_interloc)
+    //ps_interloc = this.getUserById(id_interloc)
+    //console.log(ps_interloc)
     this.as.getRoomId().subscribe( {
       next: (data) => {
-        this.router.navigateByUrl(`/room/${data.room_id}/${data.username1}/${data.username2}`);
+        this.router.navigateByUrl(`/room/${data.room_id}/${id_interloc}/${this.my_username}`);
       }
     })
   }

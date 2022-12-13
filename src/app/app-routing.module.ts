@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: "favorites", component: FavoriteComponent },
   { path: "chat", component: ChatComponent },
   { path: 'ratings', component: RatingsPageComponent },
-  { path: 'room/:id/:username1/:username2', component: RoomComponent },
+  { path: 'room/:id/:id_interloc/:username1', component: RoomComponent },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent },
   { path: 'profile/:id_teacher', component: HomeComponent }, //TODO update component
 ];

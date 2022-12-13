@@ -15,7 +15,7 @@ import { Message } from "src/app/models/message";
 export class RoomComponent implements OnInit {
   notification: string = ""
   m: string = ""
-  user_pseudo: string = ""
+  user_pseudo: string = "";
   user_pseudo_interloc: string = ""
   user_id: number = 0;
   user_id_interloc: number = 0;
@@ -38,21 +38,46 @@ export class RoomComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id_room = this.route.snapshot.paramMap.get('id')!;
     this.user_pseudo = this.route.snapshot.paramMap.get('username1')!;
-    this.user_pseudo_interloc = this.route.snapshot.paramMap.get('username2')!;
+    this.id_room = this.route.snapshot.paramMap.get('id')!;
+    this.getUserById(Number(this.route.snapshot.paramMap.get('id_interloc')))
     this.getUsersByToken();
-    this.roomService.joinRoom(this.user_pseudo, this.id_room)
+
+    this.joinRoom()
     this.receiveStatus()
     this.receiveStatusLeft()
-    this.receiveMessage()
+    this.receiveMessage() 
+  }
+
+  joinRoom() {
+    this.roomService.joinRoom(this.user_pseudo, this.id_room)
+  }
+
+  getUsersByToken() {
+    this.userService
+      .getUserByToken(localStorage.getItem("token")!)
+      .subscribe((data) => {
+        this.user_id = data.id!;
+        //this.user_pseudo = data.pseudo
+        //this.joinRoom()
+      }); 
+  }
+
+  getUserById(id: number) {
+    this.userService
+      .getUserById(id)
+      .subscribe((data) => {
+        console.log(data.pseudo)
+        this.user_pseudo_interloc = data.pseudo!
+      })
   }
 
   receiveStatus() {
     this.roomService.getStatus()
       .subscribe((data) => {
         this.m = data.msg!
-        this.htmlContent += `<p>${this.m}</p>`
+        console.log(this.m)
+        //this.htmlContent += `<p>${this.m}</p>`
       })
   }
 
@@ -71,16 +96,20 @@ export class RoomComponent implements OnInit {
       this.htmlContent += `<p>${this.m}</p>`
     })
   }
-  
-  getUsersByToken() {
-    this.userService
-      .getUserByToken(localStorage.getItem("token")!)
-      .subscribe((data) => {
-        this.user_id = data.id!;
-        this.getRoomInformation(this.id_room) 
-      });  
+
+  onSubmit(): void {
+    //console.log(this.id_room, this.user_pseudo)
+    let message = this.roomForm.value.message!
+    this.roomService.sendMessage(message, this.id_room, this.user_pseudo)
   }
 
+  leaveOnSubmit(): void {
+    //console.log(this.id_room, this.user_pseudo)
+    this.roomService.leaveRoom(this.id_room, this.user_pseudo)
+    this.router.navigateByUrl("/")
+  }
+  
+  /*
   getRoomInformation(id_room: string) {
     this.roomService
     .getChatRoomById(id_room)
@@ -91,14 +120,5 @@ export class RoomComponent implements OnInit {
         this.user_id_interloc = data.id_user1
     })
   }
-
-  onSubmit(): void {
-    let message = this.roomForm.value.message!
-    this.roomService.sendMessage(message, this.id_room, this.user_pseudo)
-  }
-
-  leaveOnSubmit(): void {
-    this.roomService.leaveRoom(this.id_room, this.user_pseudo)
-    //this.router.navigateByUrl("/")
-  }
+  */
 }
