@@ -13,6 +13,12 @@ export class RatingsService {
 
   private ROOT_URL = environement.ROOT_URL;
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }
+
   constructor(private http: HttpClient) {
 
   }
@@ -23,4 +29,9 @@ export class RatingsService {
         catchError(handleError)
     );
   }
+
+  createOneRating(rating: Rating): Observable<Rating>{
+    return this.http.post<Rating>(`${environement.ROOT_URL}/ratings/`, rating, this.httpOptions).pipe(
+      catchError(handleError))
+   }
 }

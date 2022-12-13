@@ -5,14 +5,7 @@
    box-sizing: border-box;
 }
 
-.container {
-  width: 50%;
-  margin-left: 0 auto;
-  margin-bottom: 0 auto;
-  margin-right: 0 auto;
-  margin-top: 3%;
-  text-align: center;
-}
+
 
 .search-txt-input{
   padding: 12px 20px;

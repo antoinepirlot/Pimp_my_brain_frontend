@@ -1,3 +1,5 @@
+import { Category } from "./category";
+
 export interface User {
   id_user?: number;
   lastname?: string;
@@ -7,4 +9,6 @@ export interface User {
   sexe?: string;
   phone?: string;
   password?: string;
+  average_rating?:number;
+  skills?: Array<Category>;
 }

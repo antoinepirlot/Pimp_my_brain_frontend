@@ -38,6 +38,8 @@ import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthen
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
+import { ProfileComponent } from './pages/public/profile/profile.component';
+import { InputStarsComponent } from './components/input-stars/input-stars.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
         RatingComponent,
         CustomCurrencyPipe,
         AppointmentDetailsComponent,
-        SearchBarComponent
+        SearchBarComponent,
+        ProfileComponent,
+        InputStarsComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard

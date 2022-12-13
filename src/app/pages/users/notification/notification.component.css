@@ -38,7 +38,7 @@ a {
     content: "";
     height: 4px;
     width: 75px;
-    background-color: #0355d0;
+    background-color: #aa00ff;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -68,15 +68,7 @@ a {
   
   
   .notification-list--unread {
-    border-left: 6px solid #0355d0;
-  }
-  
-  .notification-list--unread-red {
-    border-left: 6px solid red;
-  }
-  
-  .notification-list--unread-green {
-    border-left: 6px solid green;
+    border-left: 6px solid #aa00ff;
   }
   
   .notification-list .notification-list_content {

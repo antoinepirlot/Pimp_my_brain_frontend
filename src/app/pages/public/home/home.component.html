@@ -1,5 +1,14 @@
 <div>
-    <app-search-bar></app-search-bar>
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()" class="container">
+        <app-select-in-form
+            nameLabel="Catégorie" 
+            [options] = "allOptions"
+            [optionChosen] = "searchForm.controls['optionChosen']"
+            nameMarkup="categories_homepage"
+            divNameMarkup="design-form-block" >
+        </app-select-in-form>
+        <app-search-bar></app-search-bar>
+    </form>
     <div *ngFor="let actualList of courses">
         <div *ngFor="let course of actualList" class="column">
             <app-course-card [course]="course" (seeMoreEvent)="onCardClick($event)"></app-course-card>

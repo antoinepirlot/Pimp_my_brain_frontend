@@ -13,9 +13,12 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class HomeComponent implements OnInit {
 
   courses!:Course[][];
+  allOptions:string[] = []
   searchForm = new FormGroup({
+    optionChosen: new FormControl(this.allOptions[0]),
     search: new FormControl("")
   });
+  
 
   constructor(private courseService: CourseService, private router: Router,) {
   }
@@ -52,7 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmitSearch() {
-    let search = this.searchForm.value.search!
-    console.log(search)
+    //let search = this.searchForm.value.search!
+    console.log("ok")
   }
 }
