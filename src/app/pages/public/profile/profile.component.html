@@ -1,9 +1,9 @@
-<h1>Profil de {{ userProfile.firstname }}</h1>
+<h1 *ngIf="userProfile != undefined">Profil de {{ userProfile.firstname }}</h1>
 <div class="design-form-block">
-  <p>Nom : {{ userProfile.lastname }}</p>
-  <p>Prénom : {{ userProfile.firstname }}</p>
-  <p>Pseudo : {{ userProfile.pseudo }}</p>
-  <p>
+  <p *ngIf="userProfile != undefined">Nom : {{ userProfile.lastname }}</p>
+  <p *ngIf="userProfile != undefined">Prénom : {{ userProfile.firstname }}</p>
+  <p *ngIf="userProfile != undefined">Pseudo : {{ userProfile.pseudo }}</p>
+  <p *ngIf="userProfile != undefined">
     <!-- TODO : put real rating -->
     Notes : {{ 4 }}/5 *
     <a [routerLink]="['/ratings', userProfile!.id_user]">Voir les avis</a>
@@ -12,7 +12,7 @@
   <!-- TODO : add competences-->
 </div>
 <hr />
-<h3>Ajouter un avis à {{userProfile.firstname}}</h3>
+<h3 *ngIf="userProfile != undefined" >Ajouter un avis à {{userProfile.firstname}}</h3>
 <form
   [formGroup]="ratingForm"
   (ngSubmit)="addRating()"
