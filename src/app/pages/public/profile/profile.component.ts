@@ -16,7 +16,6 @@ export class ProfileComponent {
   idUserProfile!: number;
   userProfile!: User;
   idUserConnected?:number;
-  idUser!:number;
   isLiked!: boolean;
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
@@ -49,7 +48,7 @@ export class ProfileComponent {
         this.userProfile = data
       }
     })
-    this.favoriteService.getUserProfileLike(this.idUser).subscribe({
+    this.favoriteService.getUserProfileLike(this.idUserProfile).subscribe({
       next: _ => {
         this.isLiked = true;
       },
