@@ -4,6 +4,7 @@ import { UserService } from "src/app/services/user.service";
 import { CourseService } from "../../../services/course.service";
 import { Appointment } from "../../../models/appointment";
 import { Course } from "src/app/models/course";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -20,7 +21,7 @@ export class AppointmentComponent implements OnInit {
   constructor(
     private appointmentsService: AppointmentService,
     private userService: UserService,
-    private courseService: CourseService
+    private courseService: CourseService,private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class AppointmentComponent implements OnInit {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.id_user = data.id_user!;
+        this.id_user = data.id!;
         console.log(this.id_user);
         this.getAppointmentsByUser();
       });
@@ -62,5 +63,11 @@ export class AppointmentComponent implements OnInit {
       }
     }
     return this.course;
+  }
+
+  onClick(id_course: number){
+    
+    this.router.navigateByUrl('/rendezvous/'+id_course)
+    
   }
 }

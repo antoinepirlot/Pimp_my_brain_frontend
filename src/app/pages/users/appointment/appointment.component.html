@@ -10,18 +10,46 @@
     <div class="notification-list notification-list--unread">
       <div class="notification-list_content">
         <div class="notification-list_detail">
-          <p>Niveau: <small>{{ courseToShow(app.id_course).level }}</small></p>
-          <p class="text-muted">{{ courseToShow(app.id_course).course_description }}</p>
+          <p>{{ courseToShow(app.id_course).course_description }}</p>
+          <p class="text-muted">
+            Niveau:
+            <small>{{ courseToShow(app.id_course).level }}</small><br>
+            Teacher:
+            <small>{{ courseToShow(app.id_course).teacher?.lastname }} {{ courseToShow(app.id_course).teacher?.firstname }}</small>
+            <br>
+            Date rendez-vous:
+            <small>{{ app.appointment_date }}</small>
+          </p>
         </div>
       </div>
       <div class="notification-list_feature-img">
-        <p>Status: {{ app.appointment_state }}</p>
+        <div *ngIf="app.appointment_state == 'pending'">
+          <p>Status: en attente</p>
+        </div>        
+        <div *ngIf="app.appointment_state == 'not_come'">
+          <p>Status: pas venu</p>
+        </div>
+        <div *ngIf="app.appointment_state == 'finished'">
+          <p>Status: terminé</p>
+        </div>
+        <div *ngIf="app.appointment_state == 'canceled'">
+          <p>Status: supprimé</p>
+        </div>
+        <div *ngIf="app.appointment_state == 'accepted'">
+          <p>Status: accepté</p>
+        </div>
+      </div>
+      <br />
+
+      <div class="button-rendez-vous">
+        <button type="submit" (click)="onClick(app.id_course)">details</button>
       </div>
     </div>
   </div>
 
-<div *ngIf="appointments.length == 0">
-  <h2 style="text-align: center">Vous n'avez aucun rendez-vous</h2>
-</div>
+  <div *ngIf="appointments.length == 0">
+    <h2 style="text-align: center">Vous n'avez aucun rendez-vous</h2>
+  </div>
 
-<br />
+  <br />
+</div>

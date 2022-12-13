@@ -1,5 +1,5 @@
-.login-block {
-    width: 545px;
+.design-form-block {
+    width: 600px;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -11,7 +11,7 @@
     transform: translate(-50%, -50%);
 }
 
-.login-block h1 {
+.design-form-block h1 {
     text-align: center;
     color: #000;
     font-size: 25px;
@@ -19,4 +19,6 @@
     margin-top: 0;
     margin-bottom: 20px;
 }
+
+
 
