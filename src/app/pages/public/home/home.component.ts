@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 
 @Component({
@@ -12,6 +13,9 @@ import { Router } from "@angular/router";
 export class HomeComponent implements OnInit {
 
   courses!:Course[][];
+  searchForm = new FormGroup({
+    search: new FormControl("")
+  });
 
   constructor(private courseService: CourseService, private router: Router,) {
   }
@@ -45,5 +49,10 @@ export class HomeComponent implements OnInit {
         }
       },
     });
+  }
+
+  onSubmitSearch() {
+    let search = this.searchForm.value.search!
+    console.log(search)
   }
 }
