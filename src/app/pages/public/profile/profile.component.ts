@@ -34,7 +34,8 @@ export class ProfileComponent {
   ngOnInit() {
     this.idUser = +this.route.snapshot.params['id_user'];
     this.newRating.id_rated = this.idUser;
-    this.usersService.getUserById(this.idUser).subscribe({
+
+    this.usersService.getTeacherById(this.idUser).subscribe({
       next: (data) => {
         this.userProfile = data
         console.log(this.userProfile)
