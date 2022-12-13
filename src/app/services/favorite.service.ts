@@ -26,7 +26,7 @@ export class FavoriteService {
   constructor(private http: HttpClient) {
   }
 
-  getFavoritessByUser(id_user: number): Observable<Favorite[]> {
+  getFavoritesByUser(id_user: number): Observable<Favorite[]> {
     return this.http.get<Favorite[]>(`${(this.url)}/${id_user}`, this.httpOptions).pipe(
         tap(_ => console.log('fetched notifications')),
         catchError(handleError));

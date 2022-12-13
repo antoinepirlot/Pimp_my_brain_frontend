@@ -11,6 +11,7 @@ import { Favorite } from "../../../models/favorite";
 export class FavoriteComponent implements OnInit {
   id_user: number = 0;
   favorites: Favorite[] = [];
+  favorites_pseudo: Favorite[] = []
   dateFormat: string = "";
 
   constructor(
@@ -20,6 +21,10 @@ export class FavoriteComponent implements OnInit {
   ngOnInit(): void {
     this.getUsersByToken();
   }
+
+  // get le pseudo de chaque profs et les afficher
+
+  
 
   getUsersByToken() {
     this.userService
@@ -32,10 +37,15 @@ export class FavoriteComponent implements OnInit {
   }
 
   getFavoritesByUser() {
-    this.favoriteService.getFavoritessByUser(this.id_user).subscribe((data) => {
+    this.favoriteService.getFavoritesByUser(this.id_user).subscribe((data) => {
       console.log(data);
       this.favorites = data;
     });
+  }
+
+  getNameOfFavTeachers(t: Favorite[]) {
+    let tName: Favorite[] = []
+      
   }
 
 }
