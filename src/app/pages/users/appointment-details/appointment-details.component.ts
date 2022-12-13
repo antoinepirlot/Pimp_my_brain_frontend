@@ -41,7 +41,7 @@ export class AppointmentDetailsComponent implements OnInit {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
       .subscribe((data) => {
-        this.id_student = data.id!;
+        this.id_student = data.id_user!;
         console.log(this.id_student);
         this.getAppointmentBYyCourseByUser();
       });
