@@ -15,7 +15,7 @@
             Niveau:
             <small>{{ courseToShow(app.id_course).level }}</small><br>
             Teacher:
-            <small>{{ courseToShow(app.id_course).teacher?.pseudo }}</small>
+            <small>{{ courseToShow(app.id_course).teacher?.lastname }} {{ courseToShow(app.id_course).teacher?.firstname }}</small>
             <br>
             Date rendez-vous:
             <small>{{ app.appointment_date }}</small>

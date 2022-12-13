@@ -1,0 +1,66 @@
+<div id="course_details_page" *ngIf="course && appointment">
+  <h1>
+    Rendez-vous avec le professeur {{ course.teacher?.lastname }}
+    {{ course.teacher?.firstname }}
+  </h1>
+  <!--TODO category-->
+  <h3>A propos du cours</h3>
+  <table>
+    <tr>
+      <td>description</td>
+      <td>categorie</td>
+      <td>prix/heure</td>
+      <td>ville</td>
+      <td>pays</td>
+      <td>niveau de difficulté</td>
+    </tr>
+    <tr>
+      <td>{{ course.course_description }}</td>
+      <td>{{ course.category?.name }}</td>
+      <td>{{ course.price_per_hour }}</td>
+      <td>{{ course.city }}</td>
+      <td>{{ course.country }}</td>
+      <td>{{ course.level }}</td>
+    </tr>
+  </table>
+
+  <div id="course_description">
+    <h3>A propos du rendez-vous</h3>
+    <table>
+      <tr>
+        
+        <td>date</td>
+        <td>rue</td>
+        <td>n°</td>
+        <td>boite</td>
+        <td>status</td>
+        <td *ngIf="appointment.appointment_state == 'pending'">Accepter ou supprimer le rendez-vous</td>
+      </tr>
+      <tr>
+        <td>{{ appointment.appointment_date }}</td>
+        
+        <td>{{ appointment.street }}</td>
+        <td>{{ appointment.number_house }}</td>
+        <td>{{ appointment.box_house }}</td>
+        <td *ngIf="appointment.appointment_state == 'pending'">en attente</td>
+        <td *ngIf="appointment.appointment_state == 'not_come'">pas venu</td>
+        <td *ngIf="appointment.appointment_state == 'finished'">terminé</td>
+        <td *ngIf="appointment.appointment_state == 'canceled'">supprimé</td>
+        <td *ngIf="appointment.appointment_state == 'accepted'">accepté</td>
+        <td *ngIf="appointment.appointment_state == 'pending'">
+          <select #status (change)="onSelected(status.value)">
+            <option value="">--Choisisez un status--</option>
+            <option value="accepted">accepté</option>
+            <option value="canceled">supprimé</option>
+        </select>
+        <button *ngIf="selectedStatus == 'canceled'" (onclick)="test()">Mettre a jour le rendez-vous a l'etat supprimé</button>
+        <button *ngIf="selectedStatus == 'accepted'" (onclick)="test()">Mettre a jour le rendez-vous a l'etat accepté</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+ 
+</div>
+<div *ngIf="!course && !appointment">
+  <h1>Chargement en cours...</h1>
+</div>

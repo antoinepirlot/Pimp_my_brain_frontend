@@ -35,7 +35,8 @@ import { RatingComponent } from './components/rating/rating.component';
 
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
-import { AppointmentDeatilsComponent } from './pages/users/appointment-deatils/appointment-details.component';
+import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
+
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { AppointmentDeatilsComponent } from './pages/users/appointment-deatils/a
         StarsRatingDisplayComponent,
         RatingComponent,
         CustomCurrencyPipe,
-        AppointmentDeatilsComponent
+        AppointmentDetailsComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
