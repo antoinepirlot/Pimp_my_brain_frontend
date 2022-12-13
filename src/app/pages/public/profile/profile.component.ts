@@ -50,10 +50,10 @@ export class ProfileComponent {
       }
     })
     this.favoriteService.getUserProfileLike(this.idUser).subscribe({
-      next: data => {
+      next: _ => {
         this.isLiked = true;
       },
-      error: err => {
+      error: _ => {
         this.isLiked = false
     }
     });
