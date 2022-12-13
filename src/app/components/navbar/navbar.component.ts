@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NavbarService} from "../../services/navbar.service";
 import {Subscription} from "rxjs";
 import { UserService } from "src/app/services/user.service";
+import {getToken} from "../../utils/utils";
 
 
 @Component({
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   getUsersByToken() {
     this.userService
-      .getUserByToken(localStorage.getItem("token")!)
+      .getUserByToken(getToken()!)
       .subscribe((data) => {
         this.id_user = data.id_user!;
         console.log(this.id_user);
