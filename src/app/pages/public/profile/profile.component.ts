@@ -104,18 +104,17 @@ export class ProfileComponent {
           console.log(e)
         }
       });
+    } else {
+      //ADD
+      this.favoriteService.addLike(this.idUserProfile).subscribe({
+        next: _ => {
+          this.isLiked = true
+        },
+        error: e => {
+          console.log(e)
+        }
+      });
     }
-    // } else {
-    //   //ADD
-    //   this.favoriteService.removeLike(this.idUserProfile).subscribe({
-    //     next: _ => {
-    //       this.isLiked = true
-    //     },
-    //     error: e => {
-    //       console.log(e)
-    //     }
-    //   });
-    // }
   }
 
 }

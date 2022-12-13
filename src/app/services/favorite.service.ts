@@ -40,6 +40,12 @@ export class FavoriteService {
       .pipe(catchError(handleError));
   }
 
+  addLike(id_teacher: number): Observable<Favorite> {
+    let body = {"id_teacher": id_teacher}
+    return this.http.post<Favorite>(`${this.url}/`, body, this.httpOptions)
+    .pipe(catchError(handleError))
+  }
+
   removeLike(id_teacher: number): Observable<Favorite> {
     return this.http.delete<Favorite>(`${this.url}/${id_teacher}`, this.httpOptions)
       .pipe(catchError(handleError));
