@@ -12,8 +12,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['profile.component.css']
 })
 export class ProfileComponent {
-  idUser!: number;
+  idUserProfile!: number;
   userProfile!: User;
+  idUserConnected?:number;
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
     numberRating: new FormControl(1, Validators.required)
@@ -23,27 +24,33 @@ export class ProfileComponent {
   newRating: Rating = {
     rating_text: "",
     rating_number: 1,
-    id_rater: 2, //TODO : change id with the person connected
-    id_rated: this.idUser
+    id_rater: -1,
+    id_rated: this.idUserProfile
   };
 
-  constructor(private route: ActivatedRoute, private usersService: UserService, private ratingsService: RatingsService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService) {
 
   }
 
   ngOnInit() {
-    this.idUser = +this.route.snapshot.params['id_user'];
-    this.newRating.id_rated = this.idUser;
-
-    this.usersService.getTeacherById(this.idUser).subscribe({
+    this.idUserProfile = +this.route.snapshot.params['id_user'];
+    this.newRating.id_rated = this.idUserProfile;
+    // get user connected
+    this.userService.getUserByToken(localStorage.getItem("token")!)
+      .subscribe((data) => {
+        this.idUserConnected = data.id_user
+        this.newRating.id_rater = data.id_user;
+      });
+      // get user for this profile
+    this.userService.getTeacherById(this.idUserProfile).subscribe({
       next: (data) => {
         this.userProfile = data
-        console.log(this.userProfile)
       }
     })
   }
 
   addRating() {
+    //verify fields
     if (this.ratingForm!.get("numberRating")!.value! <= 0 ||
       this.ratingForm!.get("numberRating")!.value! > 5) {
       this.notificationAddRating = "Le nombre d'étoiles entré est incorrecte";
@@ -54,10 +61,9 @@ export class ProfileComponent {
       return;
     }
 
+    //set new fields for the rating
     this.newRating.rating_text = this.ratingForm!.get("descriptionRating")!.value!.trim()
     this.newRating.rating_number = this.ratingForm!.get("numberRating")!.value!
-    console.log(this.newRating)
-
 
     //add rating
     this.ratingsService.createOneRating(this.newRating).subscribe({
@@ -77,11 +83,5 @@ export class ProfileComponent {
         }
       }
     });
-
-
-
-
-
   }
-
 }
