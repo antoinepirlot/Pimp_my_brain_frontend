@@ -21,6 +21,8 @@ export class FavoriteComponent implements OnInit {
     this.getUsersByToken();
   }
 
+  // get le pseudo de chaque profs et les afficher
+
   getUsersByToken() {
     this.userService
       .getUserByToken(localStorage.getItem("token")!)
@@ -32,7 +34,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   getFavoritesByUser() {
-    this.favoriteService.getFavoritessByUser(this.id_user).subscribe((data) => {
+    this.favoriteService.getFavoritesByUser(this.id_user).subscribe((data) => {
       console.log(data);
       this.favorites = data;
     });
