@@ -13,6 +13,7 @@ import { CourseDetailsComponent } from "./pages/users/course-details/course-deta
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { ProfileComponent } from './pages/public/profile/profile.component';
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent,  canActivate: [CanActivateViaNotAuthenticationGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [CanActivateViaNotAuthenticationGuard] },
+<<<<<<< HEAD
   { path: 'notification', component: NotificationComponent, canActivate: [CanActivateViaAuthenticationGuard]},
   { path: 'rendezvous', component: AppointmentComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'creerCours', component: CreateCourseComponent, canActivate: [CanActivateViaAuthenticationGuard]},
@@ -33,6 +35,19 @@ const routes: Routes = [
   { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'profile/:id_teacher', component: HomeComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
+=======
+  { path: 'notification', component: NotificationComponent },
+  { path: 'rendezvous', component: AppointmentComponent },
+  { path: 'creerCours', component: CreateCourseComponent},
+  { path: 'my_courses', component: MyCoursesComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: "course_details/:id_course", component: CourseDetailsComponent }, //TODO update to match with id_course asked
+  { path: "favorites", component: FavoriteComponent },
+  { path: 'ratings', component: RatingsPageComponent },
+  { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent },
+  { path: 'ratings/:id_teacher', component: RatingsPageComponent },
+  { path: 'profile/:id_user', component: ProfileComponent },
+>>>>>>> 07815a9bb4adb1569d110098c9146dabe97b228a
   { path: '**', redirectTo: '' } // must be the last one route
 ];
 
