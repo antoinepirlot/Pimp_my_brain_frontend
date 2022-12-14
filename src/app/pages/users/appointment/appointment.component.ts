@@ -41,10 +41,16 @@ export class AppointmentComponent implements OnInit {
   getAppointmentsByUser() {
     this.appointmentsService
       .getAppointmentsByUser(this.id_user)
-      .subscribe((data) => {
-        this.appointments = data;
-        console.log("1", this.appointments);
-        this.getcourses()
+      .subscribe({
+        next: data => {
+          this.appointments = data;
+          this.getcourses()
+        },
+        error: err => {
+          if(err.status === 404) {
+            this.appointments = []
+          }
+        }
       });
   }
 
