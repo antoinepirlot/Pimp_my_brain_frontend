@@ -43,9 +43,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
   getUsersByToken() {
     this.userService
       .getUserByToken()
-      .subscribe((data) => {
-        this.id_user = data.id_user!;
-        console.log(this.id_user);
+      .subscribe({
+        next: data => {
+          this.id_user = data.id_user!;
+        },
+        error: _ => {
+          console.log("You're not connected for sure")
+        }
       });
   }
 }
