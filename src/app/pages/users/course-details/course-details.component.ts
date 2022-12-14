@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
 import { ActivatedRoute } from '@angular/router';
+import {Category} from "../../../models/category";
 
 @Component({
   selector: 'app-course-details',
@@ -13,11 +14,22 @@ export class CourseDetailsComponent implements OnInit {
   similarCourses!: Course[]
   id_course!: number;
 
+  numberOfStars!: number;
+
   constructor(private courseService: CourseService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.id_course = +this.route.snapshot.params['id_course'];
-    this.courseService.getOneCourse(this.id_course).subscribe(response => this.course = response);
+    this.courseService.getOneCourse(this.id_course).subscribe({
+      next: data => {
+        this.course = data
+        if(!data || !data.sum_stars) {
+          this.numberOfStars = 0
+        } else {
+          this.numberOfStars = Math.round(data.sum_stars!/data.total_tuples_stars!);
+        }
+      }
+    });
   }
 }
