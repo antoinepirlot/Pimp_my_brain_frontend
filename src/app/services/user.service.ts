@@ -16,7 +16,10 @@ import {getToken} from "../utils/utils";
 export class UserService {
 
 
-
+  
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -26,7 +29,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environement.ROOT_URL}/users`).pipe(
+    return this.http.get<User[]>(`${environement.ROOT_URL}/users`, this.httpOptionsAuthorizeGet).pipe(
       tap(_ => console.log('fetched users')),
       catchError(handleError))
   }
@@ -39,30 +42,29 @@ export class UserService {
 
   getUserById(id: number): Observable<User> {
     const url: string = `${environement.ROOT_URL}/users/` + id;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, this.httpOptionsAuthorizeGet).pipe(
       catchError(handleError)
     );
   }
   getTeacherById(id: number): Observable<User> {
     const url: string = `${environement.ROOT_URL}/users/teacher/` + id;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, this.httpOptionsAuthorizeGet).pipe(
       catchError(handleError)
     );
   }
 
   getUsersByEmail(email: string): Observable<User> {
-    return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`)
+    return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`, this.httpOptionsAuthorizeGet)
   }
 
   getUsersByPseudo(pseudo: string): Observable<User> {
-    return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`)
+    return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`, this.httpOptionsAuthorizeGet)
   }
 
   getUserByToken(): Observable<User>{
     let httpOptionsWithAuth = {
       headers: new HttpHeaders({
         "Authorization": getToken(),
-        'Content-Type': 'application/json'
       })
     };
     return this.http.get<User>(`${environement.ROOT_URL}/authentications/`, httpOptionsWithAuth).pipe(
