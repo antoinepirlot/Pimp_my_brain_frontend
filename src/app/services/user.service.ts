@@ -16,7 +16,10 @@ import {getToken} from "../utils/utils";
 export class UserService {
 
 
-
+  
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -45,7 +48,7 @@ export class UserService {
   }
   getTeacherById(id: number): Observable<User> {
     const url: string = `${environement.ROOT_URL}/users/teacher/` + id;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, this.httpOptionsAuthorizeGet).pipe(
       catchError(handleError)
     );
   }
