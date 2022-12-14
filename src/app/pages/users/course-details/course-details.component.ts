@@ -57,6 +57,8 @@ export class CourseDetailsComponent implements OnInit {
     this.as.login(this.user_id, this.course.teacher?.id_user!)
     this.as.getRoomId().subscribe( {
       next: (data) => {
+        let routeNotif = `/room/${data.room_id}/${this.user_id}/${this.course.teacher?.pseudo}/${this.course.id_course}`
+        console.log(routeNotif)
         this.router.navigateByUrl(`/room/${data.room_id}/${this.course.teacher?.id_user}/${this.pseudo_id}/${this.course.id_course}`);
       }
     })
