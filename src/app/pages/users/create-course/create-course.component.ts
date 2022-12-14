@@ -5,6 +5,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { CourseService } from 'src/app/services/course.service';
 import { Course } from 'src/app/models/course';
 import { Router } from "@angular/router";
+import { getToken } from 'src/app/utils/utils';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-course',
@@ -35,12 +37,14 @@ export class CreateCourseComponent implements OnInit {
     level: ""
   };
 
-  constructor(private router: Router, private categoriesService : CategoriesService, private coursesService : CourseService){
+  constructor(private router: Router, private categoriesService : CategoriesService, private coursesService : CourseService, private userService: UserService){
 
   }
 
 
   ngOnInit(){
+    this.getUsersByToken()
+    
     this.categoriesService.getAllCategories().subscribe({
       next : (data) => {
         this.allOptionsCategory = data
@@ -48,6 +52,15 @@ export class CreateCourseComponent implements OnInit {
         this.createCourseForm.get("optionChosen")?.setValue(this.allOptions[0])
       }
     });    
+  }
+
+  getUsersByToken() {
+    this.userService
+      .getUserByToken()
+      .subscribe((data) => {
+        this.newCourse.id_teacher = data.id_user!;
+        console.log(this.newCourse.id_teacher);
+      });
   }
 
 
