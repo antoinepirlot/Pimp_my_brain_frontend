@@ -69,5 +69,29 @@ export class HomeComponent implements OnInit {
   onSubmitSearch() {
     //let search = this.searchForm.value.search!
     console.log(this.searchForm.value)
+    this.courses.splice(0);
+    this.courseService.getCourses(this.searchForm.value).subscribe({
+      next: (data) => {
+        if(data.length===0) return;
+
+        let numberOfColumns = 4;
+        //Separate the courses in lists of 3 courses
+        for(let i = 0; i< data.length ; i=i+numberOfColumns){
+          let dataSeparatedInBloc:Course[]  = new Array<Course>();  
+          let end = i+numberOfColumns;
+          for(let j = i; j< data.length && j<end ; j++){
+            dataSeparatedInBloc.push(data[j]);
+          }
+          this.courses.push(dataSeparatedInBloc);
+        }
+      },
+      error: (error) => {
+        if (error.status === 404) {
+          console.log("Il n'y a pas de offres");
+        } else {
+          console.warn("Server error");
+        }
+      },
+    });
   }
 }

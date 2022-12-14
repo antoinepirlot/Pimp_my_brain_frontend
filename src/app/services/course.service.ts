@@ -30,8 +30,8 @@ export class CourseService {
   getCourses(filterObject ?: any): Observable<Course[]>{
     let filter = ""
     if(filterObject) {
-      if(filterObject.course==="Tous") filterObject.course="";
-      filter=`city=${filterObject.city}&course=${filterObject.course}&description=${filterObject.description}`
+      if(filterObject.optionChosen==="Tous") filterObject.optionChosen="";
+      filter=`city=${filterObject.city}&course=${filterObject.optionChosen}&description=${filterObject.description}`
     }
     const url: string = `${this.ROOT_URL}/courses?` + filter;
     return this.http.get<Course[]>(url, this.httpOptions).pipe(
