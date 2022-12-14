@@ -72,8 +72,4 @@ export class UserService {
       catchError(handleError))
   }
 
-  getUsersById(id:number): Observable<User>{
-    return this.http.get<User>(`${environement.ROOT_URL}/users/${id}`)
-  }
-
 }
