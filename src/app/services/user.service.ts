@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environement.ROOT_URL}/users`).pipe(
+    return this.http.get<User[]>(`${environement.ROOT_URL}/users`, this.httpOptionsAuthorizeGet).pipe(
       tap(_ => console.log('fetched users')),
       catchError(handleError))
   }
@@ -54,11 +54,11 @@ export class UserService {
   }
 
   getUsersByEmail(email: string): Observable<User> {
-    return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`)
+    return this.http.get<User>(`${environement.ROOT_URL}/users/${email}`, this.httpOptionsAuthorizeGet)
   }
 
   getUsersByPseudo(pseudo: string): Observable<User> {
-    return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`)
+    return this.http.get<User>(`${environement.ROOT_URL}/users/pseudo/${pseudo}`, this.httpOptionsAuthorizeGet)
   }
 
   getUserByToken(): Observable<User>{
