@@ -27,8 +27,13 @@ export class CourseService {
    }
 
 
-  getCourses(): Observable<Course[]>{
-    const url: string = `${this.ROOT_URL}/courses`;
+  getCourses(filterObject ?: any): Observable<Course[]>{
+    let filter = ""
+    if(filterObject) {
+      if(filterObject.course==="Tous") filterObject.course="";
+      filter=`city=${filterObject.city}&course=${filterObject.course}&description=${filterObject.description}`
+    }
+    const url: string = `${this.ROOT_URL}/courses?` + filter;
     return this.http.get<Course[]>(url, this.httpOptions).pipe(
         catchError(handleError)
     );
