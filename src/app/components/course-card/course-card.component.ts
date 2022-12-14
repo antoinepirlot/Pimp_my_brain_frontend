@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Course} from "../../models/course";
 import { isConnected } from 'src/app/utils/utils';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-course-card',
@@ -13,6 +14,8 @@ export class CourseCardComponent implements OnInit{
   numberFilledStars!:number;
   numberEmtpyStars!:number;
   isConnected!:Boolean;
+
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.isConnected=isConnected();
@@ -31,5 +34,9 @@ export class CourseCardComponent implements OnInit{
   onSeeMore(idCourse: number) {
     if(this.isConnected)
       this.seeMoreEvent.emit(idCourse);
+  }
+
+  onPseudo(idTeacher?: number){
+    this.router.navigateByUrl("/profile/"+idTeacher);
   }
 }
