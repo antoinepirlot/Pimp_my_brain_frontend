@@ -13,7 +13,7 @@
     <p>{{course.course_description}}</p>
   </div>
   <div id="teacher_description">
-    <button routerLink="/chat">Contacter le professeur</button>
+    <button (click)="onClick()">Contacter le professeur</button>
   </div>
   <div id="similar_courses" *ngFor="let similarCourse of similarCourses">
     <div class="similar_course">

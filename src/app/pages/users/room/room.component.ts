@@ -6,6 +6,7 @@ import { RoomService } from "src/app/services/room.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { User } from "src/app/models/user";
 import { Message } from "src/app/models/message";
+import { CourseService } from "src/app/services/course.service";
 
 @Component({
   selector: "app-room",
@@ -20,6 +21,8 @@ export class RoomComponent implements OnInit {
   user_id: number = 0;
   user_id_interloc: number = 0;
   id_room: string = "";
+  id_course: string = "";
+  id_teacher_course: number = 0;
 
   htmlContent = '';
 
@@ -34,19 +37,32 @@ export class RoomComponent implements OnInit {
     private chatService: ChatService,
     private as: ChatService,
     private roomService: RoomService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private courseService: CourseService
   ) {}
 
   ngOnInit(): void {
     this.user_pseudo = this.route.snapshot.paramMap.get('username1')!;
     this.id_room = this.route.snapshot.paramMap.get('id')!;
+    this.id_course = this.route.snapshot.paramMap.get('id_course')!;
     this.getUserById(Number(this.route.snapshot.paramMap.get('id_interloc')))
     this.getUsersByToken();
+    this.getCourseData();
 
     this.joinRoom()
     this.receiveStatus()
     this.receiveStatusLeft()
     this.receiveMessage() 
+  }
+
+  getCourseData() {
+    this.courseService
+      .getOneCourse(Number(this.route.snapshot.paramMap.get('id_course'))).subscribe({
+        next: data => {
+          (console.log(data.teacher?.id_user))
+          this.id_teacher_course = data.teacher?.id_user!
+        }
+      })
   }
 
   joinRoom() {
@@ -105,8 +121,13 @@ export class RoomComponent implements OnInit {
 
   leaveOnSubmit(): void {
     //console.log(this.id_room, this.user_pseudo)
-    this.roomService.leaveRoom(this.user_pseudo, this.id_room)
+    //this.roomService.leaveRoom(this.user_pseudo, this.id_room)
     this.router.navigateByUrl("/")
+  }
+
+  appOnSubmit(): void {
+    //this.roomService.leaveRoom(this.user_pseudo, this.id_room)
+    this.router.navigateByUrl(`/rendezvous/${this.id_course}/${this.route.snapshot.paramMap.get('id_interloc')}`)
   }
   
   /*

@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
   { path: "chat", component: ChatComponent, canActivate: [CanActivateViaAuthenticationGuard] },
-  { path: 'room/:id/:id_interloc/:username1', component: RoomComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'room/:id/:id_interloc/:username1/:id_course', component: RoomComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'rendezvous/:id_course/:id_student', component: AppointmentCreateComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: '**', redirectTo: '' } // must be the last one route
 ];
