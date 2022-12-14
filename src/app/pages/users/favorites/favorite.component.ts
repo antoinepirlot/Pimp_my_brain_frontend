@@ -18,6 +18,7 @@ export class FavoriteComponent implements OnInit {
     private userService: UserService,
     private favoriteService: FavoriteService
   ) {}
+  
   ngOnInit(): void {
     this.getUsersByToken();
   }
