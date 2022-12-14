@@ -41,14 +41,22 @@ export class ProfileComponent {
     this.newRating.id_rated = this.idUserProfile;
     // get user connected
     this.userService.getUserByToken()
-      .subscribe((data) => {
-        this.idUserConnected = data.id_user
-        this.newRating.id_rater = data.id_user;
+      .subscribe({
+        next: data => {
+          this.idUserConnected = data.id_user
+          this.newRating.id_rater = data.id_user;
+        },
+        error: err => {
+          console.error(err)
+        }
       });
       // get user for this profile
     this.userService.getTeacherById(this.idUserProfile).subscribe({
       next: (data) => {
         this.userProfile = data
+      },
+      error: err => {
+        console.error(err)
       }
     })
     this.favoriteService.getUserProfileLike(this.idUserProfile).subscribe({

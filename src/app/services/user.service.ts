@@ -21,13 +21,6 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  httpOptionsWithAuth = {
-    headers: new HttpHeaders({
-      "Authorization": getToken(),
-      'Content-Type': 'application/json'
-    })
-  };
-
   constructor(private http: HttpClient) {
 
   }
@@ -66,7 +59,13 @@ export class UserService {
   }
 
   getUserByToken(): Observable<User>{
-    return this.http.get<User>(`${environement.ROOT_URL}/authentications/`, this.httpOptionsWithAuth).pipe(
+    let httpOptionsWithAuth = {
+      headers: new HttpHeaders({
+        "Authorization": getToken(),
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.get<User>(`${environement.ROOT_URL}/authentications/`, httpOptionsWithAuth).pipe(
       tap(_ => console.log('get info with token')),
       catchError(handleError))
   }
