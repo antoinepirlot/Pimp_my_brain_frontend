@@ -62,18 +62,7 @@ export class HomeComponent implements OnInit {
     this.courses.splice(0);
     this.courseService.getCourses(this.searchForm.value).subscribe({
       next: (data) => {
-        if(data.length===0) return;
-
-        let numberOfColumns = 4;
-        //Separate the courses in lists of 3 courses
-        for(let i = 0; i< data.length ; i=i+numberOfColumns){
-          let dataSeparatedInBloc:Course[]  = new Array<Course>();  
-          let end = i+numberOfColumns;
-          for(let j = i; j< data.length && j<end ; j++){
-            dataSeparatedInBloc.push(data[j]);
-          }
-          this.courses.push(dataSeparatedInBloc);
-        }
+        this.courses = createTableOfCourses(data)
       },
       error: (error) => {
         if (error.status === 404) {
