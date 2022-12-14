@@ -1,0 +1,12 @@
+
+  <div class="design-form-block">
+    <h1 *ngIf="teacher != undefined">Les avis sur <a [routerLink]="['/profile',teacher.id_user]">{{teacher.pseudo}}</a></h1>
+    <div *ngFor="let rating of allRatings" class="purple-box">
+    <app-rating
+        [rating]="rating"
+    ></app-rating>
+    </div>
+    <div *ngIf="allRatings !== undefined && allRatings!.length === 0">
+      <p>Pas d'avis pour le moment</p>
+    </div>
+</div>

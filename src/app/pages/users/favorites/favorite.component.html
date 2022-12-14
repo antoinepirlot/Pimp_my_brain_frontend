@@ -1,0 +1,24 @@
+<br />
+<br />
+<div id="titre">
+  <br />
+  <h2>Liste de vos professeurs favoris</h2>
+</div>
+
+<div *ngIf="favorites.length != 0">
+  <div *ngFor="let favorite of favorites">
+    <div class="notification-list">
+      <div class="notification-list_content">
+        <div class="notification-list_detail">
+          <p>{{favorite.teacher_username}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="favorites.length == 0">
+  <p>Vous avez aucune notification</p> 
+</div>
+
+<br />

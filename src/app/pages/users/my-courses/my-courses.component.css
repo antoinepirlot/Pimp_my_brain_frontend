@@ -1,0 +1,46 @@
+
+
+/* Float three columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px 5px;
+}
+
+
+/* Responsive columns */
+@media screen and (max-width: 1300px) and (min-width: 951px) {
+  .column {
+    width: 33%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsive columns */
+@media screen and (max-width: 950px) and (min-width: 651px) {
+  .column {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.container {
+  width: 100%;
+  margin-top: 3%;
+  text-align: center;
+}
+
+.elementSearchBar {
+  display: inline-block;
+}
+
+#no_courses {
+  text-align: center;
+}

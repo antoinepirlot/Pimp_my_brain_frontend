@@ -1,0 +1,8 @@
+<div [id]="divNameMarkup">
+  <label [for]="nameLabel">{{ nameLabel }} : </label>
+  <select [name]="nameLabel" [formControl]="optionChosen" [id]="nameMarkup">
+    <option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <label [for]="nameLabel" class="leftLabel">{{ nameLabel }} : </label>
+
+    <textarea 
+        [name]="nameMarkup"
+        [id]="nameMarkup"
+        [formControl]="inputControl"
+        [rows]="rows ? rows : ''"
+        [cols]="cols ? cols : ''"
+    >
+        {{placeholder ? placeholder : ''}}
+    </textarea>
+</div>

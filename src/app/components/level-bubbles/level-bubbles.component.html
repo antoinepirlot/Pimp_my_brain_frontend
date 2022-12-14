@@ -1,0 +1,21 @@
+<div class="bubbles">
+  <span>Difficulté :</span>
+  <div *ngIf="level === 'Débutant'">
+    <!--Easy level-->
+    <span class="easy_bubbles"></span>
+    <span class="empty_bubbles"></span>
+    <span class="empty_bubbles"></span>
+  </div>
+  <div *ngIf="level === 'Intermédiaire'">
+    <!--Intermediate level-->
+    <span class="empty_bubbles"></span>
+    <span class="intermediate_bubbles"></span>
+    <span class="empty_bubbles"></span>
+  </div>
+  <div *ngIf="level === 'Confirmé'">
+    <!--Hard level-->
+    <span class="empty_bubbles"></span>
+    <span class="empty_bubbles"></span>
+    <span class="hard_bubbles"></span>
+  </div>
+</div>

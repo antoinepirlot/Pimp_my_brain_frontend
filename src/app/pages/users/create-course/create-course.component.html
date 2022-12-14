@@ -1,0 +1,58 @@
+<div class="design-form-block">
+<h1>Créer une annonce pour un cours</h1>
+<form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+    <app-input 
+        nameLabel="Pays" 
+        [inputControl]="createCourseForm.controls['country']" 
+        type="text"
+        nameMarkup="country">
+    </app-input>
+    </div>
+    <app-input 
+        nameLabel="Ville" 
+        [inputControl]="createCourseForm.controls['city']" 
+        type="text"
+        nameMarkup="city">
+    </app-input>
+    <app-select-in-form
+        nameLabel="Catégorie" 
+        [options] = "allOptions"
+        [optionChosen] = "createCourseForm.controls['optionChosen']"
+        nameMarkup="categories"
+        divNameMarkup="divCategories" >
+    </app-select-in-form>
+    <app-select-in-form
+        nameLabel="Niveau" 
+        [options] = "allLevels"
+        [optionChosen] = "createCourseForm.controls['levelChosen']"
+        nameMarkup="levels"
+        divNameMarkup="divLevels" >
+    </app-select-in-form>
+    <app-input-number
+        [inputControl] = "createCourseForm.controls['price']" 
+        nameLabel= "Prix"
+        nameMarkup="price"
+        unitOFMeasure="€ / h"
+        min="5"
+        max="500"
+        step="0.5"
+        placeholder="0.00"
+        divNameMarkup="divPrice">
+    </app-input-number>
+    <app-textarea-in-form
+        [inputControl] = "createCourseForm.controls['description']"
+        nameLabel= "Description"
+        nameMarkup="description"
+        rows=3
+        cols=33
+    >
+    </app-textarea-in-form>
+    
+
+    <span style="color: red;">{{notification}}</span>
+    <div>
+        <button type="submit">Créer un cours</button>
+    </div>
+</form>
+</div>

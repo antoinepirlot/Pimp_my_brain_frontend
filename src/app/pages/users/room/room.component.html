@@ -1,0 +1,31 @@
+<h1>Chat Room</h1>
+<p>Votre interlocuteur : {{ user_pseudo_interloc }}</p>
+<div class="message" [innerHTML]="htmlContent"></div>
+<div class="chat-block">
+    <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+        <app-input 
+            nameLabel="message" 
+            [inputControl]="roomForm.controls['message']" 
+            placeHolder="Entrez votre message"
+            type="text"
+            nameMarkup="text">
+        </app-input>
+        <div>
+            <app-submit-button value="Envoyer"></app-submit-button>
+        </div>
+    </form>
+    
+    <div *ngIf="id_teacher_course == user_id">
+        <form (ngSubmit)="appOnSubmit()">
+            <div>
+                <app-submit-button value="Prendre rdv"></app-submit-button>
+            </div>
+        </form>
+    </div>
+    
+    <form (ngSubmit)="leaveOnSubmit()">
+        <div>
+            <app-submit-button value="Quitter la conv"></app-submit-button>
+        </div>
+    </form>
+</div>

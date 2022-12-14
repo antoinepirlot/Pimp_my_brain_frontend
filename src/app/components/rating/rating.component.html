@@ -1,0 +1,6 @@
+<h3>Avis de <a [routerLink]="['/profile',rating!.rater!.id_user]">{{ rating!.rater!.pseudo! }}</a></h3>
+<app-stars-rating-display
+  [goldenStars]="rating.rating_number"
+  [greyStars]="5 - rating.rating_number"
+></app-stars-rating-display>
+<p>{{ rating.rating_text }}</p>

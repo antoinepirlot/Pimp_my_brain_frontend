@@ -1,0 +1,22 @@
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="course_card">
+  <div class="product-details">
+    <h1 *ngIf="course.teacher" class="pseudo" (click)="onPseudo(course.teacher.id_user)">{{course.teacher.pseudo}}</h1>
+    <span class="hint-star star">
+          <i class="fa fa-star" aria-hidden="true" *ngFor="let star of [].constructor(numberFilledStars)"></i>
+          <i class="fa fa-star-o" aria-hidden="true" *ngFor="let star of [].constructor(numberEmtpyStars)"></i>
+    </span>
+    <p style="color:red" *ngIf="course.category">{{course.category.name}}</p>
+    <app-level-bubbles [level]="course.level"></app-level-bubbles>
+    <p >{{course.course_description}}</p>
+    <p><i>{{course.city}}, {{course.country}}</i></p>
+    <div class="control">
+      <button [ngClass]="{ 'btn': isConnected, 'btnNotConnected': !isConnected }" (click)="onSeeMore(course.id_course || 0)">
+        <span class="price" *ngIf="course.price_per_hour">{{course.price_per_hour | customCurrency:'EUR'}}/h</span>
+        <span class="buy">Voir plus</span>
+      </button>
+    </div>
+  </div>
+</div>

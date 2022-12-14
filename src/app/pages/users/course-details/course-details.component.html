@@ -1,0 +1,30 @@
+<div id="course_details_page" *ngIf=course>
+  <h1>Cours de {{course.category?.name}}</h1>
+  <h3>{{course.teacher?.firstname}} {{course.teacher?.lastname}}</h3>
+  <h4>Pseudo: <a href="#" routerLink="/profile/{{course.teacher?.id_user}}">{{course.teacher?.pseudo}}</a></h4>
+  <div id="note">
+    Note: <app-stars-rating-display [goldenStars]="numberOfStars" [greyStars]="5-numberOfStars"></app-stars-rating-display>
+  </div>
+  <div id="difficulties">
+    <app-level-bubbles [level]="course.level"></app-level-bubbles>
+  </div>
+  <div id="course_description">
+    <h3>Description du cours</h3>
+    <p>{{course.course_description}}</p>
+  </div>
+  <div id="teacher_description">
+    <button (click)="onClick()">Contacter le professeur</button>
+  </div>
+  <div id="similar_courses" *ngFor="let similarCourse of similarCourses">
+    <div class="similar_course">
+      <div>
+        <app-level-bubbles [level]=similarCourse.level></app-level-bubbles>
+      </div>
+      <p class="similar_course_description">Description: {{similarCourse.course_description}}</p>
+      <p class="similar_course_price">Tarif: {{similarCourse.price_per_hour}}/h</p>
+    </div>
+  </div>
+</div>
+<div *ngIf=!course>
+  <h1>Chargement en cours...</h1>
+</div>
