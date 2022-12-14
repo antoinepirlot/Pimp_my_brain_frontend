@@ -6,6 +6,9 @@ import { User } from 'src/app/models/user';
 import { RatingsService } from 'src/app/services/ratings.service';
 import { UserService } from 'src/app/services/user.service';
 import {FavoriteService} from "../../../services/favorite.service";
+import {Subscription} from "rxjs";
+import {NavbarService} from "../../../services/navbar.service";
+import {getIdUserConnected} from "../../../utils/utils";
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +16,7 @@ import {FavoriteService} from "../../../services/favorite.service";
   styleUrls: ['profile.component.css']
 })
 export class ProfileComponent {
+  private idProfile: Subscription = new Subscription();
   idUserProfile!: number;
   userProfile!: User;
   idUserConnected?:number;
@@ -32,23 +36,37 @@ export class ProfileComponent {
     id_rated: this.idUserProfile
   };
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService, private navbarService: NavbarService) {
+    this.idProfile = this.navbarService.getProfileId().subscribe({
+      next: data => {
+        if (this.idUserProfile !== data) {
+          this.isMyProfile = false
+        }
+      }
+    });
   }
 
   ngOnInit() {
     this.idUserProfile = +this.route.snapshot.params['id_user'];
-    
     this.newRating.id_rated = this.idUserProfile;
     // get user connected
     this.userService.getUserByToken()
-      .subscribe((data) => {
-        this.idUserConnected = data.id_user
-        this.newRating.id_rater = data.id_user;
+      .subscribe({
+        next: data => {
+          this.idUserConnected = data.id_user
+          this.newRating.id_rater = data.id_user;
+        },
+        error: err => {
+          console.error(err)
+        }
       });
       // get user for this profile
     this.userService.getTeacherById(this.idUserProfile).subscribe({
       next: (data) => {
         this.userProfile = data
+      },
+      error: err => {
+        console.error(err)
       }
     })
     this.favoriteService.getUserProfileLike(this.idUserProfile).subscribe({

@@ -41,7 +41,6 @@ export class CreateCourseComponent implements OnInit {
 
   }
 
-
   ngOnInit(){
     this.getUsersByToken()
     
@@ -57,10 +56,14 @@ export class CreateCourseComponent implements OnInit {
   getUsersByToken() {
     this.userService
       .getUserByToken()
-      .subscribe((data) => {
-        this.newCourse.id_teacher = data.id_user!;
-        console.log(this.newCourse.id_teacher);
-      });
+      .subscribe({
+        next: data => {
+          this.newCourse.id_teacher = data.id_user!;
+        },
+        error: _ => {
+
+        }
+      })
   }
 
 

@@ -19,13 +19,6 @@ export class CourseService {
     })
   }
 
-  private httpOptionsWithAuth = {
-    headers: new HttpHeaders({
-      "Authorization": getToken()!,
-      "Content-Type": "application/json"
-    })
-  }
-
   constructor(private http: HttpClient) {
 
   }
@@ -48,8 +41,14 @@ export class CourseService {
    }
 
   getAllTeacherCourses(): Observable<Course[]> {
+    let httpOptionsWithAuth = {
+      headers: new HttpHeaders({
+        "Authorization": getToken()!,
+        "Content-Type": "application/json"
+      })
+    }
     const url: string = `${this.ROOT_URL}/courses/teacher`;
-    return this.http.get<Course[]>(url, this.httpOptionsWithAuth).pipe(
+    return this.http.get<Course[]>(url, httpOptionsWithAuth).pipe(
         catchError(handleError)
     );
   }

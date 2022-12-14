@@ -46,10 +46,8 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="appointments.length == 0">
-    <h2 style="text-align: center">Vous n'avez aucun rendez-vous</h2>
-  </div>
-
   <br />
+</div>
+<div *ngIf="appointments.length === 0">
+  <h2 style="text-align: center">Vous n'avez aucun rendez-vous</h2>
 </div>

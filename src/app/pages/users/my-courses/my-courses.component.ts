@@ -24,7 +24,6 @@ export class MyCoursesComponent implements OnInit {
       },
       error: (error) => {
         if (error.status === 404) {
-          console.log("Il n'y a pas de offres");
           this.courses = undefined;
         } else {
           console.warn("Server error");

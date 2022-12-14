@@ -15,7 +15,7 @@ export class AppointmentComponent implements OnInit {
   id_user: number = 0;
   appointments: Appointment[] = [];
   courses: Course[] = [];
- 
+
   course: Course = {course_description:"",level: ""};
 
   constructor(
@@ -31,20 +31,30 @@ export class AppointmentComponent implements OnInit {
   getUsersByToken() {
     this.userService
       .getUserByToken()
-      .subscribe((data) => {
-        this.id_user = data.id_user!;
-        console.log(this.id_user);
-        this.getAppointmentsByUser();
+      .subscribe({
+        next: data => {
+            this.id_user = data.id_user!;
+            this.getAppointmentsByUser();
+        },
+        error: _ => {
+
+        }
       });
   }
 
   getAppointmentsByUser() {
     this.appointmentsService
       .getAppointmentsByUser(this.id_user)
-      .subscribe((data) => {
-        this.appointments = data;
-        console.log("1", this.appointments);
-        this.getcourses()
+      .subscribe({
+        next: data => {
+          this.appointments = data;
+          this.getcourses()
+        },
+        error: err => {
+          if(err.status === 404) {
+            this.appointments = []
+          }
+        }
       });
   }
 
@@ -52,7 +62,7 @@ export class AppointmentComponent implements OnInit {
     this.courseService.getCourses().subscribe((data) => {
       this.courses = data;
       console.log("2",this.courses);
-      
+
     });
   }
 
@@ -66,8 +76,8 @@ export class AppointmentComponent implements OnInit {
   }
 
   onClick(id_course: number){
-    
+
     this.router.navigateByUrl('/rendezvous/'+id_course)
-    
+
   }
 }
