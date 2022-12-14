@@ -141,3 +141,8 @@ font-family: 'EB Garamond', serif;
 .btn:hover .price {transform: translateX(-110%);}
 
 h2 {text-align: center}
+
+.pseudo:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}

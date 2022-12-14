@@ -3,7 +3,7 @@
 
 <div class="course_card">
   <div class="product-details">
-    <h1 *ngIf="course.teacher">{{course.teacher.pseudo}}</h1>
+    <h1 *ngIf="course.teacher" class="pseudo">{{course.teacher.pseudo}}</h1>
     <span class="hint-star star">
           <i class="fa fa-star" aria-hidden="true" *ngFor="let star of [].constructor(numberFilledStars)"></i>
           <i class="fa fa-star-o" aria-hidden="true" *ngFor="let star of [].constructor(numberEmtpyStars)"></i>
