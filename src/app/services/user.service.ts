@@ -65,7 +65,6 @@ export class UserService {
     let httpOptionsWithAuth = {
       headers: new HttpHeaders({
         "Authorization": getToken(),
-        'Content-Type': 'application/json'
       })
     };
     return this.http.get<User>(`${environement.ROOT_URL}/authentications/`, httpOptionsWithAuth).pipe(
