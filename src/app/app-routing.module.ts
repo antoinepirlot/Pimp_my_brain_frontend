@@ -11,11 +11,12 @@ import { CanActivateViaNotAuthenticationGuard } from './guards/CanActivateViaNot
 import { LogoutComponent } from './pages/users/logout/logout.component';
 import { CourseDetailsComponent } from "./pages/users/course-details/course-details.component";
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
+import { ChatComponent } from './pages/users/chat/chat.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
 import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { RoomComponent } from './pages/users/room/room.component';
 import { ProfileComponent } from './pages/public/profile/profile.component';
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
-
 
 
 const routes: Routes = [
@@ -34,8 +35,11 @@ const routes: Routes = [
   { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
+  { path: "chat", component: ChatComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'room/:id/:id_interloc/:username1', component: RoomComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: '**', redirectTo: '' } // must be the last one route
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
