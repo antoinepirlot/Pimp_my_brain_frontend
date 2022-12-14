@@ -14,6 +14,15 @@
             <app-submit-button value="Envoyer"></app-submit-button>
         </div>
     </form>
+    
+    <div *ngIf="id_teacher_course == user_id">
+        <form (ngSubmit)="appOnSubmit()">
+            <div>
+                <app-submit-button value="Prendre rdv"></app-submit-button>
+            </div>
+        </form>
+    </div>
+    
     <form (ngSubmit)="leaveOnSubmit()">
         <div>
             <app-submit-button value="Quitter la conv"></app-submit-button>
