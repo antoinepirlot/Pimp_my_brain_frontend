@@ -17,6 +17,7 @@ import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.c
 import { RoomComponent } from './pages/users/room/room.component';
 import { ProfileComponent } from './pages/public/profile/profile.component';
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
+import { AppointmentCreateComponent } from './pages/users/appointment-create/appointment-create.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
   { path: "chat", component: ChatComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'room/:id/:id_interloc/:username1', component: RoomComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'rendezvous/:id_course/:id_student', component: AppointmentCreateComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: '**', redirectTo: '' } // must be the last one route
 ];
 

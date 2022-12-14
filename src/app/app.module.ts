@@ -34,6 +34,7 @@ import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.c
 import { StarsRatingDisplayComponent } from './components/stars-rating-display/stars-rating-display.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { RoomComponent } from './pages/users/room/room.component';
+import { AppointmentCreateComponent } from './pages/users/appointment-create/appointment-create.component';
 
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard';
@@ -79,6 +80,7 @@ const config: SocketIoConfig = { url: environement.ROOT_URL, options: {} };
         InputStarsComponent,
         FavoriteIconComponent,
         RoomComponent,
+        AppointmentCreateComponent,
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
