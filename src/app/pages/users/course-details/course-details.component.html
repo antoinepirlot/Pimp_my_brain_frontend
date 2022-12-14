@@ -12,7 +12,10 @@
     <h3>Description du cours</h3>
     <p>{{course.course_description}}</p>
   </div>
-  <div id="teacher_description">
+  <div *ngIf="isMyCourse()">
+    <button routerLink="/modify_course/{{course.id_course}}}">Modifier mon annonce</button>
+  </div>
+  <div *ngIf="!isMyCourse()" id="teacher_description">
     <button routerLink="/chat">Contacter le professeur</button>
   </div>
   <div id="similar_courses" *ngFor="let similarCourse of similarCourses">

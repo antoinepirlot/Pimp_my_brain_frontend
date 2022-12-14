@@ -15,6 +15,10 @@ export function getToken() {
   }
 }
 
+export function getIdUserConnected() {
+    return JSON.parse(atob(getToken().split(".")[1])).id
+}
+
 export function createTableOfCourses(data: Array<Course>): Array<Array<Course>> {
   let courses: Array<Array<Course>> = Array<Array<Course>>();
   if(data.length===0) return courses;

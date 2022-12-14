@@ -45,6 +45,7 @@ import { FavoriteIconComponent } from './components/favorite-icon/favorite-icon.
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environement } from 'src/environement/environement';
+import { ModifyCourseComponent } from './pages/users/modify-course/modify-course.component';
 
 const config: SocketIoConfig = { url: environement.ROOT_URL, options: {} };
 
@@ -79,6 +80,7 @@ const config: SocketIoConfig = { url: environement.ROOT_URL, options: {} };
         InputStarsComponent,
         FavoriteIconComponent,
         RoomComponent,
+        ModifyCourseComponent,
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fr-BE' }, CanActivateViaNotAuthenticationGuard, CanActivateViaAuthenticationGuard
