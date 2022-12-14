@@ -3,6 +3,8 @@ import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
 import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Category } from 'src/app/models/category';
 
 
 @Component({
@@ -13,7 +15,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class HomeComponent implements OnInit {
 
   courses!:Course[][];
-  allOptions:string[] = ["PHP","Java","Jardinage"]
+  allOptionsCategory!:Category[];
+  allOptions:string[] = []
   searchForm = new FormGroup({
     optionChosen: new FormControl(this.allOptions[0]),
     city: new FormControl(""),
@@ -21,7 +24,7 @@ export class HomeComponent implements OnInit {
   });
   
 
-  constructor(private courseService: CourseService, private router: Router,) {
+  constructor(private courseService: CourseService, private router: Router,private categoriesService : CategoriesService,) {
   }
 
   onCardClick(idCourse: number) {
@@ -30,6 +33,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() : void {
     this.courses = new Array<Array<Course>>();
+    this.categoriesService.getAllCategories().subscribe({
+      next : (data) => {
+        this.allOptionsCategory = data;
+        this.allOptions.push("Tous");
+        this.allOptionsCategory.forEach(c => this.allOptions.push(c.name));
+        this.searchForm.get("optionChosen")?.setValue(this.allOptions[0])
+      }
+    });  
     this.courseService.getCourses().subscribe({
       next: (data) => {
         if(data.length===0) return;
@@ -57,6 +68,6 @@ export class HomeComponent implements OnInit {
 
   onSubmitSearch() {
     //let search = this.searchForm.value.search!
-    console.log("ok")
+    console.log(this.searchForm.value)
   }
 }
