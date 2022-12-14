@@ -5,7 +5,7 @@
   <h2>Liste de vos professeurs favoris</h2>
 </div>
 
-<div *ngIf="favorites">
+<div *ngIf="favorites.length != 0">
   <div *ngFor="let favorite of favorites">
     <div class="notification-list">
       <div class="notification-list_content">
@@ -15,6 +15,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="favorites.length == 0">
+  <p>Vous avez aucune notification</p> 
 </div>
 
 <br />

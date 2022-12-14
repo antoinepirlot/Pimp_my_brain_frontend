@@ -38,9 +38,11 @@ export class FavoriteComponent implements OnInit {
   }
 
   getFavoritesByUser() {
-    this.favoriteService.getFavoritesByUser(this.id_user).subscribe((data) => {
-      console.log(data);
+    this.favoriteService.getFavoritesByUser(this.id_user).subscribe({
+      next: (data) =>{
+        console.log(data);
       this.favorites = data;
+      } 
     });
   }
 
