@@ -42,7 +42,7 @@ export class UserService {
 
   getUserById(id: number): Observable<User> {
     const url: string = `${environement.ROOT_URL}/users/` + id;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, this.httpOptionsAuthorizeGet).pipe(
       catchError(handleError)
     );
   }
