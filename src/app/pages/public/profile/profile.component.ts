@@ -17,6 +17,8 @@ export class ProfileComponent {
   userProfile!: User;
   idUserConnected?:number;
   isLiked!: boolean;
+  isMyProfile:boolean = true;
+
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
     numberRating: new FormControl(1, Validators.required)
@@ -53,8 +55,11 @@ export class ProfileComponent {
       next: _ => {
         this.isLiked = true;
       },
-      error: _ => {
-        this.isLiked = false
+      error: err => {
+        if (err.status !== 403) {
+          this.isMyProfile = false;
+        }
+        this.isLiked = false;
     }
     });
   }
