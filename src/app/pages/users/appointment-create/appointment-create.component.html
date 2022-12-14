@@ -1,0 +1,79 @@
+<div class="row design-form-block">
+    <div class="col">
+      <br />
+      <h1>Envoyez un rendez-vous</h1>
+      <!-- mettre me nom de l'eleve -->
+      <br />
+      <form class="box" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="row">
+            <div class="col">
+              <app-input
+                nameLabel="Date"
+                [inputControl]="appointmentForm.controls['date']"
+                placeHolder="Date"
+                type="date"
+                nameMarkup="Date"
+              >
+              </app-input>
+            </div>
+  
+            <div class="col">
+              <app-input
+                nameLabel="Rue"
+                [inputControl]="appointmentForm.controls['rue']"
+                placeHolder="Rue"
+                type="text"
+                nameMarkup="Rue"
+              >
+              </app-input>
+            </div>
+          </div>
+  
+          <br />
+          <br />
+          <br />
+  
+          <div class="row">
+            <div class="col">
+              <app-input
+                nameLabel="Numero "
+                [inputControl]="appointmentForm.controls['numero']"
+                placeHolder="Numero de rue"
+                type="number"
+                nameMarkup="numero"
+              >
+              </app-input>
+            </div>
+  
+            <div class="col">
+              <app-input
+                nameLabel="Boite"
+                [inputControl]="appointmentForm.controls['boite']"
+                placeHolder="Boite (optionnel)"
+                type="text"
+                nameMarkup="boite"
+              >
+              </app-input>
+            </div>
+          </div>
+  
+        </div>
+  
+        <br />
+        <div *ngIf="bool; else contenu_pas_bon">
+          <span style="color: green">{{ notification }}</span>
+        </div>
+        <ng-template #contenu_pas_bon>
+          <span style="color: red">{{ notification }}</span></ng-template>
+        
+        <br />
+  
+        <div>
+          <app-submit-button value="Envoyer l'invitation"></app-submit-button>
+        </div>
+      </form>
+      <br />
+    </div>
+  </div>
+  
