@@ -1,4 +1,4 @@
-<div class="design-form-block">
+
     <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()" class="container">
         <div class="elementSearchBar">
             <div class="design-form-block">
@@ -37,10 +37,9 @@
         </div>
 
         <div class="elementSearchBar">
-            <app-submit-button value=""><i class='fa fa-search'></i></app-submit-button>
+            <app-submit-button value="" class="search"><i class='fa fa-search'></i></app-submit-button>
         </div>
     </form>
-</div>
 <div *ngFor="let actualList of courses">
     <div *ngFor="let course of actualList" class="column">
         <app-course-card [course]="course" (seeMoreEvent)="onCardClick($event)"></app-course-card>
