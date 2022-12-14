@@ -24,4 +24,10 @@ export class NotificationService {
       tap(_ => console.log('fetched notifications')),
       catchError(handleError))
    }
+
+   createNotification(notif: Notification): Observable<Notification> {
+    return this.http.post<Notification>(`${environement.ROOT_URL}/notifications`, notif, this.httpOptions).pipe(
+      tap((newNotif: Notification) => console.log('added notification', newNotif)),
+      catchError(handleError))
+  }
 }
