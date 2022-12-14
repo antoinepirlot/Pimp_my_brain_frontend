@@ -75,6 +75,7 @@ export class AppointmentCreateComponent {
         next: () => {
           setTimeout(() => this.router.navigateByUrl("/"), 2000);
         }
+        
       });
       this.notification = "L'invitation à bien été envoyé";
     }
