@@ -6,6 +6,7 @@ import {handleError} from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import { throwError } from "rxjs";
+import {getToken} from "../utils/utils";
 
 @Injectable({
   providedIn: "root"
@@ -14,6 +15,13 @@ export class CourseService {
   private ROOT_URL = environement.ROOT_URL;
   private httpOptions = {
     headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }
+
+  private httpOptionsWithAuth = {
+    headers: new HttpHeaders({
+      "Authorization": getToken()!,
       "Content-Type": "application/json"
     })
   }
@@ -34,9 +42,9 @@ export class CourseService {
     );
    }
 
-  getAllTeacherCourses(idTeacher: number): Observable<Course[]> {
-    const url: string = `${this.ROOT_URL}/courses/teacher/${idTeacher}`;
-    return this.http.get<Course[]>(url, this.httpOptions).pipe(
+  getAllTeacherCourses(): Observable<Course[]> {
+    const url: string = `${this.ROOT_URL}/courses/teacher`;
+    return this.http.get<Course[]>(url, this.httpOptionsWithAuth).pipe(
         catchError(handleError)
     );
   }
