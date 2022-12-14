@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../models/course";
 import {Router} from "@angular/router";
+import {createTableOfCourses} from "../../../utils/utils";
 
 @Component({
   selector: 'app-my-courses',
@@ -19,23 +20,7 @@ export class MyCoursesComponent implements OnInit {
     this.courses = new Array<Array<Course>>();
     this.courseService.getAllTeacherCourses().subscribe({
       next: (data) => {
-        if(data.length===0) return;
-
-
-
-        let numberOfColumns = 4;
-        //Separate the courses in lists of 3 courses
-        for(let i = 0; i< data.length ; i=i+numberOfColumns){
-          let dataSeparatedInBloc:Course[]  = new Array<Course>();
-          let end = i+numberOfColumns;
-          for(let j = i; j< data.length && j<end ; j++){
-            if(data[j].course_description.length>113){
-              data[j].course_description=data[j].course_description.substring(0,113) + "...";
-            }
-            dataSeparatedInBloc.push(data[j]);
-          }
-          this.courses.push(dataSeparatedInBloc);
-        }
+        this.courses = createTableOfCourses(data)
       },
       error: (error) => {
         if (error.status === 404) {
