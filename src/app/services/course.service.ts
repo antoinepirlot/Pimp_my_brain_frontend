@@ -26,7 +26,13 @@ export class CourseService {
 
   }
   createOneCourse(course: Course): Observable<Course>{
-    return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, this.httpOptions).pipe(
+    let httpOptionsWithAuth = {
+      headers: new HttpHeaders({
+        "Authorization": getToken()!,
+        "Content-Type": "application/json"
+      })
+    }
+    return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, httpOptionsWithAuth).pipe(
       catchError(handleError))
    }
 
