@@ -5,6 +5,7 @@ import { handleError } from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import { Rating } from "../models/rating";
+import { getToken } from "../utils/utils";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class RatingsService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": getToken()
     })
   }
 
