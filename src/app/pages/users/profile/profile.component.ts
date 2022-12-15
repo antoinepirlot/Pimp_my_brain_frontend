@@ -16,12 +16,12 @@ import {getIdUserConnected} from "../../../utils/utils";
   styleUrls: ['profile.component.css']
 })
 export class ProfileComponent {
-  private idProfile: Subscription = new Subscription();
   idUserProfile!: number;
   userProfile!: User;
   idUserConnected?:number;
   isLiked!: boolean;
   isMyProfile:boolean = true;
+  numberStars!:number;
 
   ratingForm = new FormGroup({
     descriptionRating: new FormControl("", Validators.required),
@@ -36,15 +36,7 @@ export class ProfileComponent {
     id_rated: this.idUserProfile
   };
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService, private navbarService: NavbarService) {
-    this.idProfile = this.navbarService.getProfileId().subscribe({
-      next: data => {
-        if (this.idUserProfile !== data) {
-          this.isMyProfile = false
-        }
-      }
-    });
-  }
+  constructor(private route: ActivatedRoute, private userService: UserService, private ratingsService: RatingsService, private favoriteService: FavoriteService, private navbarService: NavbarService) {}
 
   ngOnInit() {
     this.idUserProfile = +this.route.snapshot.params['id_user'];
@@ -55,6 +47,7 @@ export class ProfileComponent {
         next: data => {
           this.idUserConnected = data.id_user
           this.newRating.id_rater = data.id_user;
+          
         },
         error: err => {
           console.error(err)

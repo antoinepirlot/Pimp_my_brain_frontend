@@ -14,7 +14,6 @@ import {getToken} from "../../utils/utils";
 export class NavbarComponent implements OnInit, OnDestroy {
   connected: boolean = false;
   private subscriptionName: Subscription;
-  private idProfile: Subscription;
   id_user!: number;
 
   constructor(
@@ -26,7 +25,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptionName = this.navbarService.getUpdate().subscribe(next => {
       this.connected = next;
     })
-    this.idProfile = this.navbarService.getProfileId().subscribe({
+    this.navbarService.getProfileId().subscribe({
       next: data => {
         this.id_user = data
       },
