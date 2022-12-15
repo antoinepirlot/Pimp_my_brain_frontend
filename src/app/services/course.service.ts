@@ -44,7 +44,7 @@ export class CourseService {
       filter=`city=${filterObject.city}&course=${filterObject.optionChosen}&description=${filterObject.description}`
     }
     const url: string = `${this.ROOT_URL}/courses?` + filter;
-    return this.http.get<Course[]>(url, this.httpOptions).pipe(
+    return this.http.get<Course[]>(url).pipe(
         catchError(handleError)
     );
    }
@@ -52,8 +52,7 @@ export class CourseService {
   getAllTeacherCourses(): Observable<Course[]> {
     let httpOptionsWithAuth = {
       headers: new HttpHeaders({
-        "Authorization": getToken()!,
-        "Content-Type": "application/json"
+        "Authorization": getToken()
       })
     }
     const url: string = `${this.ROOT_URL}/courses/teacher`;
@@ -64,7 +63,7 @@ export class CourseService {
 
   getOneCourse(idCourse: number) {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
     return this.http.get<Course>(url, httpOptionsAuthorizeGet).pipe(
