@@ -54,8 +54,11 @@ export class CourseService {
   }
 
   getOneCourse(idCourse: number) {
+    let httpOptionsAuthorizeGet = {
+      headers: new HttpHeaders({ Authorization: getToken() }),
+    };
     const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
-    return this.http.get<Course>(url, this.httpOptions).pipe(
+    return this.http.get<Course>(url, httpOptionsAuthorizeGet).pipe(
         catchError(handleError)
     );
   }
