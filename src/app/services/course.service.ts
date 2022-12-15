@@ -13,6 +13,9 @@ import {getToken} from "../utils/utils";
 })
 export class CourseService {
   private ROOT_URL = environement.ROOT_URL;
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
