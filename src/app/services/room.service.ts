@@ -9,23 +9,22 @@ import { ChatRoom } from '../models/chat_rooms';
 import { environement } from 'src/environement/environement';
 import { handleError } from '../utils/handle_errors';
 import { Observable, of } from 'rxjs';
+import { getToken } from "../utils/utils";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
 
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ "Authorization": getToken() }),
+  };
+
   constructor (
     private socket: Socket,
     private http:HttpClient
   ) {}
-
-  getChatRoomById(id_room: string): Observable<ChatRoom>{
-    return this.http.get<ChatRoom>(`${environement.ROOT_URL}/chat_rooms/getRoomById/${id_room}`).pipe(
-      tap(_ => console.log('fetched notifications')),
-      catchError(handleError));
-  }
-
+  
   sendMessage(message: string, id_room: string, username: string) {
     this.socket.emit('message', message, id_room, username);
   }
