@@ -5,6 +5,7 @@ import { handleError } from "../utils/handle_errors";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import { Rating } from "../models/rating";
+import {getToken} from "../utils/utils";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,13 @@ export class RatingsService {
 
   private ROOT_URL = environement.ROOT_URL;
 
-  private httpOptions = {
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
+  private httpOptionsAuthorizePost = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      'Authorization': getToken()
     })
   }
 
@@ -31,7 +36,7 @@ export class RatingsService {
   }
 
   createOneRating(rating: Rating): Observable<Rating>{
-    return this.http.post<Rating>(`${environement.ROOT_URL}/ratings/`, rating, this.httpOptions).pipe(
+    return this.http.post<Rating>(`${environement.ROOT_URL}/ratings/`, rating, this.httpOptionsAuthorizePost).pipe(
       catchError(handleError))
    }
 }
