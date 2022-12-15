@@ -17,7 +17,7 @@ import {getIdUserConnected} from "../../../utils/utils";
 })
 export class ProfileComponent {
   idUserProfile!: number;
-  userProfile!: User;
+  userProfile: User = {average_rating: 1,email:""};
   idUserConnected?:number;
   isLiked!: boolean;
   isMyProfile:boolean = true;
