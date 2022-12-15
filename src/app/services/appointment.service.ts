@@ -16,7 +16,9 @@ export class AppointmentService {
   
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+    "Authorization": getToken()
+   })
   };
 
   constructor(private http:HttpClient) {
