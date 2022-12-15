@@ -7,7 +7,7 @@
   <p *ngIf="userProfile != undefined">Prénom : {{ userProfile.firstname }}</p>
   <p *ngIf="userProfile != undefined">Pseudo : {{ userProfile.pseudo }}</p>
   <p *ngIf="userProfile != undefined">
-    Notes : {{ userProfile.average_rating }}
+    Notes : {{ numberStars }}
     <label class="rate"
     ></label>/ 5
     <a [routerLink]="['/ratings', userProfile!.id_user]">Voir les avis</a>

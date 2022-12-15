@@ -47,7 +47,7 @@ export class ProfileComponent {
         next: data => {
           this.idUserConnected = data.id_user
           this.newRating.id_rater = data.id_user;
-          
+          this.numberStars=Math.round(this.userProfile.average_rating!);
         },
         error: err => {
           console.error(err)
@@ -57,6 +57,7 @@ export class ProfileComponent {
     this.userService.getTeacherById(this.idUserProfile).subscribe({
       next: (data) => {
         this.userProfile = data
+        this.numberStars=Math.round(this.userProfile.average_rating!);
       },
       error: err => {
         console.error(err)
