@@ -31,12 +31,6 @@ export class NotificationService {
       catchError(handleError))
   }
 
-  getNotificationsNotSeen(id_user: number): Observable<Notification[]>{
-    return this.http.get<Notification[]>(`${environement.ROOT_URL}/notifications/newNotif/${id_user}`).pipe(
-      tap(_ => console.log('fetched notifications not seen from user')),
-      catchError(handleError))
-   }
-
    update_notification(id_notification:number): Observable<Notification>{
     return this.http.put<Notification>(`${environement.ROOT_URL}/notifications/update/${id_notification}`, this.httpOptions).pipe(
       catchError(handleError))
