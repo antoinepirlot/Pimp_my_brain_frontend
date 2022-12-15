@@ -67,7 +67,7 @@ export class RegisterComponent {
     this.user.phone = this.registerForm.value.phone!;
     this.user.password = this.registerForm.value.password!;
 
-    console.log(this.user);
+    
 
     this.checkPseudoAndEmail(this.user)
 
@@ -75,7 +75,7 @@ export class RegisterComponent {
   }
 
   addUser(user: User): void {
-    console.log(user);
+    
     this.userService.addUser(user).subscribe({
       //if ok
       next: () => {

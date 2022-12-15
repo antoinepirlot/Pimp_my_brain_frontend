@@ -29,7 +29,6 @@ export class AppointmentService {
       headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     return this.http.get<Appointment[]>(`${environement.ROOT_URL}/appointments/${id_student}`, httpOptionsAuthorizeGet).pipe(
-      tap(_ => console.log('fetched appointments')),
       catchError(handleError))
   }
 
@@ -38,7 +37,6 @@ export class AppointmentService {
       headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     return this.http.get<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}`, httpOptionsAuthorizeGet).pipe(
-      tap(_ => console.log('fetched appointment by course by user')),
       catchError(handleError))
   }
 
@@ -49,7 +47,6 @@ export class AppointmentService {
 
   createAppointment(app: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(`${environement.ROOT_URL}/appointments/`, app, this.httpOptions).pipe(
-      tap((newApp: Appointment) => console.log('added appointment', newApp)),
       catchError(handleError))
   }
 }

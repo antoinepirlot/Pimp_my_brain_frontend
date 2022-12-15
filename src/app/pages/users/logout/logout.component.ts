@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("deco");
+    
     localStorage.clear();
     this.router.navigateByUrl('').then(() => {
       this.navbarService.sendUpdate();

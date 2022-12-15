@@ -32,7 +32,6 @@ export class FavoriteService {
 
   getFavoritesByUser(id_user: number): Observable<Favorite[]> {
     return this.http.get<Favorite[]>(`${(this.url)}/${id_user}`, this.httpOptionsAuthorizeGet).pipe(
-        tap(_ => console.log('fetched notifications')),
         catchError(handleError));
   }
 

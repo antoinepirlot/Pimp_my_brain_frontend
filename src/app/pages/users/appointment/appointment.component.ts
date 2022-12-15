@@ -50,7 +50,7 @@ export class AppointmentComponent implements OnInit {
           
           
           this.appointments = data;
-          console.log(this.appointments);
+         
           this.getcourses()
         },
         error: err => {
@@ -64,7 +64,7 @@ export class AppointmentComponent implements OnInit {
   getcourses() {
     this.courseService.getCourses().subscribe((data) => {
       this.courses = data;
-      console.log("2",this.courses);
+      
 
     });
   }
