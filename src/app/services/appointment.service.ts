@@ -43,7 +43,7 @@ export class AppointmentService {
   }
 
   update_appointment(id_course:number,id_student: number, state:string): Observable<Appointment>{
-    return this.http.put<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}/state/${state}`, this.httpOptions).pipe(
+    return this.http.put<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}/state/${state}`,{}, this.httpOptions).pipe(
       catchError(handleError))
   }
 
