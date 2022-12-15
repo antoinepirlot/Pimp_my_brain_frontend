@@ -13,6 +13,9 @@ import {getToken} from "../utils/utils";
 })
 export class CourseService {
   private ROOT_URL = environement.ROOT_URL;
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
@@ -55,7 +58,7 @@ export class CourseService {
 
   getOneCourse(idCourse: number) {
     const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
-    return this.http.get<Course>(url, this.httpOptions).pipe(
+    return this.http.get<Course>(url, this.httpOptionsAuthorizeGet).pipe(
         catchError(handleError)
     );
   }
