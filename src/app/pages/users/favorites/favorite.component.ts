@@ -33,7 +33,7 @@ export class FavoriteComponent implements OnInit {
       .getUserByToken()
       .subscribe((data) => {
         this.id_user = data.id_user!;
-        console.log(this.id_user);
+
         this.getFavoritesByUser();
       });
   }
@@ -41,7 +41,7 @@ export class FavoriteComponent implements OnInit {
   getFavoritesByUser() {
     this.favoriteService.getFavoritesByUser(this.id_user).subscribe({
       next: (data) =>{
-        console.log(data);
+
       this.favorites = data;
       } 
     });

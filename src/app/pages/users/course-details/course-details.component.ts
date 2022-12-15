@@ -60,7 +60,7 @@ export class CourseDetailsComponent implements OnInit {
 
   getUsersByToken() {
     this.userService.getUserByToken().subscribe((data) => {
-      console.log(data);
+
       this.user_id = data.id_user!;
       this.pseudo_id = data.pseudo!;
     });
@@ -74,8 +74,7 @@ export class CourseDetailsComponent implements OnInit {
         this.notif.id_user = this.course.teacher?.id_user!;
         this.notif.notification_text =
           this.pseudo_id + " veux chatter avec vous.";
-        console.log(this.notif.chat_link);
-        console.log(this.notif);
+
         
         this.addNotifications(this.notif);
 
@@ -88,7 +87,7 @@ export class CourseDetailsComponent implements OnInit {
 
   addNotifications(notif: Notification) {
     this.notifService.createNotification(notif).subscribe((data)=> {
-      console.log("dans la methode mon gars", data);
+
       
     })
   }

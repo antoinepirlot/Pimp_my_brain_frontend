@@ -9,7 +9,6 @@ export class CanActivateViaAuthenticationGuard implements CanActivate {
             return true;
         }
         else{
-            console.log("not logged");
             this.router.navigateByUrl('/login')
             return false;
         }

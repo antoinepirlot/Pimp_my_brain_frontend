@@ -23,14 +23,14 @@ export class NotificationComponent implements OnInit {
   }
 
   getUsersByToken() {
-    console.log(localStorage.getItem("token"));
+
     
     this.userService
       .getUserByToken()
       .subscribe((data) => {
-        console.log("aaaaaaaaaaaaaaaaaaaa",data);
+
         this.id_user = data.id_user!;
-        console.log(this.id_user);
+
         this.getNotificationsByUser();
       });
       
@@ -38,12 +38,12 @@ export class NotificationComponent implements OnInit {
 
   getNotificationsByUser() {
     this.notifService.getNotificationsByUser(this.id_user).subscribe((data) => {
-      console.log(data);
+
       this.notifs = data;
 
       data.forEach(notif =>{
         this.notifService.update_notification(notif.id_notification).subscribe((info) =>{
-          console.log("update",info)
+
         })
       })
 

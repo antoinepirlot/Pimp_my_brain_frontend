@@ -35,10 +35,10 @@ export class ChatComponent implements OnInit {
     this.userService
       .getUserByToken()
       .subscribe((data) => {
-        console.log(data)
+        
         this.user_id = data.id_user!;
         //this.my_username = data.pseudo!
-        console.log(this.user_id);
+     
         this.getUserById(this.user_id)
       });   
   }
@@ -48,7 +48,7 @@ export class ChatComponent implements OnInit {
     this.userService
       .getUserById(id)
       .subscribe((data) => {
-        console.log(data.pseudo)
+        
         this.my_username = data.pseudo!
         username = data.pseudo!
       })
@@ -56,13 +56,12 @@ export class ChatComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.user_id)
-    console.log(this.my_username)
+
     let id_interloc = this.chatForm.value.id!;
     //let ps_interloc = ""
     this.as.login(this.user_id, id_interloc)
     //ps_interloc = this.getUserById(id_interloc)
-    //console.log(ps_interloc)
+
     this.as.getRoomId().subscribe( {
       next: (data) => {
         this.router.navigateByUrl(`/room/${data.room_id}/${id_interloc}/${this.my_username}`);

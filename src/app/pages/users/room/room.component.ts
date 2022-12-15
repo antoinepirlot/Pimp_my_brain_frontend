@@ -59,7 +59,7 @@ export class RoomComponent implements OnInit {
     this.courseService
       .getOneCourse(Number(this.route.snapshot.paramMap.get('id_course'))).subscribe({
         next: data => {
-          (console.log(data.teacher?.id_user))
+
           this.id_teacher_course = data.teacher?.id_user!
         }
       })
@@ -83,7 +83,7 @@ export class RoomComponent implements OnInit {
     this.userService
       .getUserById(id)
       .subscribe((data) => {
-        console.log(data.pseudo)
+
         this.user_pseudo_interloc = data.pseudo!
       })
   }
@@ -92,7 +92,7 @@ export class RoomComponent implements OnInit {
     this.roomService.getStatus()
       .subscribe((data) => {
         this.m = data.msg!
-        console.log(this.m)
+
         //this.htmlContent += `<p>${this.m}</p>`
       })
   }

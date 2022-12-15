@@ -37,13 +37,13 @@ export class AppointmentDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id_course = +this.route.snapshot.params["id_course"];
     this.id_student = +this.route.snapshot.params["id_student"];
-    console.log(this.id_course);
+    
     this.getUserByToken();
     
 
     this.courseService.getOneCourse(this.id_course).subscribe((response) => {
       this.course = response;
-      console.log("course", response);
+      
       this.getAppointmentBYyCourseByUser();
     });
   }
@@ -52,7 +52,7 @@ export class AppointmentDetailsComponent implements OnInit {
     this.appointments
       .getAppointmentBYyCourseByUser(this.id_course, this.id_student)
       .subscribe((data) => {
-        console.log("appointment", data);
+        
 
         this.appointment = data;
         this.getUserById();
@@ -62,12 +62,12 @@ export class AppointmentDetailsComponent implements OnInit {
   selectedStatus = "";
   onSelected(value: string): void {
     this.selectedStatus = value;
-    console.log(this.selectedStatus);
+    
   }
 
   getUserByToken() {
     this.userService.getUserByToken().subscribe((data) => {
-      console.log("token", data);
+      
       this.id_connected = data.id_user!;
     });
   }
@@ -76,7 +76,7 @@ export class AppointmentDetailsComponent implements OnInit {
     this.appointments
       .update_appointment(this.id_course, this.id_student, state)
       .subscribe(() => {
-        console.log("update with state", state);
+       
         this.ngOnInit();
       });
   }

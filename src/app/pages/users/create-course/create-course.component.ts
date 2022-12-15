@@ -97,8 +97,7 @@ export class CreateCourseComponent implements OnInit {
     this.newCourse.course_description = this.createCourseForm.value.description!;
     this.newCourse.price_per_hour = parseFloat(this.createCourseForm.value.price!);
     this.newCourse.level = this.createCourseForm.value.levelChosen!;
-    console.log(this.newCourse)
-    
+
     // add the course
     this.coursesService.createOneCourse(this.newCourse).subscribe({
       next: () => {

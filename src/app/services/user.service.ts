@@ -25,7 +25,6 @@ export class UserService {
     return this.http
       .get<User[]>(`${environement.ROOT_URL}/users`, httpOptionsAuthorizeGet)
       .pipe(
-        tap((_) => console.log("fetched users")),
         catchError(handleError)
       );
   }
@@ -34,7 +33,6 @@ export class UserService {
     return this.http
       .post<User>(`${environement.ROOT_URL}/users`, user, this.httpOptions)
       .pipe(
-        tap((newUser: User) => console.log("added user", newUser)),
         catchError(handleError)
       );
   }
@@ -86,7 +84,6 @@ export class UserService {
         httpOptionsWithAuth
       )
       .pipe(
-        tap((_) => console.log("get info with token")),
         catchError(handleError)
       );
   }
