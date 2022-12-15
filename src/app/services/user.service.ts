@@ -20,7 +20,7 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     return this.http
       .get<User[]>(`${environement.ROOT_URL}/users`, httpOptionsAuthorizeGet)
@@ -41,7 +41,7 @@ export class UserService {
 
   getUserById(id: number): Observable<User> {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     const url: string = `${environement.ROOT_URL}/users/` + id;
     return this.http
@@ -50,7 +50,7 @@ export class UserService {
   }
   getTeacherById(id: number): Observable<User> {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     const url: string = `${environement.ROOT_URL}/users/teacher/` + id;
     return this.http
@@ -60,7 +60,7 @@ export class UserService {
 
   getUsersByEmail(email: string): Observable<User> {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     return this.http.get<User>(
       `${environement.ROOT_URL}/users/${email}`,
@@ -70,7 +70,7 @@ export class UserService {
 
   getUsersByPseudo(pseudo: string): Observable<User> {
     let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ Authorization: getToken() }),
+      headers: new HttpHeaders({ "Authorization": getToken() }),
     };
     return this.http.get<User>(
       `${environement.ROOT_URL}/users/pseudo/${pseudo}`,
@@ -81,7 +81,7 @@ export class UserService {
   getUserByToken(): Observable<User> {
     let httpOptionsWithAuth = {
       headers: new HttpHeaders({
-        Authorization: getToken(),
+        "Authorization": getToken(),
       }),
     };
     return this.http
