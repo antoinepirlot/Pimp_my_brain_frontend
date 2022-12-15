@@ -40,6 +40,13 @@ export class NotificationComponent implements OnInit {
     this.notifService.getNotificationsByUser(this.id_user).subscribe((data) => {
       console.log(data);
       this.notifs = data;
+
+      data.forEach(notif =>{
+        this.notifService.update_notification(notif.id_notification).subscribe((info) =>{
+          console.log("update",info)
+        })
+      })
+
     });
   }
 
