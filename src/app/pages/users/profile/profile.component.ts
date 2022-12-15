@@ -66,9 +66,12 @@ export class ProfileComponent {
     this.favoriteService.getUserProfileLike(this.idUserProfile).subscribe({
       next: _ => {
         this.isLiked = true;
+        if (this.idUserConnected !== this.idUserProfile) {
+          this.isMyProfile = false;
+        }
       },
       error: err => {
-        if (err.status !== 403) {
+        if (this.idUserConnected !== this.idUserProfile) {
           this.isMyProfile = false;
         }
         this.isLiked = false;
