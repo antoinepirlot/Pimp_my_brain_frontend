@@ -2,12 +2,14 @@
   <h1>Cours de {{course.category?.name}}</h1>
   <h3>{{course.teacher?.firstname}} {{course.teacher?.lastname}}</h3>
   <h4>Pseudo: <a href="#" routerLink="/profile/{{course.teacher?.id_user}}">{{course.teacher?.pseudo}}</a></h4>
+  <h4>Email de contact: {{course.teacher?.email}}</h4>
   <div id="note">
     Note: <app-stars-rating-display [goldenStars]="numberOfStars" [greyStars]="5-numberOfStars"></app-stars-rating-display>
   </div>
   <div id="difficulties">
     <app-level-bubbles [level]="course.level"></app-level-bubbles>
   </div>
+  <div id="price">Prix: {{course.price_per_hour}}/h</div>
   <div id="course_description">
     <h3>Description du cours</h3>
     <p>{{course.course_description}}</p>
