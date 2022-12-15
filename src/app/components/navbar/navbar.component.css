@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  background: linear-gradient(to right, rgb(114, 19, 210), rgb(225, 204, 210));
+  background: linear-gradient(to right, rgba(114, 49, 178, 0.747), rgb(225, 204, 210));
  
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease;

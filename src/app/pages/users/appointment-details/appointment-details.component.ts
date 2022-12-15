@@ -28,24 +28,16 @@ export class AppointmentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_course = +this.route.snapshot.params["id_course"];
+    this.id_student = +this.route.snapshot.params["id_student"];
     console.log(this.id_course);
 
     this.courseService.getOneCourse(this.id_course).subscribe((response) => {
       this.course = response;
       console.log("course", response);
-      this.getUsersByToken();
     });
   }
 
-  getUsersByToken() {
-    this.userService
-      .getUserByToken()
-      .subscribe((data) => {
-        this.id_student = data.id_user!;
-        console.log(this.id_student);
-        this.getAppointmentBYyCourseByUser();
-      });
-  }
+  
 
   getAppointmentBYyCourseByUser() {
     this.appointments
