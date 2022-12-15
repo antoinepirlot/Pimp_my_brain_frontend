@@ -47,7 +47,10 @@ export class AppointmentComponent implements OnInit {
       .getAppointmentsByUser(this.id_user)
       .subscribe({
         next: data => {
+          
+          
           this.appointments = data;
+          console.log(this.appointments);
           this.getcourses()
         },
         error: err => {
@@ -75,9 +78,9 @@ export class AppointmentComponent implements OnInit {
     return this.course;
   }
 
-  onClick(id_course: number){
+  onClick(id_course: number, id_student:number){
 
-    this.router.navigateByUrl('/rendezvous/'+id_course)
+    this.router.navigateByUrl('/rendezvous/'+id_course+'/student/'+id_student)
 
   }
 }

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: "course_details/:id_course", component: CourseDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
-  { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'rendezvous/:id_course/student/:id_student', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
   { path: "chat", component: ChatComponent, canActivate: [CanActivateViaAuthenticationGuard] },

@@ -3,6 +3,10 @@
     Rendez-vous avec le professeur {{ course.teacher?.lastname }}
     {{ course.teacher?.firstname }}
   </h1>
+  <h1>
+    Rendez-vous avec l'eleve {{ student.lastname! }}
+    {{ student.firstname! }}
+  </h1>
   <!--TODO category-->
   <h3>A propos du cours</h3>
   <table>
@@ -34,7 +38,8 @@
         <td>n°</td>
         <td>boite</td>
         <td>status</td>
-        <td *ngIf="appointment.appointment_state == 'pending'">Accepter ou supprimer le rendez-vous</td>
+        <td *ngIf="appointment.appointment_state == 'accepted' && id_connected == course.teacher?.id_user">Dites si l'etudiant est venu ou non </td>
+        <td *ngIf="appointment.appointment_state == 'pending' && id_connected != course.teacher?.id_user">Accepter ou supprimer le rendez-vous </td>
       </tr>
       <tr>
         <td>{{ appointment.appointment_date }}</td>
@@ -47,15 +52,27 @@
         <td *ngIf="appointment.appointment_state == 'finished'">terminé</td>
         <td *ngIf="appointment.appointment_state == 'canceled'">supprimé</td>
         <td *ngIf="appointment.appointment_state == 'accepted'">accepté</td>
-        <td *ngIf="appointment.appointment_state == 'pending'">
-          <select #status (change)="onSelected(status.value)">
-            <option value="">--Choisisez un status--</option>
-            <option value="accepted">accepté</option>
-            <option value="canceled">supprimé</option>
-        </select>
-        <button *ngIf="selectedStatus == 'canceled'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat supprimé</button>
-        <button *ngIf="selectedStatus == 'accepted'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat accepté</button>
-        </td>
+        <td *ngIf="appointment.appointment_state == 'pending' && id_connected != course.teacher?.id_user">
+            <select #status (change)="onSelected(status.value)">
+              <option value="">--Choisisez un status--</option>
+              <option value="accepted">accepté</option>
+              <option value="canceled">supprimé</option>
+          </select>
+          
+          <button *ngIf="selectedStatus == 'canceled' " (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat supprimé</button>
+          <button *ngIf="selectedStatus == 'accepted'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat accepté</button>
+      </td>
+
+      <td *ngIf="appointment.appointment_state == 'accepted' && id_connected == course.teacher?.id_user">
+        <select #status (change)="onSelected(status.value)">
+          <option value="">--Choisisez un status--</option>
+          <option value="finished">venu</option>
+          <option value="not_come">pas venu</option>
+      </select>
+      
+      <button *ngIf="selectedStatus == 'finished' " (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat venu</button>
+      <button *ngIf="selectedStatus == 'not_come'" (click)="update(selectedStatus)">Mettre a jour le rendez-vous a l'etat pas venu</button>
+  </td>
       </tr>
     </table>
   </div>
