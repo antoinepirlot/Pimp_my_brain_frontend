@@ -13,6 +13,9 @@ import {getToken} from "../utils/utils";
 })
 export class CourseService {
   private ROOT_URL = environement.ROOT_URL;
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ 'Authorization': getToken() })
+  };
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
@@ -23,7 +26,13 @@ export class CourseService {
 
   }
   createOneCourse(course: Course): Observable<Course>{
-    return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, this.httpOptions).pipe(
+    let httpOptionsWithAuth = {
+      headers: new HttpHeaders({
+        "Authorization": getToken()!,
+        "Content-Type": "application/json"
+      })
+    }
+    return this.http.post<Course>(`${environement.ROOT_URL}/courses/`, course, httpOptionsWithAuth).pipe(
       catchError(handleError))
    }
 
@@ -35,7 +44,7 @@ export class CourseService {
       filter=`city=${filterObject.city}&course=${filterObject.optionChosen}&description=${filterObject.description}`
     }
     const url: string = `${this.ROOT_URL}/courses?` + filter;
-    return this.http.get<Course[]>(url, this.httpOptions).pipe(
+    return this.http.get<Course[]>(url).pipe(
         catchError(handleError)
     );
    }
@@ -43,8 +52,7 @@ export class CourseService {
   getAllTeacherCourses(): Observable<Course[]> {
     let httpOptionsWithAuth = {
       headers: new HttpHeaders({
-        "Authorization": getToken()!,
-        "Content-Type": "application/json"
+        "Authorization": getToken()
       })
     }
     const url: string = `${this.ROOT_URL}/courses/teacher`;
@@ -54,8 +62,11 @@ export class CourseService {
   }
 
   getOneCourse(idCourse: number) {
+    let httpOptionsAuthorizeGet = {
+      headers: new HttpHeaders({ "Authorization": getToken() }),
+    };
     const url: string = `${this.ROOT_URL}/courses/${idCourse}`;
-    return this.http.get<Course>(url, this.httpOptions).pipe(
+    return this.http.get<Course>(url, httpOptionsAuthorizeGet).pipe(
         catchError(handleError)
     );
   }

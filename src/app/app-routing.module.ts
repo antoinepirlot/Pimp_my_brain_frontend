@@ -13,9 +13,9 @@ import { CourseDetailsComponent } from "./pages/users/course-details/course-deta
 import { FavoriteComponent } from './pages/users/favorites/favorite.component';
 import { ChatComponent } from './pages/users/chat/chat.component';
 import { CanActivateViaAuthenticationGuard } from './guards/CanActivateViaAuthentication.guard'; 
-import { RatingsPageComponent } from './pages/public/ratings-page/ratings-page.component';
+import { RatingsPageComponent } from './pages/users/ratings-page/ratings-page.component';
 import { RoomComponent } from './pages/users/room/room.component';
-import { ProfileComponent } from './pages/public/profile/profile.component';
+import { ProfileComponent } from './pages/users/profile/profile.component';
 import { AppointmentDetailsComponent } from './pages/users/appointment-details/appointment-details.component';
 import { AppointmentCreateComponent } from './pages/users/appointment-create/appointment-create.component';
 
@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: "course_details/:id_course", component: CourseDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update to match with id_course asked
   { path: "favorites", component: FavoriteComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
-  { path: 'rendezvous/:id_course', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
+  { path: 'rendezvous/:id_course/student/:id_student', component: AppointmentDetailsComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'ratings/:id_teacher', component: RatingsPageComponent, canActivate: [CanActivateViaAuthenticationGuard] },
   { path: 'profile/:id_user', component: ProfileComponent, canActivate: [CanActivateViaAuthenticationGuard] }, //TODO update component
   { path: "chat", component: ChatComponent, canActivate: [CanActivateViaAuthenticationGuard] },

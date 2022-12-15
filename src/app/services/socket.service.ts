@@ -15,10 +15,6 @@ import { Message } from '../models/message';
 
 export class ChatService {
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private socket: Socket) {}
 
   sendMessage(message: Message) {
