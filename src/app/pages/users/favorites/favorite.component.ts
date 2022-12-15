@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FavoriteService } from "src/app/services/favorite.service";
 import { UserService } from "src/app/services/user.service";
 import { Favorite } from "../../../models/favorite";
@@ -16,7 +17,7 @@ export class FavoriteComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,private router: Router
   ) {}
   
   ngOnInit(): void {
@@ -50,5 +51,8 @@ export class FavoriteComponent implements OnInit {
     let tName: Favorite[] = []
       
   }
-
+  onPseudo(idTeacher?: number){
+    this.router.navigateByUrl("/profile/"+idTeacher);
+  }
+  
 }

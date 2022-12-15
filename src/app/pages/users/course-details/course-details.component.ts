@@ -55,7 +55,7 @@ export class CourseDetailsComponent implements OnInit {
         }
       },
     });
-    this.getUsersByToken();
+    this.getUsersByToken();    
   }
 
   getUsersByToken() {

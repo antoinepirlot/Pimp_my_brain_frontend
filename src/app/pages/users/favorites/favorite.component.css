@@ -91,3 +91,10 @@ a {
     border-radius: 5px;
     margin-left: 20px;
   }
+
+
+  p{
+      cursor: pointer;
+      text-decoration: underline;
+    
+  }

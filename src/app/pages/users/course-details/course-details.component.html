@@ -9,12 +9,12 @@
   <div id="difficulties">
     <app-level-bubbles [level]="course.level"></app-level-bubbles>
   </div>
-  <div id="price">Prix: {{course.price_per_hour}}/h</div>
+  <div id="price">Prix: {{course.price_per_hour}}€/h</div>
   <div id="course_description">
     <h3>Description du cours</h3>
     <p>{{course.course_description}}</p>
   </div>
-  <div id="teacher_description">
+  <div id="teacher_description" *ngIf="user_id != course.teacher?.id_user">
     <button (click)="onClick()">Contacter le professeur</button>
   </div>
   <div id="similar_courses" *ngFor="let similarCourse of similarCourses">

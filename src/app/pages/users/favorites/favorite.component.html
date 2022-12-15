@@ -10,7 +10,7 @@
     <div class="notification-list">
       <div class="notification-list_content">
         <div class="notification-list_detail">
-          <p>{{favorite.teacher_username}}</p>
+          <p (click)="onPseudo(favorite.id_teacher)">{{favorite.teacher_username}}</p>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="favorites.length == 0">
-  <p>Vous avez aucun favori</p> 
+  <h2 style="text-align: center;">Vous n'avez aucun favoris</h2>
 </div>
 
 <br />
