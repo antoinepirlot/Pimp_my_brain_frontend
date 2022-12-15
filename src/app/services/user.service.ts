@@ -59,22 +59,18 @@ export class UserService {
   }
 
   getUsersByEmail(email: string): Observable<User> {
-    let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ "Authorization": getToken() }),
-    };
+    
     return this.http.get<User>(
       `${environement.ROOT_URL}/users/${email}`,
-      httpOptionsAuthorizeGet
+      this.httpOptions
     );
   }
 
   getUsersByPseudo(pseudo: string): Observable<User> {
-    let httpOptionsAuthorizeGet = {
-      headers: new HttpHeaders({ "Authorization": getToken() }),
-    };
+    
     return this.http.get<User>(
       `${environement.ROOT_URL}/users/pseudo/${pseudo}`,
-      httpOptionsAuthorizeGet
+      this.httpOptions
     );
   }
 
