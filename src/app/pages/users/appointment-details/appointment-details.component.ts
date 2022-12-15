@@ -20,7 +20,11 @@ export class AppointmentDetailsComponent implements OnInit {
   course!: Course;
   appointment!: Appointment;
   id_connected!: number;
-  student!: User;
+  student: User = {
+    email: "",
+    lastname: "",
+    firstname: "",
+  };
 
   constructor(
     private courseService: CourseService,
