@@ -15,10 +15,6 @@ import { Observable, of } from 'rxjs';
 })
 export class RoomService {
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor (
     private socket: Socket,
     private http:HttpClient

@@ -14,10 +14,6 @@ import { User } from '../models/user';
 
 export class ChatService {
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private socket: Socket) {}
   
   login(id_user1: number, id_user2: number) {
