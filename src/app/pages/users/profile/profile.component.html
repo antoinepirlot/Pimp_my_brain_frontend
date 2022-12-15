@@ -1,0 +1,62 @@
+<h1 *ngIf="userProfile != undefined">
+  Profil de {{ userProfile.pseudo }}
+  <app-favorite-button
+    *ngIf="!isMyProfile"
+    (click)="changeLike()"
+    [liked]="isLiked"
+  ></app-favorite-button>
+</h1>
+<div class="design-form-block">
+  <p *ngIf="userProfile != undefined">Nom : {{ userProfile.lastname }}</p>
+  <p *ngIf="userProfile != undefined">Prénom : {{ userProfile.firstname }}</p>
+  <p *ngIf="userProfile != undefined">Pseudo : {{ userProfile.pseudo }}</p>
+  <p *ngIf="userProfile != undefined">
+    Notes : {{ numberStars }} <label class="rate"></label>/ 5
+    <a [routerLink]="['/ratings', userProfile!.id_user]">Voir les avis</a>
+  </p>
+  <p
+    *ngIf="
+      userProfile != undefined &&
+      userProfile.skills != undefined &&
+      userProfile.skills.length > 0
+    "
+  >
+    Compétences :
+    <span *ngFor="let skill of userProfile.skills; let i = index"
+      >{{ skill.name
+      }}<span *ngIf="i < userProfile!.skills!.length - 1">, </span></span
+    >
+  </p>
+</div>
+<div *ngIf="idUserConnected != idUserProfile">
+  <div class="design-form-block">
+    <hr />
+    <h3 *ngIf="userProfile != undefined">
+      Ajouter un avis à {{ userProfile.pseudo }}
+    </h3>
+    <form
+      [formGroup]="ratingForm"
+      (ngSubmit)="addRating()"
+      class="design-form-block"
+    >
+      <div>
+        <app-input-stars
+          id="stars"
+          [inputControl]="ratingForm.controls['numberRating']"
+        ></app-input-stars>
+      </div>
+      <app-textarea-in-form
+        id="descriptionRating"
+        [inputControl]="ratingForm.controls['descriptionRating']"
+        nameLabel="Description de la note"
+        nameMarkup="description"
+        cols="100"
+      ></app-textarea-in-form>
+
+      <div>
+        <app-submit-button value="Ajouter un avis"></app-submit-button>
+      </div>
+      <p id="notification">{{ notificationAddRating }}</p>
+    </form>
+  </div>
+</div>

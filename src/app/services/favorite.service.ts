@@ -14,6 +14,10 @@ import {getToken} from "../utils/utils";
 
 export class FavoriteService {
 
+  httpOptionsAuthorizeGet = {
+    headers: new HttpHeaders({ "Authorization": getToken() }),
+  };
+
   httpOptions = {
     headers: new HttpHeaders({
       'Authorization': getToken(),
@@ -27,7 +31,7 @@ export class FavoriteService {
   }
 
   getFavoritesByUser(id_user: number): Observable<Favorite[]> {
-    return this.http.get<Favorite[]>(`${(this.url)}/${id_user}`, this.httpOptions).pipe(
+    return this.http.get<Favorite[]>(`${(this.url)}/${id_user}`, this.httpOptionsAuthorizeGet).pipe(
         tap(_ => console.log('fetched notifications')),
         catchError(handleError));
   }
@@ -36,7 +40,7 @@ export class FavoriteService {
    * Get the favorite of the connected user (it's requested with the token)
    */
   getUserProfileLike(id_teacher: number): Observable<Favorite> {
-    return this.http.get<Favorite>(`${this.url}/one/${id_teacher}`, this.httpOptions)
+    return this.http.get<Favorite>(`${this.url}/one/${id_teacher}`, this.httpOptionsAuthorizeGet)
       .pipe(catchError(handleError));
   }
 
@@ -47,7 +51,7 @@ export class FavoriteService {
   }
 
   removeLike(id_teacher: number): Observable<Favorite> {
-    return this.http.delete<Favorite>(`${this.url}/${id_teacher}`, this.httpOptions)
+    return this.http.delete<Favorite>(`${this.url}/${id_teacher}`, this.httpOptionsAuthorizeGet)
       .pipe(catchError(handleError));
   }
 }

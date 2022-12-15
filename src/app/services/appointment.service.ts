@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { handleError } from '../utils/handle_errors';
 import { environement } from 'src/environement/environement';
 import { Appointment } from '../models/appointment';
+import { getToken } from "../utils/utils";
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +16,28 @@ export class AppointmentService {
   
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+    "Authorization": getToken()
+   })
   };
 
   constructor(private http:HttpClient) {
   }
 
   getAppointmentsByUser(id_student: number): Observable<Appointment[]>{
-    return this.http.get<Appointment[]>(`${environement.ROOT_URL}/appointments/${id_student}`).pipe(
+    let httpOptionsAuthorizeGet = {
+      headers: new HttpHeaders({ "Authorization": getToken() }),
+    };
+    return this.http.get<Appointment[]>(`${environement.ROOT_URL}/appointments/${id_student}`, httpOptionsAuthorizeGet).pipe(
       tap(_ => console.log('fetched appointments')),
       catchError(handleError))
   }
 
   getAppointmentBYyCourseByUser(id_course:number,id_student: number): Observable<Appointment>{
-    return this.http.get<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}`).pipe(
+    let httpOptionsAuthorizeGet = {
+      headers: new HttpHeaders({ "Authorization": getToken() }),
+    };
+    return this.http.get<Appointment>(`${environement.ROOT_URL}/appointments/${id_course}/${id_student}`, httpOptionsAuthorizeGet).pipe(
       tap(_ => console.log('fetched appointment by course by user')),
       catchError(handleError))
   }
