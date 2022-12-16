@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+If you want to test the code locally you have to create an environment.ts file that you will put in the src/environment repository. In that file you will put :
+```shell
+export const environement = {
+  ROOT_URL: <urlOfTheBackend>
+};
+```
